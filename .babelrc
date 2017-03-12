@@ -1,0 +1,16 @@
+{
+  "presets": [
+    ["latest", {
+      "es2015": { "modules": false }
+    }],
+    "stage-2"
+  ],
+  "plugins": [/*"typecheck", "syntax-flow", */"transform-flow-strip-types", "transform-runtime", "lodash"],
+  "comments": false,
+  "env": {
+    "test": {
+      "presets": ["latest", "stage-2"],
+      "plugins": [ "istanbul" ]
+    }
+  }
+}

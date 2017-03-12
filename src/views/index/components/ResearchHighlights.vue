@@ -1,0 +1,38 @@
+<template lang="pug">
+div
+    h1.indexBoxTitle Research Highlights
+    ul.pure-g
+        li.pure-u-1-2(v-for="item in items")
+            research-highlight-item(:item="item")
+</template>
+
+<script>
+// @flow
+
+import researchHighlight from 'flow/typedef.js'
+import ResearchHighlightItem from './ResearchHighlightItem'
+import axios from 'axios'
+
+export default {
+    name: 'ResearchHighlights',
+    data (): {items: Array<researchHighlight>}{
+        return {
+            items: []
+        }
+    },
+    mounted () {
+        axios.get('/api.php/researchHighlights?limit=6').then(res => {
+            this.items = res.data
+        })
+    },
+    components: {
+        ResearchHighlightItem
+    }
+}
+</script>
+
+<style lang="stylus" scoped>
+ul
+    padding: 0
+    margin: 0
+</style>

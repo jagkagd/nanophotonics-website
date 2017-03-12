@@ -1,0 +1,83 @@
+[
+    {
+        "text": "Home",
+        "path": "/",
+        "children": []
+    }, {
+        "text": "News",
+        "path": "/news",
+        "children": []
+    }, {
+        "text": "Research",
+        "path": "/research",
+        "children": [
+            {
+                "text": "Overview",
+                "path": "overview"
+            }, {
+                "text": "Research interests",
+                "path": "interests"
+            }, {
+                "text": "Facilities",
+                "path": "facilities"
+            }, {
+                "text": "Fundings",
+                "path": "fundings"
+            }, {
+                "text": "Collaborators",
+                "path": "collaborators"
+            }
+        ]
+    }, {
+        "text": "People",
+        "path": "/people",
+        "children": [
+            {
+                "text": "Current Group",
+                "path": "current"
+            }, {
+                "text": "Faculty",
+                "path": "faculty"
+            }, {
+                "text": "Admin Staff",
+                "path": "adminstaff"
+            }, {
+                "text": "Post Docs",
+                "path": "postdocs"
+            }, {
+                "text": "Grad Students",
+                "path": "grad"
+            }, {
+                "text": "Undergrad Students",
+                "path": "undergrad"
+            }, {
+                "text": "Former Group Members",
+                "path": "former"
+            }
+        ]
+    }, {
+        "text": "Publications",
+        "path": "/publications",
+        "children": [
+            {
+                "text": "Journals",
+                "path": "journals"
+            }, {
+                "text": "Conferences",
+                "path": "conferences"
+            }, {
+                "text": "Books",
+                "path": "books"
+            }
+        ]
+    }, {
+        "text": "Teaching",
+        "path": "/teaching",
+        "children": []
+    }, {
+        "text": "Contact",
+        "path": "/contact",
+        "children": []
+    }
+]
+

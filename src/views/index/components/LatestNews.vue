@@ -1,0 +1,78 @@
+<template lang="pug">
+div
+    div(v-if="hasEvent")
+        h1 {{ eventState }} Events
+        ul
+            li(v-for="item in events")
+                router-link(:to="item.router") {{ item.date }} - {{ item.short_content }} 
+    h1 Latest News
+    ul
+        li(v-for="item in latestNewsList")
+            router-link(:to="'/news#news-'+item.id") {{ item.date }} - {{ item.short_content }}
+</template>
+
+<script>
+// @flow
+
+import {event, news} from 'flow/typedef.js'
+import axios from 'axios'
+import moment from 'moment'
+
+export default {
+    name: 'LatestNews',
+    data (): {events: Array<event>, latestNewsList: Array<news>} {
+        return {
+            events: [],
+            latestNewsList: []
+        }
+    },
+    mounted () {
+        axios.get('/api.php/events?limit=1').then(res => {
+            this.events = res.data
+        })
+        axios.get('/api.php/news?limit=3').then(res => {
+            this.latestNewsList = res.data
+        })
+    },
+    computed: {
+        hasEvent (): boolean {
+            return this.events.length > 0
+        },
+        showEvent (): boolean {
+            return moment().subtract(moment(this.events[0].endDate)).days < 30
+        },
+        eventState (): string {
+            const startDate = moment(this.events[0].startDate)
+            const endDate = moment(this.events[0].endDate)
+            const today = moment()
+            if(today.isBefore(startDate)){
+                return 'Upcoming'
+            }else if(today.isAfter(endDate)){
+                return 'Previous'
+            }else{
+                return 'Ongoing'
+            }
+        }
+    }
+}
+</script>
+
+<style lang="stylus" scoped>
+@import '~static/basecolors.styl'
+
+ul
+    margin: 3px
+    padding: 0
+    list-style: none
+    background-color: base1
+    border: 1px solid base4
+    border-radius: 5px
+    li
+        margin: 0 3px
+        border-bottom: 1px solid base4
+    li:last-child
+        border-bottom: 0px
+
+a:link, :visited
+    text-decoration: none
+</style>
