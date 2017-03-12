@@ -92,6 +92,9 @@ module.exports = {
                 },
                 context: '/'
             }
+        }),
+        new webpack.ProvidePlugin({
+            Promise: 'es6-promise-promise'
         })
     ]
 }
