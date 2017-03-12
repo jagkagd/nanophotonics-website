@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="stylus">
+@import '~static/pure-min.css'
+@import '~static/grids-responsive-min.css'
 
 #app
     background-image: url(./assets/images/bkg-page.jpg)

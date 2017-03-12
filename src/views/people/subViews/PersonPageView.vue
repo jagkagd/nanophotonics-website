@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div(v-if="showPage")
     div
         img(:src="imgPath" width="160" height="200")
     div
@@ -22,24 +22,26 @@ export default {
     name: 'PersonPage',
     data () {
         return {
-            item: {cv: ''}
+            item: {},
+            showPage: false
         }
     },
-    mounted () {
+    beforeMount () {
         axios.get('/api.php/people?id=' + this.$route.params.id).then(res => {
             this.item = res.data[0]
+            this.showPage = true
         })
     },
     computed: {
         compliedMarkdown () {
-            if(_.isNil(this.item.cv)){
-                return ''
-            }else{
-                return marked(this.item.cv)
-            }
+            return (_.isNil(this.item.cv)) ? '' : marked(this.item.cv)
         },
         imgPath () {
-            return require('assets/images/people/people-' + this.item.id + '-detail.jpg')
+            try{
+                return require('assets/images/people/' + this.item.id + '-1.jpg')
+            }catch(err){
+                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+            }
         }
     },
     filters: {

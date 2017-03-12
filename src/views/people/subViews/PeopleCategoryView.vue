@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-    ul
-        li(v-for="item in itemList")
+    ul.pure-g
+        li.pure-u-1-2(v-for="item in itemList")
             people-intro-item(:item="item")
 </template>
 
@@ -26,11 +26,20 @@ export default {
     },
     components: {
         PeopleIntroItem
+    },
+    watch: {
+        '$route' (to, from) {
+             axios.get('/api.php/people?category=' + this.$route.params.category).then(res => {
+                this.itemList = res.data
+            })
+        }
     }
 }
 </script>
 
 <style lang="stylus" scoped>
 ul
-    display: flex
+    padding: 0
+    margin: 0
+    list-style: none
 </style>

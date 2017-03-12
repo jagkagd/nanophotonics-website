@@ -33,6 +33,7 @@ export default {
 
 <style lang="stylus" scoped>
 ul
+    list-style: none
     padding: 0
     margin: 0
 </style>

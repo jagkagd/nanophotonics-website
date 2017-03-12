@@ -1,7 +1,8 @@
 <template lang="pug">
-div
+div.peopleItem
     router-link(:to="'/people/intro/'+item.id")
         img(:src="imgPath")
+    router-link(:to="'/people/intro/'+item.id")
         div.info
             p.name {{ item.nameEn }}
             p.email {{ item.email }} 
@@ -17,7 +18,11 @@ export default {
     },
     computed: {
         imgPath () {
-            return require('assets/images/people/people-' + this.item.id + '-intro.jpg')
+            try{
+                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+            }catch(err){
+                return require('assets/images/people/' + this.item.id + '-1.jpg')
+            }
         }
     }
 }
@@ -25,19 +30,20 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
-div
+
+.peopleItem
     width: 340px
     background-color: base1
     padding: 5px
     border-radius: 5px
     border: 1px solid base3
+    display: flex
+    > a
+        box-sizing: border-box
     img
         display: inline
         width: 110px
         height: 110px
-
-.info
-    display: inline
 
 .name
     color: blue
