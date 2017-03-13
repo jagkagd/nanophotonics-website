@@ -63,9 +63,11 @@ export default {
     padding: 5px
     border: 1px solid base4
     border-radius: 3px
+
 .title
     font-size: 13px
     height: 2.5em
+
 .jounal, .volume, .pages, .year
     color: blue
     font-style: italic

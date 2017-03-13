@@ -47,8 +47,8 @@ export default {
     width: (100%/8)
     box-sizing: border-box
     border: 1px solid white
-    height: 3em
+    height: 2.5em
     > a
-        line-height: 3em
+        line-height: 2.5em
 
 </style>

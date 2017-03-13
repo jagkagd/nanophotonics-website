@@ -68,3 +68,7 @@ export function formatAuthors (value: string, num: number): string {
     }
 }
 
+export function formatClass (value: string): string {
+    return _.kebabCase(value)
+}
+

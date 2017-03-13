@@ -2,7 +2,7 @@
 div
     h1.viewTitle News and Highlights
     ul
-        li(v-for="item in itemList" v-bind:id="'news-'+item.id")
+        li(v-for="item in items" v-bind:id="'news-'+item.id")
             news-item(:item="item")
 </template>
 
@@ -10,19 +10,19 @@ div
 // @flow
 
 import NewsItem from './components/NewsItem'
-import news from '../../flow/typedef.js'
+import news from 'flow/typedef.js'
 import axios from 'axios'
 
 export default {
     name: 'NewsView',
-    data (): {itemList: Array<news>} {
+    data (): {items: Array<news>} {
         return {
-            itemList: []
+            items: []
         }
     },
     mounted () {
         axios.get('/api.php/news').then(res => {
-            this.itemList = res.data
+            this.items = res.data
         })
     },
     components: {

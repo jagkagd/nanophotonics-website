@@ -39,8 +39,8 @@ export default {
 @import '~static/basecolors.styl'
 
 .comp
-    padding: 5px
-    margin: 5px
+    padding: 3px
+    margin: 3px
     border-radius: 5px
     border: 1px solid base4
     background-color: base0

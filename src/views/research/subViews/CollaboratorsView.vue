@@ -2,7 +2,7 @@
 div
     h1.viewTItle Collaborators
     ol
-        li(v-for="item in itemList")
+        li(v-for="item in items")
             a(:href="item.url")
                 span.group {{ item.group }}, 
                 span.university {{ item.university }}, 
@@ -18,12 +18,12 @@ export default {
     name: 'CollaboratorsView',
     data (): Object {
         return {
-            itemList: Array
+            items: Array
         }
     },
     mounted () {
         axios.get('/api.php/collaborators').then(res => {
-            this.itemList = res.data
+            this.items = res.data
         })
     }
 }

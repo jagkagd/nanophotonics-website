@@ -53,10 +53,8 @@ ul
             padding: 5px
             display: table
         a:link, :visited
-            text-decoration: none
             background-color: base3
         a:active, :hover
-            text-decoration: none
             background-color: base0
 
 </style>

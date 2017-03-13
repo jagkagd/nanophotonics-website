@@ -3,7 +3,7 @@ div
     h1.viewTitle Grad and Undergrad Courses
     ol
         li(v-for="item in items")
-            span.course {{ item.course }}
+            span.course {{ item.course }} 
             span.num (Course No.{{ item.number }}, {{ item.grad | capitalize }})
             br
             span.lecturers Lecturers: {{ item.lecturers }}
@@ -14,7 +14,7 @@ div
 
 import course from 'flow/typedef.js'
 import axios from 'axios'
-import _ from 'lodash'
+import _ from 'lodash/fp'
 
 export default {
     data (): {items: Array<course>}{

@@ -37,6 +37,7 @@ div
         height: 150px
         border-radius: 5px
     .info
+        padding-left: 5px
         h2
             text-size: 13px
         p

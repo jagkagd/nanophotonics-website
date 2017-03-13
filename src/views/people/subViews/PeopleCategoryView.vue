@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     ul.pure-g
-        li.pure-u-1-2(v-for="item in itemList")
+        li.pure-u-1-2(v-for="item in items")
             people-intro-item(:item="item")
 </template>
 
@@ -14,14 +14,14 @@ import axios from 'axios'
 
 export default {
     name: 'PeopleCategoryView',
-    data (): {itemList: Array<people>} {
+    data (): {items: Array<people>} {
         return {
-            itemList: []
+            items: []
         }
     },
     mounted () {
         axios.get('/api.php/people?category=' + this.$route.params.category).then(res => {
-            this.itemList = res.data
+            this.items = res.data
         })
     },
     components: {
@@ -30,7 +30,7 @@ export default {
     watch: {
         '$route' (to, from) {
              axios.get('/api.php/people?category=' + this.$route.params.category).then(res => {
-                this.itemList = res.data
+                this.items = res.data
             })
         }
     }

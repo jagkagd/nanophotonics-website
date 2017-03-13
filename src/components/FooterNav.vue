@@ -39,8 +39,7 @@ export default {
         margin: 0px
         padding: 0px
         text-align: center
-        > a:link, :visited
-            text-decoration: none
+        > a
             text-align: center
             color: base4
         > ul
@@ -52,8 +51,7 @@ export default {
             > li
                 white-space: nowrap
                 font-size: 12px
-                > a:link, :visited
-                    text-decoration: none
+                > a
                     color: base4
 
 </style>

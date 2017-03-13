@@ -31,14 +31,12 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
+
 .mainMenu a
     width: 100%
     height: 100%
     display: inline-table
-    line-height: 3em
-
-.mainMenu a:link, :active, :visited
-    text-decoration: none
+    line-height: 2.5em
 
 .mainMenu > ul
     position: absolute

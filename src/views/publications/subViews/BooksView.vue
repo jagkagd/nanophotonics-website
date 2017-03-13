@@ -2,14 +2,14 @@
 div
     h1.viewTitle Books
     ol
-        li(v-for="item in itemListGroup['Book']")
+        li(v-for="item in itemsGroup['Book']")
             span.authors {{ item.authors2 }}, 
             span.title {{ item.title }}, 
             span.press {{ item.press }}, 
             span.year {{ item.year }}.
     h2 Book chapters
     ol
-        li(v-for="item in itemListGroup['Book chapter']")
+        li(v-for="item in itemsGroup['Book chapter']")
             span.authors1 {{ item.authors1 }}, 
             span.chapter "{{ item.chapter}}", 
             span.title {{ item.title }}, 
@@ -27,20 +27,20 @@ import _ from 'lodash'
 
 export default {
     name: 'BooksView',
-    data (): {itemList: Array<book>, i18n: Object}{
+    data (): {items: Array<book>, i18n: Object}{
         return {
-            itemList: [],
+            items: [],
             i18n: {zh: {ed: '编著'}, en: {ed: 'ed.'}}
         }
     },
     mounted () {
         axios.get('/api.php/books').then(res => {
-            this.itemList = res.data
+            this.items = res.data
         })
     },
     computed: {
-        itemListGroup (): {[key: string]: Array<book>} {
-            return _.groupBy(this.itemList, 'type')
+        itemsGroup (): {[key: string]: Array<book>} {
+            return _.groupBy(this.items, 'type')
         }
     }
 }

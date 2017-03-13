@@ -1,8 +1,8 @@
 <template lang="pug">
 div#web-header
     div#logos
-        img#logo(src="~assets/images/home-logo.png" alt="Nanophotonics Research Group - We expolre the science, technology and art of light on the nanoscale " width="527" height="70")
-        img#university(src="~assets/images/ZJU.png" alt="Zhejiang University" width="171" height="60")
+        img#logo(src="~assets/images/home-logo.png" width="527" height="70")
+        img#university(src="~assets/images/ZJU.png" width="171" height="60")
     header-nav
 </template>
 

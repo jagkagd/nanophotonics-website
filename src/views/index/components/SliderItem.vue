@@ -44,9 +44,6 @@ export default {
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
 
-a:link, :visited
-    text-decoration: none
-
 img
     max-width: 100%
     max-height: auto

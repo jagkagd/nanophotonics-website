@@ -73,6 +73,4 @@ ul
     li:last-child
         border-bottom: 0px
 
-a:link, :visited
-    text-decoration: none
 </style>

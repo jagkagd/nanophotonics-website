@@ -8,14 +8,14 @@ div
             option(v-for='year in yearRange' v-bind:value='year') {{ year }}
     ol
         li(v-for='(item, index) in itemsSomeYear' v-bind:value="pubLength-index")
-            span.authors {{ item.authors | formatAuthors }}, 
+            span.authors {{ item.authors }}, 
             span.title "{{ item.title }}", 
             span.conference {{ item.conference }}, 
             span.pubinfo(v-if='item.pubinfo') {{ item.pubinfo }}, 
             span.date {{ item.date_start | formatDate }}, 
             span.location {{ item.location }}. 
-            span.type(:class="typeClass[item.type]") {{ item.type }} 
-            span.award(:class="awardClass[item.award]") {{ item.award }}
+            span.type(:class="item.type | formatClass") {{ item.type }} 
+            span.award(:class="item.award | formatClass") {{ item.award }}
 </template>
 
 <script>
@@ -24,26 +24,14 @@ div
 import conference from 'flow/typedef.js'
 import axios from 'axios'
 import _ from 'lodash/fp'
+import {formatClass} from 'utils/utils-filters.js'
 
 export default {
     name: 'ConferencesView',
     data (): {items: Array<conference>, pubYear: string} {
         return {
             items: [],
-            pubYear: 'all',
-            typeClass: {
-                'Oral': 'oral',
-                'Invited talk': 'invited-talk',
-                'Poster': 'poster',
-                'Plenary talk': 'plenary-talk',
-                'Keynote Speaker': 'keynote-speaker',
-                'Tutorial talk': 'tutorial-talk'
-            },
-            awardClass: {
-                'Best paper award': 'best-paper-award',
-                'Best poster award': 'best-poster-award',
-                'Best student paper award': 'best-student-paper-award'
-            }
+            pubYear: 'all'
         }
     },
     mounted () {
@@ -53,8 +41,7 @@ export default {
     },
     computed: {
         yearRange (): Array<string> {
-            const res = _.flow(_.map((o: string): string => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
-            return res
+            return _.flow(_.map((o: string): string => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
         },
         itemsGroupByYear (): {[year: string]: Array<conference>} {
             return _.groupBy((o): string => o.date_start.split('-')[0])(this.items)
@@ -69,7 +56,8 @@ export default {
     filters: {
         formatDate (value: string): string {
             return value.split('-')[0]
-        }
+        },
+        formatClass
     }
 }
 

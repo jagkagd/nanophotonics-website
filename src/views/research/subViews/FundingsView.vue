@@ -2,18 +2,20 @@
 div
     h1.viewTitle Fundings
     ol
-        li(v-for="item in itemList") {{ item }}
+        li(v-for="item in items") {{ item }}
 </template>
 
 <script>
 // @flow
 
 module.exports = {
-    data (): {itemList: Array<string>} {
+    data (): {items: Array<string>} {
         return {
-            itemList: ['National Natural Science Foundation of China',
-                       'Ministry of Science and Technology, China',
-                       'Ministry of Education, China']
+            items: [
+                'National Natural Science Foundation of China',
+                'Ministry of Science and Technology, China',
+                'Ministry of Education, China'
+            ]
         }
     }
 }

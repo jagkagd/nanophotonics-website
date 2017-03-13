@@ -8,9 +8,10 @@ div
                 th Former Position (Period)
                 th Position After Our Group
         tbody
-            tr(v-for="(item, index) in itemList" v-bind:class="(index % 2) ? '' : 'alt'")
+            tr(v-for="(item, index) in items" v-bind:class="(index % 2) ? '' : 'alt'")
                 td.
                     {{ item.nameEn }}
+                    br
                     ({{ item.nameCn }})
                 td {{ item.formerState }}
                 td {{ item.presentState }}
@@ -24,14 +25,14 @@ import axios from 'axios'
 
 export default {
     name: 'FormerGroup',
-    data (): {itemList: Array<people>} {
+    data (): {items: Array<people>} {
         return {
-            itemList: []
+            items: []
         }
     },
     mounted () {
         axios.get('/api.php/people?category=former').then(res => {
-            this.itemList = res.data
+            this.items = res.data
         })
     }
 }

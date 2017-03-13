@@ -46,8 +46,7 @@ export default {
     },
     computed: {
         yearRange (): Array<string> {
-            const res = _.flow(_.map((o): string => o.year), _.uniq, _.sortBy(x => x))(this.items)
-            return res
+            return _.flow(_.map((o): string => o.year), _.uniq, _.sortBy(x => x))(this.items)
         },
         itemsGroupByYear (): {[year: string]: Array<journal>} {
             return _.groupBy('year')(this.items)
@@ -73,8 +72,6 @@ li
 
 .title
     color: blue
-    a
-        text-decoration: none
 
 .journal
     font-style: italic
