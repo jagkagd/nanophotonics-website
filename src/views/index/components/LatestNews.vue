@@ -1,14 +1,15 @@
 <template lang="pug">
 div
-    div(v-if="hasEvent")
+    div.subNews(v-if="hasEvent")
         h1 {{ eventState }} Events
         ul
             li(v-for="item in events")
                 router-link(:to="item.router") {{ item.date }} - {{ item.short_content }} 
-    h1 Latest News
-    ul
-        li(v-for="item in latestNewsList")
-            router-link(:to="'/news#news-'+item.id") {{ item.date }} - {{ item.short_content }}
+    div.subNews
+        h1 Latest News
+        ul
+            li(v-for="item in latestNewsList")
+                router-link(:to="'/news#news-'+item.id") {{ item.date }} - {{ item.short_content }}
 </template>
 
 <script>
@@ -65,11 +66,12 @@ ul
     padding: 0
     list-style: none
     background-color: base1
-    border: 1px solid base4
+    border: 1px solid base3
+    box-shadow: 1px 1px base2
     border-radius: 5px
     li
         margin: 0 3px
-        border-bottom: 1px solid base4
+        border-bottom: 1px solid base3
     li:last-child
         border-bottom: 0px
 

@@ -43,12 +43,12 @@ export default {
     list-style: none
     padding: 0
     margin: 0
-    padding-top: 10px
+    padding-top: 5px
     z-index: 200
     > li
         background-color: base1
         box-sizing: border-box
         border: 1px solid white
-        padding: 10px
+        padding: 5px
 
 </style>

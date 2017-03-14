@@ -37,14 +37,15 @@ export default {
     padding: 5px
     border-radius: 5px
     border: 1px solid base3
-    display: flex
     > a
-        box-sizing: border-box
+        display: inline-block
     img
         display: inline
         width: 110px
         height: 110px
 
+.info
+    padding-left: 10px
 .name
     color: blue
     font-size: 16px

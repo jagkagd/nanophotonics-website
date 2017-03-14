@@ -1,15 +1,15 @@
 <template lang="pug">
 div(v-if="showPage")
-    div
+    div.thumb
         img(:src="imgPath" width="160" height="200")
-    div
+    div.basicInfo
         p {{ item.nameEn }} ({{ item.nameCn }})
         p {{ item.degree | trans2FormalDegree }}
         p Department of Optical Engineering
         p Zhejiang University
         p Hangzhou 310027, China
         p Tel: {{ item.tel }},  Email: {{ item.email }}
-    div(v-html="compliedMarkdown")
+    div.detailInfo(v-html="compliedMarkdown")
 </template>
 
 <script>
@@ -61,3 +61,9 @@ export default {
     }
 }
 </script>
+
+<style lang="stylus" scoped>
+.thumb, .basicInfo
+    display: inline-block
+</style>
+

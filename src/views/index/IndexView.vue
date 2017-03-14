@@ -40,20 +40,21 @@ export default {
 
 .comp
     padding: 3px
-    margin: 3px
+    margin: 5px
+    border: 1px solid base3
     border-radius: 5px
-    border: 1px solid base4
     background-color: base0
+    box-shadow: 1px 1px base2
+    font-size: 13px
     h1
         margin: auto
         padding: 0px 8px
         background-color: base3
-        border: 1px solid base3
+        box-shadow: 1px 1px base2
         border-radius: 5px
         color: base4
         font-family: "Myriad Pro"
-        font-weight: 600
+        font-weight: bold
         text-align: center
-        font-size: 14px
 
 </style>

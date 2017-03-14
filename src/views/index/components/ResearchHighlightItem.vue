@@ -4,7 +4,7 @@ div.item
     div.pic
         router-link(:to="'/news#rh-'+item.id")
             img(:src="imgPath" width="280" height="184")
-    div.content {{ item.abstract | formatContent(40) }}
+    div.content {{ item.abstract | formatContent(40, 2.5) }}
         |  
         span
             router-link(:to="'/news#rh-'+item.id") Read more>>
@@ -39,8 +39,8 @@ export default {
         }
     },
     filters: {
-        formatContent (value: string, emPerLine: number): string {
-            const maxLength: number = emPerLine * 2.2 - 3
+        formatContent (value: string, emPerLine: number, scale: number): string {
+            const maxLength: number = emPerLine * scale - 3
             const stringArray: Array<string> = value.split(' ')
             const accumulateLength: Array<number> = stringArray.reduce((res: Array<number>, c: string, i: number): number => {
                 res[i + 1] = res[i] + c.length + 1
@@ -61,15 +61,20 @@ export default {
 .item
     margin: 5px
     padding: 5px
-    border: 1px solid base4
-    border-radius: 3px
+    background-color: base1
+    box-shadow: 1px 1px base2
+    border: 1px solid base3
+    border-radius: 4px
 
 .title
-    font-size: 13px
-    height: 2.5em
+    height: 2.2em
+    text-size: 13px
 
 .jounal, .volume, .pages, .year
     color: blue
     font-style: italic
+
+.pic
+    border-radius: 4px
 </style>
 
