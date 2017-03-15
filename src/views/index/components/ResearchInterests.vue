@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    h1 Research Interests
+    h1 {{ title[$store.state.lang] }}
     router-link(:to="{name: 'interests'}")
         img(src="~assets/images/index/research_1.jpg")
         img(src="~assets/images/index/research_2.jpg")
@@ -11,7 +11,15 @@ div
 // @flow
 
 export default {
-    name: 'ResearchInterests'
+    name: 'ResearchInterests',
+    data () {
+        return {
+            title: {
+                en: 'Research Interests',
+                zh: '研究兴趣'
+            }
+        }
+    }
 }
 </script>
 

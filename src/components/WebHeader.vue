@@ -1,6 +1,7 @@
 <template lang="pug">
 div#web-header
     div#logos
+        div#webTitle {{ group[$store.state.lang] }}
         img#logo(src="~assets/images/home-logo.png" width="527" height="70")
         img#university(src="~assets/images/ZJU.png" width="171" height="60")
     header-nav
@@ -13,6 +14,14 @@ import HeaderNav from './HeaderNav.vue'
 
 export default {
     name: 'WebHeader',
+    data () {
+        return {
+            group: {
+                en: 'Nanophotonics Group',
+                zh: '微纳光子学研究组'
+            }   
+        }
+    },
     components: {
         HeaderNav
     }

@@ -9,21 +9,21 @@
     }, {
         "text": {
             "en": "News",
-            "zh": "新闻"
+            "zh": "组内新闻"
         },
         "path": "/news",
         "children": []
     }, {
         "text": {
             "en": "Research",
-            "zh": "研究"
+            "zh": "研究方向"
         },
         "path": "/research",
         "children": [
             {
                 "text": {
                     "en": "Overview",
-                    "zh": ""
+                    "zh": "研究概况"
                 },
                 "path": "overview"
             }, {
@@ -35,19 +35,19 @@
             }, {
                 "text": {
                     "en": "Facilities",
-                    "zh": "设备"
+                    "zh": "研究条件"
                 },
                 "path": "facilities"
             }, {
                 "text": {
                     "en": "Fundings",
-                    "zh": "基金"
+                    "zh": "研究项目"
                 },
                 "path": "fundings"
             }, {
                 "text": {
                     "en": "Collaborators",
-                    "zh": "合作"
+                    "zh": "合作团队"
                 },
                 "path": "collaborators"
             }
@@ -55,20 +55,20 @@
     }, {
         "text": {
             "en": "People",
-            "zh": "人员"
+            "zh": "小组成员"
         },
         "path": "/people",
         "children": [
             {
                 "text": {
                     "en": "Current Group",
-                    "zh": "当前成员"
+                    "zh": "目前成员"
                 },
                 "path": "current"
             }, {
                 "text": {
                     "en": "Faculty",
-                    "zh": "教职"
+                    "zh": "教师"
                 },
                 "path": "faculty"
             }, {
@@ -98,7 +98,7 @@
             }, {
                 "text": {
                     "en": "Former Group Members",
-                    "zh": "前成员"
+                    "zh": "以前成员"
                 },
                 "path": "former"
             }
@@ -106,26 +106,26 @@
     }, {
         "text": {
             "en": "Publications",
-            "zh": "出版"
+            "zh": "论文论著"
         },
         "path": "/publications",
         "children": [
             {
                 "text": {
                     "en": "Journals",
-                    "zh": "期刊"
+                    "zh": "期刊论文"
                 },
                 "path": "journals"
             }, {
                 "text": {
                     "en": "Conferences",
-                    "zh": "会议"
+                    "zh": "会议论文"
                 },
                 "path": "conferences"
             }, {
                 "text": {
                     "en": "Books",
-                    "zh": "著作"
+                    "zh": "学术著作"
                 },
                 "path": "books"
             }
@@ -133,14 +133,14 @@
     }, {
         "text": {
             "en": "Teaching",
-            "zh": "教学"
+            "zh": "教学工作"
         },
         "path": "/teaching",
         "children": []
     }, {
         "text": {
             "en": "Contact",
-            "zh": "联系我们"
+            "zh": "联系地址"
         },
         "path": "/contact",
         "children": []
