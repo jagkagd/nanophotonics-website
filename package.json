@@ -91,7 +91,8 @@
         "vue-awesome-swiper": "",
         "lodash-webpack-plugin": "",
         "babel-plugin-lodash": "",
-        "es6-promise-promise": ""
+        "es6-promise-promise": "",
+        "vuex": ""
     },
     "engines": {
         "node": ">= 4.0.0",
