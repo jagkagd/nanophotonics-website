@@ -1,8 +1,7 @@
 <template lang="pug">
 ul#header-list
     header-nav-li(v-for="(menu, index) in menuList" v-bind:key="index" v-bind:menu="menu")
-    li
-        a 中文版
+    header-lang-li
 </template>
 
 <script>
@@ -10,6 +9,7 @@ ul#header-list
 
 import menuList from './menuList.json'
 import HeaderNavLi from './HeaderNavLi.vue'
+import HeaderLangLi from './HeaderLangLi.vue'
 
 export default {
     name: 'HeaderNav',
@@ -19,7 +19,8 @@ export default {
         }
     },
     components: {
-        HeaderNavLi
+        HeaderNavLi,
+        HeaderLangLi
     }
 }
 </script>
@@ -36,19 +37,24 @@ export default {
     padding: 0px
     list-style: none
     text-align: center
-    background: linear-gradient(top, base2, base1, base2)
+    background: linear-gradient(top, base2, base3, base4)
+    border: 1px solid base3
     border-radius: 5px
 
-#header-list a:link, :active, :visited
-    text-decoration: none
+#header-list > a
+    color: base4
+    font-family: "myriad Pro"
+    font-weight: bold
 
-#header-list > li
-    display: inline-block
-    width: (100%/8)
-    box-sizing: border-box
-    border: 1px solid white
-    height: 2.5em
-    > a
-        line-height: 2.5em
+#header-list
+    > li
+        display: inline-block
+        width: (100%/8)
+        box-sizing: border-box
+        height: 2.5em
+        > a
+            line-height: 2.5em
+    > li:not(:last-child)
+        border-right: 1px solid base2
 
 </style>

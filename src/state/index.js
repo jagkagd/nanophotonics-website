@@ -8,8 +8,8 @@ export default new Vuex.Store({
         lang: 'en'
     },
     mutations: {
-        changeLang (state, lang) {
-            state.lang = lang
+        switchLang (state) {
+            state.lang = (state.lang === 'en') ? 'zh' : 'en'
         }
     }
 })

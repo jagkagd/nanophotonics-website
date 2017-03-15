@@ -32,7 +32,7 @@ export default {
     padding: 15px
     padding-left: 30px
     padding-right: 30px
-    box-shadow: 5px 5px 10px black
+    box-shadow: 3px 3px 3px black
     border-radius: 15px
     clearfix()
 
