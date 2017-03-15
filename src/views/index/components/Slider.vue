@@ -1,7 +1,7 @@
 <template lang="pug">
 div#slider
     swiper(:options="swiperOption" ref="swiperInstant" v-on:trans="hhh")
-        swiper-slide(v-for="item in items")
+        swiper-slide(v-for="(item, index) in items", v-bind:key="index")
             slider-item(:item="item")
         div.swiper-pagination(slot="pagination")
 </template>

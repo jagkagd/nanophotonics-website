@@ -31,8 +31,7 @@ module.exports = {
             'flow': resolve('src/flow'),
             'assets': resolve('src/assets'),
             'components': resolve('src/components'),
-            'static': resolve('static'),
-            moment: 'moment/min/moment.min.js'
+            'static': resolve('static')
         }
     },
     module: {
@@ -80,8 +79,7 @@ module.exports = {
                     'stylus-loader'
                 ]
             }
-        ],
-        noParse: [/moment-with-locales/]
+        ]
     },
     plugins: [
         new webpack.LoaderOptionsPlugin({

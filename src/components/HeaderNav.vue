@@ -1,6 +1,6 @@
 <template lang="pug">
 ul#header-list
-    header-nav-li(v-for="menu in menuList" v-bind:menu="menu")
+    header-nav-li(v-for="(menu, index) in menuList" v-bind:key="index" v-bind:menu="menu")
     li
         a 中文版
 </template>
