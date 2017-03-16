@@ -45,7 +45,6 @@ export default {
     border-radius: 5px
     background-color: base0
     box-shadow: 1px 1px base2
-    font-size: 13px
     h1
         margin: auto
         padding: 0px 8px

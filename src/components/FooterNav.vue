@@ -1,6 +1,6 @@
 <template lang="pug">
 ul#footer-nav-list
-    li#footer-nav-item(v-for="menu in menuList")
+    li(v-for="menu in menuList")
         router-link(:to='menu.path') {{ menu.text[la] }}
         ul
             li(v-for="sMenu in menu.children")
@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 @import '~static/basecolors.styl'
 
 #footer-nav-list
@@ -33,7 +33,7 @@ export default {
     list-style: none
     display: flex
     align-items: flex-start
-    #footer-nav-item
+    > li
         width: (100%/7)
         display: block
         margin: 0px

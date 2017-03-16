@@ -1,33 +1,60 @@
 <template lang="pug">
 div
     h1.viewTitle Research interests  
-    div.section.pure-g
-        img.pure-u-1-4(src="~assets/images/research/research_1.png")
+    div.section.pure-g(v-for="(item, index) in items")
+        // img.pure-u-1-4(:src="~assets/images/research/research_" + (index+1) + ".png")
+        p {{ index + 1 }}
         div.info.pure-u-3-4
-            h2 Nanostructures
+            h2 {{ item.title[la] }}
             hr
-            p Quantum dots, Nanoparticles, Nanorods  
-            p Micro/nanofibers, Nanowire, Nanoribbons/nanobelts  
-            p Nanotubes/channels, Microrings/nanorings, Graphene  
-
-    div.section.pure-g
-        img.pure-u-1-4(src="~assets/images/research/research_2.png")
-        div.info.pure-u-3-4
-            h2 Nanophotonics
-            hr
-            p Fiber Optics, Guide Wave Optics, Near Field Optics  
-            p Plasmonics, Nonlinear Optics, Quantum Optics  
-            p Optoelectronics, Optomechanics, Atom Optics  
-
-    div.section.pure-g
-        img.pure-u-1-4(src="~assets/images/research/research_3.png")
-        div.info.pure-u-3-4
-            h2 Nanodevices
-            hr
-            p Couplers, Filters, Gratings  
-            p Interferometers, Resonators, Detectors  
-            p Modulators, Lasers, Sensors  
+            p(v-md="item.examples")
 </template>
+
+<script>
+import _ from 'lodash/fp'
+// @flow
+
+export default {
+    data () {
+        return {
+            content: [
+                {
+                    title: {
+                        en: 'Nanostructures',
+                        zh: '纳米结构'
+                    },
+                    examples: `Quantum dots, Nanoparticles, Nanorods  
+                                Micro/nanofibers, Nanowire, Nanoribbons/nanobelts  
+                                Nanotubes/channels, Microrings/nanorings, Graphene`
+                },
+                {
+                    title: {
+                        en: 'Nanophotonics',
+                        zh: '纳米光子学'
+                    },
+                    examples: `Fiber Optics, Guide Wave Optics, Near Field Optics  
+                                Plasmonics, Nonlinear Optics, Quantum Optics  
+                                Optoelectronics, Optomechanics, Atom Optics`
+                },
+                {
+                    title: {
+                        en: 'Nanodevices',
+                        zh: '微纳器件'
+                    },
+                    examples: `Couplers, Filters, Gratings  
+                                Interferometers, Resonators, Detectors  
+                                Modulators, Lasers, Sensors`
+                }
+            ]
+        }
+    },
+    computed: {
+        items () {
+            return 
+        }
+    }
+}
+</script>
 
 <style lang="stylus" scoped>
 
@@ -37,9 +64,10 @@ div
         height: 150px
         border-radius: 5px
     .info
-        padding-left: 5px
+        padding-left: 10px
         h2
             text-size: 13px
+            margin: 10px 0px
         p
             text-size: 12px
             color: blue

@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
 .mainMenu > a
     width: 100%

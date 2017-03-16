@@ -13,5 +13,6 @@ div
 #overview
     width: 700px
     height: auto
+    margin: auto
 
 </style>
