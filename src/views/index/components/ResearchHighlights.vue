@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    h1.indexBoxTitle {{ title[$store.state.lang] }}
+    h1.indexBoxTitle {{ title[la] }}
     ul.pure-g
         li.pure-u-1-2(v-for="item in items")
             research-highlight-item(:item="item")
