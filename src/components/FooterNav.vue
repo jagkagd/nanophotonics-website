@@ -1,10 +1,10 @@
 <template lang="pug">
 ul#footer-nav-list
     li#footer-nav-item(v-for="menu in menuList")
-        router-link(:to='menu.path') {{ menu.text }}
+        router-link(:to='menu.path') {{ menu.text[la] }}
         ul
             li(v-for="sMenu in menu.children")
-                router-link(:to='menu.path+"/"+sMenu.path') {{ sMenu.text }}
+                router-link(:to='menu.path+"/"+sMenu.path') {{ sMenu.text[la] }}
 </template>
 
 <script>

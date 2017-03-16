@@ -1,7 +1,7 @@
 <template lang="pug">
 ul
     li(v-for="item in subItemList")
-        router-link(:to="'/' + menuName + '/' + item.path") {{ item.text }}
+        router-link(:to="'/' + menuName + '/' + item.path") {{ item.text[la] }}
 </template>
 
 <script>

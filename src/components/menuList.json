@@ -1,81 +1,147 @@
 [
     {
-        "text": "Home",
+        "text": {
+            "en": "Home",
+            "zh": "主页"
+        },
         "path": "/",
         "children": []
     }, {
-        "text": "News",
+        "text": {
+            "en": "News",
+            "zh": "组内新闻"
+        },
         "path": "/news",
         "children": []
     }, {
-        "text": "Research",
+        "text": {
+            "en": "Research",
+            "zh": "研究方向"
+        },
         "path": "/research",
         "children": [
             {
-                "text": "Overview",
+                "text": {
+                    "en": "Overview",
+                    "zh": "研究概况"
+                },
                 "path": "overview"
             }, {
-                "text": "Research interests",
+                "text": {
+                    "en": "Research interests",
+                    "zh": "研究兴趣"
+                },
                 "path": "interests"
             }, {
-                "text": "Facilities",
+                "text": {
+                    "en": "Facilities",
+                    "zh": "研究条件"
+                },
                 "path": "facilities"
             }, {
-                "text": "Fundings",
+                "text": {
+                    "en": "Fundings",
+                    "zh": "研究项目"
+                },
                 "path": "fundings"
             }, {
-                "text": "Collaborators",
+                "text": {
+                    "en": "Collaborators",
+                    "zh": "合作团队"
+                },
                 "path": "collaborators"
             }
         ]
     }, {
-        "text": "People",
+        "text": {
+            "en": "People",
+            "zh": "小组成员"
+        },
         "path": "/people",
         "children": [
             {
-                "text": "Current Group",
+                "text": {
+                    "en": "Current Group",
+                    "zh": "目前成员"
+                },
                 "path": "current"
             }, {
-                "text": "Faculty",
+                "text": {
+                    "en": "Faculty",
+                    "zh": "教师"
+                },
                 "path": "faculty"
             }, {
-                "text": "Admin Staff",
+                "text": {
+                    "en": "Admin Staff",
+                    "zh": "行政助理"
+                },
                 "path": "adminstaff"
             }, {
-                "text": "Post Docs",
+                "text": {
+                    "en": "Post Docs",
+                    "zh": "博士后"
+                },
                 "path": "postdocs"
             }, {
-                "text": "Grad Students",
+                "text": {
+                    "en": "Grad Students",
+                    "zh": "研究生"
+                },
                 "path": "grad"
             }, {
-                "text": "Undergrad Students",
+                "text": {
+                    "en": "Undergrad Students",
+                    "zh": "本科生"
+                },
                 "path": "undergrad"
             }, {
-                "text": "Former Group Members",
+                "text": {
+                    "en": "Former Group Members",
+                    "zh": "以前成员"
+                },
                 "path": "former"
             }
         ]
     }, {
-        "text": "Publications",
+        "text": {
+            "en": "Publications",
+            "zh": "论文论著"
+        },
         "path": "/publications",
         "children": [
             {
-                "text": "Journals",
+                "text": {
+                    "en": "Journals",
+                    "zh": "期刊论文"
+                },
                 "path": "journals"
             }, {
-                "text": "Conferences",
+                "text": {
+                    "en": "Conferences",
+                    "zh": "会议论文"
+                },
                 "path": "conferences"
             }, {
-                "text": "Books",
+                "text": {
+                    "en": "Books",
+                    "zh": "学术著作"
+                },
                 "path": "books"
             }
         ]
     }, {
-        "text": "Teaching",
+        "text": {
+            "en": "Teaching",
+            "zh": "教学工作"
+        },
         "path": "/teaching",
         "children": []
     }, {
-        "text": "Contact",
+        "text": {
+            "en": "Contact",
+            "zh": "联系地址"
+        },
         "path": "/contact",
         "children": []
     }

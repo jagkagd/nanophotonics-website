@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    h1.indexBoxTitle Research Highlights
+    h1.indexBoxTitle {{ title[$store.state.lang] }}
     ul.pure-g
         li.pure-u-1-2(v-for="item in items")
             research-highlight-item(:item="item")
@@ -17,7 +17,11 @@ export default {
     name: 'ResearchHighlights',
     data (): {items: Array<researchHighlight>}{
         return {
-            items: []
+            items: [],
+            title: {
+                en: 'Research Highlights',
+                zh: '研究亮点'
+            }
         }
     },
     mounted () {

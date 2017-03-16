@@ -1,6 +1,10 @@
 .DS_Store
 node_modules/
-dist/
+dist/static/
+dist/vendor/
+dist/composer.lock
+dist/composer.phar
+dist/index.html
 npm-debug.log
 yarn-error.log
 test/unit/coverage

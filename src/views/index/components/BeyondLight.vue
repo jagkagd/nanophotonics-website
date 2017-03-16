@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    h1 Beyond Light
+    h1 {{ title[$lang.state.lang] }}
     router-link(to="/beyondlight" target="_blank")
         img(src="~assets/images/index/beyondlight.jpg")
 </template>
@@ -9,7 +9,15 @@ div
 // @flow
 
 export default {
-    name: 'BeyondLight'
+    name: 'BeyondLight',
+    data () {
+        return {
+            title: {
+                en: 'Beyond Light',
+                zh: '科研之余'
+            }
+        }
+    }
 }
 </script>
 

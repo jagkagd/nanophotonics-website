@@ -53,6 +53,9 @@ export default {
         box-shadow: 1px 1px base2
         border-radius: 5px
         color: base4
+        font-size: 14px
+        line-height: 2.5em
+        height: 2.5em
         font-family: "Myriad Pro"
         font-weight: bold
         text-align: center
