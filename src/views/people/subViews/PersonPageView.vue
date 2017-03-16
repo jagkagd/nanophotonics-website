@@ -1,5 +1,5 @@
 <template lang="pug">
-div(v-show="showPage")
+div(v-if="showPage")
     div.thumb
         img(:src="imgPath" width="160" height="200")
     div.basicInfo
@@ -9,7 +9,7 @@ div(v-show="showPage")
         p Zhejiang University
         p Hangzhou 310027, China
         p Tel: {{ item.tel }},  Email: {{ item.email }}
-    div.detailInfo(v-md="item.cv")
+    div.detailInfo(v-md="item.cv || ''")
 </template>
 
 <script>

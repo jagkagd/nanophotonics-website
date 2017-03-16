@@ -22,9 +22,5 @@ export default {
         Vue.directive('md', (el, binding) => {
             el.innerHTML = marked(binding.value, {renderer})
         })
-        Vue.directive('dysrc', (el, binding) => {
-            console.log(binding.value)
-            el.src = require(binding.value)
-        })
     }
 }

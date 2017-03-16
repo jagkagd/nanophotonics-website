@@ -1,6 +1,6 @@
 <template lang="pug">
 div.item
-    h2.title {{ item.title }}
+    h2.title {{ item.title_en }}
     div.pic
         router-link(:to="'/news#rh-'+item.id")
             img(:src="imgPath" width="280" height="184")
