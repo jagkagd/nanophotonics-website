@@ -13,7 +13,7 @@ div
             span.authors1 {{ item.authors1 }}, 
             span.chapter "{{ item.chapter}}", 
             span.title {{ item.title }}, 
-            span.authors2 {{ item.authors2 }}{{ i18n[item.lang]['ed'] }}, 
+            span.authors2 {{ item.authors2 }}{{ etal[item.lang]['ed'] }}, 
             span.press {{ item.press }}, 
             span.year {{ item.year }}.
 </template>
@@ -27,10 +27,10 @@ import _ from 'lodash'
 
 export default {
     name: 'BooksView',
-    data (): {items: Array<book>, i18n: Object}{
+    data (): {items: Array<book>, etal: Object}{
         return {
             items: [],
-            i18n: {zh: {ed: '编著'}, en: {ed: 'ed.'}}
+            etal: {zh: {ed: '编著'}, en: {ed: 'ed.'}}
         }
     },
     mounted () {
