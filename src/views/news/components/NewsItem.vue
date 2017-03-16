@@ -5,7 +5,6 @@ div(:class="item.style")
 
 <script>
 // @flow
-import _ from 'lodash'
 
 require.context('assets/images/news/', true, /\.jpg/)
 

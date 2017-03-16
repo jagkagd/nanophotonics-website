@@ -7,7 +7,6 @@ div
 
 <script>
 // @flow
-import marked from 'marked'
 
 export default {
     name: 'Promo',

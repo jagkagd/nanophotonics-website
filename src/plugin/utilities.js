@@ -1,4 +1,5 @@
 import marked from 'marked'
+import _ from 'lodash/fp'
 
  marked.setOptions({
      breaks: true
@@ -18,12 +19,9 @@ export default {
                 }
             }
         })
-        Vue.directive('md', {
-            inserted (el, binding) {
-                const value = binding.value
-                const mdHTML = marked(value, {renderer})
-                el.innerHTML = mdHTML
+        Vue.directive('md', (el, binding) => {
+                el.innerHTML = marked(binding.value, {renderer})
             }
-        })
+        )
     }
 }
