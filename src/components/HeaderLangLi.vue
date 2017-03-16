@@ -1,6 +1,6 @@
 <template lang="pug">
 li.mainMenu(@click="$store.commit('switchLang')")
-    a {{ lang[$store.state.lang] }}
+    a {{ lang[la] }}
 </template>
 
 <script>
