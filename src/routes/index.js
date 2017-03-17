@@ -1,29 +1,17 @@
 import Router from 'vue-router'
+import meta-data from 'src/meta-data.json'
+import _ from 'lodash/fp'
 
-import Index from '../views/index/IndexView.vue'
-
-import Contact from '../views/contact/ContactView.vue'
-
-import News from '../views/news/NewsView.vue'
-
-import People from '../views/people/PeopleView.vue'
-import CurrentGroup from '../views/people/subViews/CurrentGroupView.vue'
-import FormerGroup from '../views/people/subViews/FormerGroupView.vue'
-import PeopleCategory from '../views/people/subViews/PeopleCategoryView.vue'
-import PersonPage from '../views/people/subViews/PersonPageView.vue'
-
-import Publications from '../views/publications/PublicationsView.vue'
-import Books from '../views/publications/subViews/BooksView.vue'
-import Conferences from '../views/publications/subViews/ConferencesView.vue'
-import Teaching from '../views/teaching/TeachingView.vue'
-import Journals from '../views/publications/subViews/JournalsView.vue'
-
-import Research from '../views/research/ResearchView.vue'
-import Collaborators from '../views/research/subViews/CollaboratorsView.vue'
-import Facilities from '../views/research/subViews/FacilitiesView.vue'
-import Fundings from '../views/research/subViews/FundingsView.vue'
-import Interest from '../views/research/subViews/InterestView.vue'
-import Overview from '../views/research/subViews/OverviewView.vue'
+let comps = {}
+_.forEach(page => {
+    const label = page.label['en']
+    const rlabel = _.replace(' ')('')(label)
+    comps[rlabel] = require('src/views/' + _.toLower(page.file || rlabel) + '/' + (page.file || rlabel) + 'View.vue')
+    _.forEach(item => {
+        const label = item.label['en']
+        comps[label] = require('src/views/' + _.toLower(item.file || label) + '/subViews/' + (item.file || label) + 'View.vue'))
+    })(page.children)
+})(meta-data)
 
 export default new Router({
     mode: 'history',
@@ -34,88 +22,30 @@ export default new Router({
             }
         }
     },
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: Index
-        }, {
-            path: '/news',
-            name: 'news',
-            component: News
-        }, {
-            path: '/research',
-            name: 'research',
-            component: Research,
-            redirect: '/research/overview',
-            children: [{
-                path: 'overview',
-                name: 'overview',
-                component: Overview
-            }, {
-                path: 'interests',
-                name: 'interests',
-                component: Interest
-            }, {
-                path: 'facilities',
-                name: 'facilities',
-                component: Facilities
-            }, {
-                path: 'fundings',
-                name: 'fundings',
-                component: Fundings
-            }, {
-                path: 'collaborators',
-                name: 'collaborators',
-                component: Collaborators
-            }]
-        }, {
-            path: '/people',
-            name: 'people',
-            component: People,
-            redirect: '/people/current',
-            children: [{
-                path: 'current',
-                name: 'current',
-                component: CurrentGroup
-            }, {
-                path: 'former',
-                name: 'former',
-                component: FormerGroup
-            }, {
-                path: ':category',
-                name: 'category',
-                component: PeopleCategory
-            }, {
-                path: 'intro/:id',
-                name: 'intro',
-                component: PersonPage
-            }]
-        }, {
-            path: '/publications',
-            name: 'publications',
-            component: Publications,
-            redirect: '/publications/journals',
-            children: [{
-                path: 'journals',
-                name: 'journals',
-                component: Journals
-            }, {
-                path: 'conferences',
-                name: 'conferences',
-                component: Conferences
-            }, {
-                path: 'books',
-                name: 'books',
-                component: Books
-            }]
-        }, {
-            path: '/teaching',
-            name: 'teaching',
-            component: Teaching
-        }, {
-            path: '/contact',
-            name: 'contact',
-            component: Contact
+    routes: _.map(page => {
+        const label = page.label['en']
+        const klabel = _.kebabCase(label)
+        let res = {
+            path: '/' + (page.path || klabel),
+            name: page.name || klabel,
+            component: comps[label],
+            children: _.map(item => {
+                const label = item.label['en']
+                const klabel = _.kebabCase(label)
+                const pattern = item.pattern || ''
+                const rpattern = _.replace(' ')('')(pattern)
+                const kpattern = _.kebabCase(pattern)
+                return {
+                    path: pattern ? ':' + kpattern : klabel,
+                    name: kpattern || klabel,
+                    component: comps[rpattern || label]
+                }
+            })(page.children)
         }
-    ]
-})
+        if(page.children){
+            res.redirect = res.path + '/' + _.kebabCase(page.children[0].label['en'])
+        }
+        return res
+    })(meta-data)
+}
+
