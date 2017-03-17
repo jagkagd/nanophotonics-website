@@ -4,9 +4,7 @@ div#web-footer
     div#footerinfo
         img#footerlogo(src="~assets/images/foot-logo.png" height=55)
         div#footerwords
-            p State Key Laboratory of Modern Optical Instrumentation, College of Optical Science and Engineering 
-            p Zhejiang University, Hangzhou 310027, China
-            p ©2013 Nanophotonics Research Group.
+            p(v-md="info[la]")
 </template>
 
 <script>
@@ -16,6 +14,16 @@ import FooterNav from './FooterNav.vue'
 
 export default {
     name: 'WebFooter',
+    data () {
+        return {
+            info: {
+                en: `State Key Laboratory of Modern Optical Instrumentation, College of Optical Science and Engineering 
+                    Zhejiang University, Hangzhou 310027, China
+                    ©2013 Nanophotonics Research Group.`,
+                zh: ''
+            }
+        }
+    },
     components: {
         FooterNav
     }

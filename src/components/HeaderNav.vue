@@ -41,19 +41,12 @@ export default {
     border: 1px solid base3
     border-radius: 5px
 
-#header-list > a
-    color: base4
-    font-family: "myriad Pro"
-    font-weight: bold
-
 #header-list
     > li
         display: inline-block
         width: (100%/8)
         box-sizing: border-box
         height: 2.5em
-        > a
-            line-height: 2.5em
     > li:not(:last-child)
         border-right: 1px solid base2
 

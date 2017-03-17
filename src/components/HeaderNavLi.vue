@@ -29,7 +29,7 @@ export default {
 
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 @import '~static/basecolors.styl'
 
 .mainMenu a
@@ -41,6 +41,7 @@ export default {
 .mainMenu > ul
     position: absolute
     list-style: none
+    width: 10em
     padding: 0
     margin: 0
     padding-top: 5px
