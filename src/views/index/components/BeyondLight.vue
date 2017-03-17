@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    h1 {{ title[$lang.state.lang] }}
+    h1 {{ title[la] }}
     router-link(to="/beyondlight" target="_blank")
         img(src="~assets/images/index/beyondlight.jpg")
 </template>

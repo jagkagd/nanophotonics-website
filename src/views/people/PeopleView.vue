@@ -7,7 +7,7 @@ div
 <script>
 // @flow
 
-import SubNav from '../../components/SubNav.vue'
+import SubNav from 'components/SubNav.vue'
 
 export default {
     name: 'PeopleView',

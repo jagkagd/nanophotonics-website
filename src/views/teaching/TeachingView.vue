@@ -4,7 +4,7 @@ div
     ol
         li(v-for="item in items")
             span.course {{ item.course }} 
-            span.num (Course No.{{ item.number }}, {{ item.grad | capitalize }})
+            span.num (Course No.{{ item.number }}, {{ item.grad }})
             br
             span.lecturers Lecturers: {{ item.lecturers }}
 </template>
@@ -26,9 +26,6 @@ export default {
         axios.get('/api.php/courses').then(res => {
             this.items = res.data
         })
-    },
-    filters: {
-        capitalize: _.capitalize // todo
     }
 }
 </script>

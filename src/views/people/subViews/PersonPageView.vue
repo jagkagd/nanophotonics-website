@@ -9,14 +9,12 @@ div(v-if="showPage")
         p Zhejiang University
         p Hangzhou 310027, China
         p Tel: {{ item.tel }},  Email: {{ item.email }}
-    div.detailInfo(v-html="compliedMarkdown")
+    div.detailInfo(v-md="item.cv || ''")
 </template>
 
 <script>
 // @flow
-import marked from 'marked'
 import axios from 'axios'
-import _ from 'lodash'
 
 export default {
     name: 'PersonPage',
@@ -33,9 +31,6 @@ export default {
         })
     },
     computed: {
-        compliedMarkdown () {
-            return (_.isNil(this.item.cv)) ? '' : marked(this.item.cv)
-        },
         imgPath () {
             try{
                 return require('assets/images/people/' + this.item.id + '-1.jpg')
