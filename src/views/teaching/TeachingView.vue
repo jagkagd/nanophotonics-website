@@ -14,7 +14,6 @@ div
 
 import course from 'flow/typedef.js'
 import axios from 'axios'
-import _ from 'lodash/fp'
 
 export default {
     data (): {items: Array<course>}{

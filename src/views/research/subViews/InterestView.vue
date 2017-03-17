@@ -1,9 +1,8 @@
 <template lang="pug">
 div
     h1.viewTitle Research interests  
-    div.section.pure-g(v-for="(item, index) in items")
-        // img.pure-u-1-4(:src="~assets/images/research/research_" + (index+1) + ".png")
-        p {{ index + 1 }}
+    div.section.pure-g(v-for="(item, index) in items" key="index")
+        img.pure-u-1-4(:src="item.imgpath")
         div.info.pure-u-3-4
             h2 {{ item.title[la] }}
             hr
@@ -11,7 +10,6 @@ div
 </template>
 
 <script>
-import _ from 'lodash/fp'
 // @flow
 
 export default {
@@ -25,7 +23,8 @@ export default {
                     },
                     examples: `Quantum dots, Nanoparticles, Nanorods  
                                 Micro/nanofibers, Nanowire, Nanoribbons/nanobelts  
-                                Nanotubes/channels, Microrings/nanorings, Graphene`
+                                Nanotubes/channels, Microrings/nanorings, Graphene`,
+                    imgpath: require('assets/images/research/research_1.png')
                 },
                 {
                     title: {
@@ -34,7 +33,8 @@ export default {
                     },
                     examples: `Fiber Optics, Guide Wave Optics, Near Field Optics  
                                 Plasmonics, Nonlinear Optics, Quantum Optics  
-                                Optoelectronics, Optomechanics, Atom Optics`
+                                Optoelectronics, Optomechanics, Atom Optics`,
+                    imgpath: require('assets/images/research/research_2.png')
                 },
                 {
                     title: {
@@ -43,14 +43,10 @@ export default {
                     },
                     examples: `Couplers, Filters, Gratings  
                                 Interferometers, Resonators, Detectors  
-                                Modulators, Lasers, Sensors`
+                                Modulators, Lasers, Sensors`,
+                    imgpath: require('assets/images/research/research_3.png')
                 }
             ]
-        }
-    },
-    computed: {
-        items () {
-            return 
         }
     }
 }
