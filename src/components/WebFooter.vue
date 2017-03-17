@@ -1,6 +1,6 @@
 <template lang="pug">
 div#web-footer
-    footer-nav
+    footer-nav(:menuList="menuList")
     div#footerinfo
         img#footerlogo(src="~assets/images/foot-logo.png" height=55)
         div#footerwords
@@ -16,6 +16,9 @@ import FooterNav from './FooterNav.vue'
 
 export default {
     name: 'WebFooter',
+    props: {
+        menuList: Array
+    },
     components: {
         FooterNav
     }

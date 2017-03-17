@@ -7,16 +7,13 @@ ul#header-list
 <script>
 // @flow
 
-import menuList from './menuList.json'
 import HeaderNavLi from './HeaderNavLi.vue'
 import HeaderLangLi from './HeaderLangLi.vue'
 
 export default {
     name: 'HeaderNav',
-    data () {
-        return {
-            menuList
-        }
+    props: {
+        menuList: Array
     },
     components: {
         HeaderNavLi,

@@ -4,7 +4,7 @@ div#web-header
         div#webTitle {{ group[la] }}
         img#logo(src="~assets/images/home-logo.png" width="527" height="70")
         img#university(src="~assets/images/ZJU.png" width="171" height="60")
-    header-nav
+    header-nav(:menuList="menuList")
 </template>
 
 <script>
@@ -21,6 +21,9 @@ export default {
                 zh: '微纳光子学研究组'
             }
         }
+    },
+    props: {
+        menuList: Array
     },
     components: {
         HeaderNav

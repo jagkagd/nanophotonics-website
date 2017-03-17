@@ -1,17 +1,44 @@
 import Router from 'vue-router'
-import meta-data from 'src/meta-data.json'
+import metaData from 'static/meta-data'
 import _ from 'lodash/fp'
 
-let comps = {}
+const comps = {}
 _.forEach(page => {
-    const label = page.label['en']
-    const rlabel = _.replace(' ')('')(label)
-    comps[rlabel] = require('src/views/' + _.toLower(page.file || rlabel) + '/' + (page.file || rlabel) + 'View.vue')
+    comps[page.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/' + page.t.file + 'View.vue')
     _.forEach(item => {
-        const label = item.label['en']
-        comps[label] = require('src/views/' + _.toLower(item.file || label) + '/subViews/' + (item.file || label) + 'View.vue'))
+        comps[item.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/subViews/' + item.t.file + 'View.vue')
     })(page.children)
-})(meta-data)
+})(metaData)
+
+const routesData = _.map(page => {
+    const res = {
+        path: '/' + page.k.path,
+        name: page.k.name,
+        component: comps[page.t.file]
+    }
+    if(!_.isEmpty(page.children)){
+        res.redirect = page.children[0].routerTo
+        res.children = _.flow(
+            _.map(item => {
+                return {
+                    path: !_.isNil(item.pattern) ? (':' + item.k.pattern) : item.k.path,
+                    name: item.k.pattern,
+                    component: comps[item.t.file]
+                }
+            }),
+            _.uniqBy('path')
+        )(page.children)
+    }
+    return res
+})(metaData)
+
+routesData.unshift({
+    path: '/',
+    name: 'home',
+    component: comps.Index
+})
+
+console.log(routesData)
 
 export default new Router({
     mode: 'history',
@@ -22,30 +49,6 @@ export default new Router({
             }
         }
     },
-    routes: _.map(page => {
-        const label = page.label['en']
-        const klabel = _.kebabCase(label)
-        let res = {
-            path: '/' + (page.path || klabel),
-            name: page.name || klabel,
-            component: comps[label],
-            children: _.map(item => {
-                const label = item.label['en']
-                const klabel = _.kebabCase(label)
-                const pattern = item.pattern || ''
-                const rpattern = _.replace(' ')('')(pattern)
-                const kpattern = _.kebabCase(pattern)
-                return {
-                    path: pattern ? ':' + kpattern : klabel,
-                    name: kpattern || klabel,
-                    component: comps[rpattern || label]
-                }
-            })(page.children)
-        }
-        if(page.children){
-            res.redirect = res.path + '/' + _.kebabCase(page.children[0].label['en'])
-        }
-        return res
-    })(meta-data)
-}
+    routes: routesData
+})
 
