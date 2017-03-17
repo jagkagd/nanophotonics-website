@@ -11,45 +11,50 @@
             "en": "News",
             "zh": "组内新闻"
         },
-        "path": "/news",
-        "children": []
+        "children": [
+            {
+                "text": {
+                    "en": "Research Highlight",
+                    "zh": "科研进展"
+                }
+            }, {
+                "text": {
+                    "en": "Latest News",
+                    "zh": "近期新闻"
+                }
+            }
+        ]
     }, {
         "text": {
             "en": "Research",
             "zh": "研究方向"
         },
-        "path": "/research",
         "children": [
             {
                 "text": {
                     "en": "Overview",
                     "zh": "研究概况"
-                },
-                "path": "overview"
+                }
             }, {
                 "text": {
                     "en": "Research interests",
                     "zh": "研究兴趣"
-                },
-                "path": "interests"
+                }
             }, {
                 "text": {
                     "en": "Facilities",
                     "zh": "研究条件"
-                },
-                "path": "facilities"
+                }
             }, {
                 "text": {
                     "en": "Fundings",
                     "zh": "研究项目"
-                },
-                "path": "fundings"
+                }
             }, {
                 "text": {
                     "en": "Collaborators",
                     "zh": "合作团队"
-                },
-                "path": "collaborators"
+                }
             }
         ]
     }, {
@@ -57,50 +62,47 @@
             "en": "People",
             "zh": "小组成员"
         },
-        "path": "/people",
         "children": [
             {
                 "text": {
                     "en": "Current Group",
                     "zh": "目前成员"
-                },
-                "path": "current"
+                }
             }, {
                 "text": {
                     "en": "Faculty",
                     "zh": "教师"
                 },
-                "path": "faculty"
+                "pattern": ":category"
             }, {
                 "text": {
                     "en": "Admin Staff",
                     "zh": "行政助理"
                 },
-                "path": "adminstaff"
+                "pattern": ":category"
             }, {
                 "text": {
                     "en": "Post Docs",
                     "zh": "博士后"
                 },
-                "path": "postdocs"
+                "pattern": ":category"
             }, {
                 "text": {
                     "en": "Grad Students",
                     "zh": "研究生"
                 },
-                "path": "grad"
+                "pattern": ":category"
             }, {
                 "text": {
                     "en": "Undergrad Students",
                     "zh": "本科生"
                 },
-                "path": "undergrad"
+                "pattern": ":category"
             }, {
                 "text": {
                     "en": "Former Group Members",
                     "zh": "以前成员"
-                },
-                "path": "former"
+                }
             }
         ]
     }, {
@@ -108,26 +110,25 @@
             "en": "Publications",
             "zh": "论文论著"
         },
-        "path": "/publications",
         "children": [
             {
                 "text": {
-                    "en": "Journals",
+                    "en": "Journal",
                     "zh": "期刊论文"
                 },
-                "path": "journals"
+                "title": {
+                    "en": "Journal Papers"
+                }
             }, {
                 "text": {
-                    "en": "Conferences",
+                    "en": "Conference",
                     "zh": "会议论文"
-                },
-                "path": "conferences"
+                }
             }, {
                 "text": {
                     "en": "Books",
                     "zh": "学术著作"
-                },
-                "path": "books"
+                }
             }
         ]
     }, {
@@ -135,14 +136,16 @@
             "en": "Teaching",
             "zh": "教学工作"
         },
-        "path": "/teaching",
+        "title": {
+            "en": "Grad and Undergrad Courses",
+            "zh": "研究生及本科生课程"
+        },
         "children": []
     }, {
         "text": {
             "en": "Contact",
             "zh": "联系地址"
         },
-        "path": "/contact",
         "children": []
     }
 ]
