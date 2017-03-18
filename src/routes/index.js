@@ -1,5 +1,5 @@
 import Router from 'vue-router'
-import metaData from 'static/meta-data'
+import {routeData} from 'static/meta-data'
 import _ from 'lodash/fp'
 
 const comps = {}
@@ -8,7 +8,7 @@ _.forEach(page => {
     _.forEach(item => {
         comps[item.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/subViews/' + item.t.file + 'View.vue')
     })(page.children)
-})(metaData)
+})(routeData)
 
 const routesData = _.map(page => {
     const res = {
@@ -19,18 +19,16 @@ const routesData = _.map(page => {
     if(!_.isEmpty(page.children)){
         res.redirect = page.children[0].routerTo
         res.children = _.flow(
-            _.map(item => {
-                return {
-                    path: !_.isNil(item.pattern) ? (':' + item.k.pattern) : item.k.path,
-                    name: item.k.pattern,
-                    component: comps[item.t.file]
-                }
-            }),
+            _.map(item => ({
+                path: !_.isNil(item.pattern) ? (':' + item.k.pattern) : item.k.path,
+                name: item.k.pattern,
+                component: comps[item.t.file]
+            })),
             _.uniqBy('path')
         )(page.children)
     }
     return res
-})(metaData)
+})(routeData)
 
 routesData.unshift({
     path: '/',
