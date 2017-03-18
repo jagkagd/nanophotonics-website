@@ -3,10 +3,10 @@ div
     h1.viewTitle Grad and Undergrad Courses
     ol
         li(v-for="item in items")
-            span.course {{ item.course }} 
-            span.num (Course No.{{ item.number }}, {{ item.grad }})
+            span.course {{ item.course[la] }} 
+            span.num (Course No.{{ item.number }}, {{ item.grad[la] }})
             br
-            span.lecturers Lecturers: {{ item.lecturers }}
+            span.lecturers Lecturers: {{ item.lecturers[la] }}
 </template>
 
 <script>
@@ -23,7 +23,7 @@ export default {
     },
     mounted () {
         axios.get('/api.php/courses').then(res => {
-            this.items = res.data
+            this.items = this.t2i(res.data)
         })
     }
 }

@@ -38,6 +38,7 @@ module.exports = {
         'array-callback-return': 1,
         'prefer-arrow-callback': 1,
         'arrow-spacing': 1,
-        'dot-notation': 1
+        'dot-notation': 1,
+        "array-callback-return": 0
     }
 }
