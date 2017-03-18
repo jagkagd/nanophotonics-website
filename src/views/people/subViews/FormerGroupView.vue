@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/people?category=former').then(res => {
+        axios.get('/api.php/people?category=former_group_members').then(res => {
             this.items = res.data
         })
     }

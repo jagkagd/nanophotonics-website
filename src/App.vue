@@ -1,8 +1,8 @@
 <template lang="pug">
 #app
-    web-header
-    router-view#content
-    web-footer
+    web-header(:menuList="menuData")
+    router-view
+    web-footer(:menuList="menuData")
 </template>
 
 <script>
@@ -10,9 +10,15 @@
 
 import WebHeader from './components/WebHeader'
 import WebFooter from './components/WebFooter'
+import {menuData} from 'static/meta-data'
 
 export default {
     name: 'app',
+    data () {
+        return {
+            menuData
+        }
+    },
     components: {
         WebHeader,
         WebFooter

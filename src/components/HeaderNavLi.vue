@@ -1,9 +1,9 @@
 <template lang="pug">
 li.mainMenu(@mouseenter="openSubMenu" @mouseleave="closeSubMenu")
-    router-link(:to='menu.path') {{ menu.text[la] }}
+    router-link(:to='menu.routerTo') {{ menu.label[la] }}
     ul(v-if="menu.children" v-show="showSubMenu")
         li(v-for="sMenu in menu.children")
-            router-link(:to='menu.path+"/"+sMenu.path') {{ sMenu.text[la] }}
+            router-link(:to='sMenu.routerTo') {{ sMenu.label[la] }}
 </template>
 
 <script>

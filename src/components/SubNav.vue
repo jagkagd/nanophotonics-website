@@ -7,25 +7,17 @@ ul
 <script>
 // @flow
 
-import menuList from './menuList.json'
+import _ from 'lodash/fp'
 
 export default {
     name: 'SubNav',
-    data () {
-        return {
-            menuList
-        }
-    },
     props: {
+        menuList: Array,
         menuName: String
     },
     computed: {
         subItemList () {
-            for(const item of this.menuList){
-                if(item.path === ('/' + this.menuName)){
-                    return item.children
-                }
-            }
+            return _.find(o => o.label.en === this.menuName)(this.menuList)
         }
     }
 }

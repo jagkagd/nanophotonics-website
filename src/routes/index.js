@@ -1,29 +1,42 @@
 import Router from 'vue-router'
+import {routeData} from 'static/meta-data'
+import _ from 'lodash/fp'
 
-import Index from '../views/index/IndexView.vue'
+const comps = {}
+_.forEach(page => {
+    comps[page.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/' + page.t.file + 'View.vue')
+    _.forEach(item => {
+        comps[item.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/subViews/' + item.t.file + 'View.vue')
+    })(page.children)
+})(routeData)
 
-import Contact from '../views/contact/ContactView.vue'
+const routesData = _.map(page => {
+    const res = {
+        path: '/' + page.k.path,
+        name: page.k.name,
+        component: comps[page.t.file]
+    }
+    if(!_.isEmpty(page.children)){
+        res.redirect = page.children[0].routerTo
+        res.children = _.flow(
+            _.map(item => ({
+                path: !_.isNil(item.pattern) ? (':' + item.k.pattern) : item.k.path,
+                name: item.k.pattern,
+                component: comps[item.t.file]
+            })),
+            _.uniqBy('path')
+        )(page.children)
+    }
+    return res
+})(routeData)
 
-import News from '../views/news/NewsView.vue'
+routesData.unshift({
+    path: '/',
+    name: 'home',
+    component: comps.Index
+})
 
-import People from '../views/people/PeopleView.vue'
-import CurrentGroup from '../views/people/subViews/CurrentGroupView.vue'
-import FormerGroup from '../views/people/subViews/FormerGroupView.vue'
-import PeopleCategory from '../views/people/subViews/PeopleCategoryView.vue'
-import PersonPage from '../views/people/subViews/PersonPageView.vue'
-
-import Publications from '../views/publications/PublicationsView.vue'
-import Books from '../views/publications/subViews/BooksView.vue'
-import Conferences from '../views/publications/subViews/ConferencesView.vue'
-import Teaching from '../views/teaching/TeachingView.vue'
-import Journals from '../views/publications/subViews/JournalsView.vue'
-
-import Research from '../views/research/ResearchView.vue'
-import Collaborators from '../views/research/subViews/CollaboratorsView.vue'
-import Facilities from '../views/research/subViews/FacilitiesView.vue'
-import Fundings from '../views/research/subViews/FundingsView.vue'
-import Interest from '../views/research/subViews/InterestView.vue'
-import Overview from '../views/research/subViews/OverviewView.vue'
+console.log(routesData)
 
 export default new Router({
     mode: 'history',
@@ -34,88 +47,6 @@ export default new Router({
             }
         }
     },
-    routes: [{
-            path: '/',
-            name: 'home',
-            component: Index
-        }, {
-            path: '/news',
-            name: 'news',
-            component: News
-        }, {
-            path: '/research',
-            name: 'research',
-            component: Research,
-            redirect: '/research/overview',
-            children: [{
-                path: 'overview',
-                name: 'overview',
-                component: Overview
-            }, {
-                path: 'interests',
-                name: 'interests',
-                component: Interest
-            }, {
-                path: 'facilities',
-                name: 'facilities',
-                component: Facilities
-            }, {
-                path: 'fundings',
-                name: 'fundings',
-                component: Fundings
-            }, {
-                path: 'collaborators',
-                name: 'collaborators',
-                component: Collaborators
-            }]
-        }, {
-            path: '/people',
-            name: 'people',
-            component: People,
-            redirect: '/people/current',
-            children: [{
-                path: 'current',
-                name: 'current',
-                component: CurrentGroup
-            }, {
-                path: 'former',
-                name: 'former',
-                component: FormerGroup
-            }, {
-                path: ':category',
-                name: 'category',
-                component: PeopleCategory
-            }, {
-                path: 'intro/:id',
-                name: 'intro',
-                component: PersonPage
-            }]
-        }, {
-            path: '/publications',
-            name: 'publications',
-            component: Publications,
-            redirect: '/publications/journals',
-            children: [{
-                path: 'journals',
-                name: 'journals',
-                component: Journals
-            }, {
-                path: 'conferences',
-                name: 'conferences',
-                component: Conferences
-            }, {
-                path: 'books',
-                name: 'books',
-                component: Books
-            }]
-        }, {
-            path: '/teaching',
-            name: 'teaching',
-            component: Teaching
-        }, {
-            path: '/contact',
-            name: 'contact',
-            component: Contact
-        }
-    ]
+    routes: routesData
 })
+
