@@ -20,16 +20,21 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/people?category=' + this.$route.params.category).then(res => {
+        axios.get('/api.php/people?category=' + this.category).then(res => {
             this.items = res.data
         })
     },
     components: {
         PeopleIntroItem
     },
+    computed: {
+        category () {
+            return this.$route.params.people_category
+        }
+    },
     watch: {
         '$route' (to, from) {
-             axios.get('/api.php/people?category=' + this.$route.params.category).then(res => {
+             axios.get('/api.php/people?category=' + this.category).then(res => {
                 this.items = res.data
             })
         }

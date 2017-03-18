@@ -57,12 +57,12 @@ $app->get('/slides', function(Request $request, Response $response){
 });
 
 $correspondDict = array(
-    "faculty"    => array("'professor'", "'associate professor'"),
-    "adminstaff" => array("'admin staff'"),
-    "postdocs"   => array("'poster doctor'"),
-    "grad"       => array("'master'", "'PhD'"),
-    "undergrad"  => array("'undergraduate'"),
-    "former"     => array("'former'")
+    "faculty"              => array("'professor'", "'associate professor'"),
+    "admin_staff"          => array("'admin staff'"),
+    "post_docs"            => array("'poster doctor'"),
+    "grad_students"        => array("'master'", "'PhD'"),
+    "undergrad_students"   => array("'undergraduate'"),
+    "former_group_members" => array("'former'")
 );
 
 $app->get('/people', function(Request $request, Response $response){
