@@ -1,4 +1,6 @@
-export default [
+import _ from 'lodash/fp'
+
+const metaData = [
     {
         label: {
             en: 'Home',
@@ -108,6 +110,13 @@ export default [
                     zh: '以前成员'
                 },
                 file: 'FormerGroup'
+            },
+            {
+                label: {
+                    en: 'Person Page'
+                },
+                pattern: 'Person Page',
+                notOnMenu: true
             }
         ]
     }, {
@@ -164,3 +173,14 @@ export default [
     }
 ]
 
+const pattern = {
+    'People Category': '',
+    'Person Page': 'intro/:id'
+}
+
+const patternMap = {}
+_.map(key => {
+    patternMap[key] = pattern[key] || ':' + _.snakeCase(key)
+})(_.keys(pattern))
+
+export {metaData as default, patternMap}

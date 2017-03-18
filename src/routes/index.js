@@ -1,5 +1,6 @@
 import Router from 'vue-router'
 import {routeData} from 'static/meta-data'
+import {patternMap} from 'static/meta'
 import _ from 'lodash/fp'
 
 const comps = {}
@@ -20,11 +21,11 @@ const routesData = _.map(page => {
         res.redirect = page.children[0].routerTo
         res.children = _.flow(
             _.map(item => ({
-                path: !_.isNil(item.pattern) ? (':' + item.k.pattern) : item.k.path,
+                path: patternMap[item.pattern] || item.k.path,
                 name: item.k.pattern,
                 component: comps[item.t.file]
             })),
-            _.uniqBy('path')
+            _.uniqBy('name')
         )(page.children)
     }
     return res
@@ -35,8 +36,6 @@ routesData.unshift({
     name: 'home',
     component: comps.Index
 })
-
-console.log(routesData)
 
 export default new Router({
     mode: 'history',

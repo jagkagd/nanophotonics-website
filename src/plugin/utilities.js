@@ -1,5 +1,6 @@
 import marked from 'marked'
 import _ from 'lodash/fp'
+import trans2i18n from 'methods'
 
  marked.setOptions({
      breaks: true
@@ -17,6 +18,9 @@ export default {
                 la () {
                     return this.$store.state.lang
                 }
+            },
+            methods: {
+                trans2i18n
             }
         })
         Vue.directive('md', (el, binding) => {

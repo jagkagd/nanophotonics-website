@@ -7,7 +7,7 @@ function trims(value) {
     return _.replace(' ')('')(value)
 }
 
-function extractInfo(item){
+function extractInfo(item) {
     item.ll = item.label.en // label
     item.c = {}
     item.c.name = item.name || item.ll // k for route match name
@@ -24,13 +24,18 @@ function extractInfo(item){
     return item
 }
 
-const routeData = _.map(o => {
-    o = extractInfo(o)
-    o.children = _.map(oo => extractInfo(oo))(o.children)
-    return o
-})(metaData)
+function _traverse(predict, modify, data) {
+    const _modify = o => {
+        const oo = modify(_.cloneDeep(o))
+        oo.children = _traverse(predict, modify, oo.children)
+        return oo
+    }
+    return _.filter(predict)(_.map(_modify)(data))
+}
+const traverse = _.curry(_traverse)
 
-const menuData = _.filter(o => !o.notOnMenu)(routeData)
+const routeData = traverse(o => true)(extractInfo)(metaData)
+const menuData = traverse(o => !o.notOnMenu)(_.identity)(routeData)
 
 export {routeData, menuData}
 
