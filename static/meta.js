@@ -8,6 +8,7 @@ const metaData = [
         },
         name: 'Index',
         file: 'Index',
+        noPreset: true,
         children: []
     }, {
         label: {

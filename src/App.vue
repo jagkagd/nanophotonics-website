@@ -1,15 +1,18 @@
 <template lang="pug">
 #app
     web-header(:menuList="menuData")
+    h1.viewTitle(v-if="")
     router-view
+    sub-nav
     web-footer(:menuList="menuData")
 </template>
 
 <script>
 // @flow
 
-import WebHeader from './components/WebHeader'
-import WebFooter from './components/WebFooter'
+import WebHeader from 'components/WebHeader'
+import WebFooter from 'components/WebFooter'
+import SubNav from 'components/SubNav'
 import {menuData} from 'static/meta-data'
 
 export default {

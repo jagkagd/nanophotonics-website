@@ -5,9 +5,11 @@ import _ from 'lodash/fp'
 
 const comps = {}
 _.forEach(page => {
-    comps[page.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/' + page.t.file + 'View.vue')
+    if(page.notPreset){
+        comps[page.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/' + page.t.file + 'View.vue')
+    }
     _.forEach(item => {
-        comps[item.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/subViews/' + item.t.file + 'View.vue')
+        comps[item.t.file] = require('src/views/' + page.k.file.toLowerCase() + '/' + item.t.file + 'View.vue')
     })(page.children)
 })(routeData)
 
