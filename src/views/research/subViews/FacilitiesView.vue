@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Facilities
     h2 Lasers  
     img(src="~assets/images/research/L1.jpg")
     img(src="~assets/images/research/L2.jpg")

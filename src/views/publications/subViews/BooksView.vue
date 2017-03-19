@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Books
     ol
         li(v-for="item in itemsGroup['Book']")
             span.authors {{ item.authors2 }}, 

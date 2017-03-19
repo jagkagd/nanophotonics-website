@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Journal papers
     div
         label(for='yearSelect') Year: 
         select#yearSelect(v-model='pubYear')

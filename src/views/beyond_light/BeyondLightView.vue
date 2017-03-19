@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+    h1.viewTitle {{ title }}
     waterfall(:line-gap="200" v-bind:watch="items")
         waterfall-slot(v-for="(item, index) in items" key="index")
             img(:src="item.path")

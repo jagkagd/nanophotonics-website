@@ -1,5 +1,6 @@
 <template lang="pug">
 div
+    h1.viewTitle {{ title }}
     router-view
     sub-nav(:menuName="'people'")
 </template>

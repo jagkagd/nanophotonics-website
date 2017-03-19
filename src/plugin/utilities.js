@@ -2,6 +2,7 @@ import marked from 'marked'
 import _ from 'lodash/fp'
 import {getData} from './methods'
 import {formatJournal, formatAuthors, formatClass} from './filters'
+import {la, title} from './computed'
 
  marked.setOptions({
      breaks: true
@@ -16,9 +17,8 @@ export default {
     install (Vue, options) {
         Vue.mixin({
             computed: {
-                la () {
-                    return this.$store.state.lang
-                }
+                la,
+                title
             },
             methods: {
                 getData

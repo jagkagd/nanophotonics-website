@@ -1,32 +1,19 @@
 <template lang="pug">
 div
-    h1.viewTitle News and Highlights
-    ul
-        li(v-for="item in items" v-bind:id="'news-'+item.id")
-            news-item(:item="item")
+    h1.viewTitle {{ title }}
+    router-view
+    sub-nav(:menuName="'news'")
 </template>
 
 <script>
 // @flow
 
-import NewsItem from './components/NewsItem'
-import news from 'flow/typedef.js'
-import axios from 'axios'
+import SubNav from 'components/SubNav.vue'
 
 export default {
-    name: 'NewsView',
-    data (): {items: Array<news>} {
-        return {
-            items: []
-        }
-    },
-    mounted () {
-        axios.get('/api.php/news').then(res => {
-            this.items = res.data
-        })
-    },
+    name: 'PeopleView',
     components: {
-        NewsItem
+        SubNav
     }
 }
 </script>
