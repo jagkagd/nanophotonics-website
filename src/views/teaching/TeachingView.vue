@@ -13,7 +13,6 @@ div
 // @flow
 
 import course from 'flow/typedef.js'
-import axios from 'axios'
 
 export default {
     data (): {items: Array<course>}{
@@ -22,8 +21,8 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/courses').then(res => {
-            this.items = this.t2i(res.data)
+        this.getData('courses').then(res => {
+            this.items = res.data
         })
     }
 }

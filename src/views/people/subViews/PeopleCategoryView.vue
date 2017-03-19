@@ -10,7 +10,6 @@ div
 
 import PeopleIntroItem from './components/PeopleIntroItem'
 import people from 'flow/typedef.js'
-import axios from 'axios'
 
 export default {
     name: 'PeopleCategoryView',
@@ -20,7 +19,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/people?category=' + this.category).then(res => {
+        this.getData('people?category=' + this.category).then(res => {
             this.items = res.data
         })
     },
@@ -34,7 +33,7 @@ export default {
     },
     watch: {
         '$route' (to, from) {
-             axios.get('/api.php/people?category=' + this.category).then(res => {
+             this.getData('people?category=' + this.category).then(res => {
                 this.items = res.data
             })
         }

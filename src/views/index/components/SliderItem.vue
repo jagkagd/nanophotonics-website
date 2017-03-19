@@ -19,8 +19,6 @@ div
 <script>
 // @flow
 
-import { formatAuthors, formatJournal } from 'utils/utils-filters.js'
-
 export default {
     name: 'SliderItem',
     props: {
@@ -33,10 +31,6 @@ export default {
         imgPath () {
             return require('assets/images/researchhighlights/researchhighlight-' + this.item.imgpath)
         }
-    },
-    filters: {
-        formatAuthors,
-        formatJournal
     }
 }
 </script>

@@ -21,8 +21,7 @@ div
 <script>
 // @flow
 
-import book from '../../../flow/typedef.js'
-import axios from 'axios'
+import book from 'flow/typedef.js'
 import _ from 'lodash'
 
 export default {
@@ -34,7 +33,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/books').then(res => {
+        this.getData('books').then(res => {
             this.items = res.data
         })
     },

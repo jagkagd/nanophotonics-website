@@ -12,8 +12,6 @@ div
 <script>
 // @flow
 
-import axios from 'axios'
-
 export default {
     name: 'CollaboratorsView',
     data (): Object {
@@ -22,7 +20,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/collaborators').then(res => {
+        this.getData('collaborators').then(res => {
             this.items = res.data
         })
     }

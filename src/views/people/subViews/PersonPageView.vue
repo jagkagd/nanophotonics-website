@@ -14,7 +14,6 @@ div(v-if="showPage")
 
 <script>
 // @flow
-import axios from 'axios'
 
 export default {
     name: 'PersonPage',
@@ -25,7 +24,7 @@ export default {
         }
     },
     beforeMount () {
-        axios.get('/api.php/people?id=' + this.$route.params.id).then(res => {
+        this.getData('people?id=' + this.$route.params.id).then(res => {
             this.item = res.data[0]
             this.showPage = true
         })

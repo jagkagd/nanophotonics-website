@@ -4,7 +4,7 @@ div.item
     div.pic
         router-link(:to="'/news#rh-'+item.id")
             img(:src="imgPath" width="280" height="184")
-    div.content {{ item.abstract | formatContent(40, 2.5) }}
+    div.content {{ item.abstract | formatContent(40, 2.3) }}
         |  
         span
             router-link(:to="'/news#rh-'+item.id") Read more>>
@@ -23,7 +23,6 @@ div.item
 // @flow
 
 import _ from 'lodash'
-import { formatAuthors, formatJournal } from 'utils/utils-filters.js'
 
 export default {
     name: 'ResearchHighlightItem',
@@ -40,17 +39,15 @@ export default {
     },
     filters: {
         formatContent (value: string, emPerLine: number, scale: number): string {
-            const maxLength: number = emPerLine * scale - 3
-            const stringArray: Array<string> = value.split(' ')
-            const accumulateLength: Array<number> = stringArray.reduce((res: Array<number>, c: string, i: number): number => {
+            const maxLength = emPerLine * scale - 3
+            const stringArray = value.split(' ')
+            const accumulateLength: Array<number> = stringArray.reduce((res, c, i): number => {
                 res[i + 1] = res[i] + c.length + 1
                 return res
             }, [0])
-            const wordsNumber: number = _.findIndex(accumulateLength, (o: number): boolean => o > maxLength)
+            const wordsNumber: number = _.findIndex(accumulateLength, o => o > maxLength)
             return value.slice(0, accumulateLength[wordsNumber - 1] - 1) + '...'
-        },
-        formatAuthors,
-        formatJournal
+        }
     }
 }
 </script>

@@ -11,7 +11,6 @@ div
 
 import researchHighlight from 'flow/typedef.js'
 import ResearchHighlightItem from './ResearchHighlightItem'
-import axios from 'axios'
 
 export default {
     name: 'ResearchHighlights',
@@ -25,7 +24,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/researchHighlights?limit=6').then(res => {
+        this.getData('researchHighlights?limit=6').then(res => {
             this.items = res.data
         })
     },

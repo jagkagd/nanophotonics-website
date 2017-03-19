@@ -22,9 +22,7 @@ div
 // @flow
 
 import conference from 'flow/typedef.js'
-import axios from 'axios'
 import _ from 'lodash/fp'
-import {formatClass} from 'utils/utils-filters.js'
 
 export default {
     name: 'ConferencesView',
@@ -35,16 +33,16 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/conferences').then(res => {
+        this.getData('conferences').then(res => {
             this.items = _.flow(_.sortBy('data_start'), _.reverse)(res.data)
         })
     },
     computed: {
         yearRange (): Array<string> {
-            return _.flow(_.map((o: string): string => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
+            return _.flow(_.map(o => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
         },
         itemsGroupByYear (): {[year: string]: Array<conference>} {
-            return _.groupBy((o): string => o.date_start.split('-')[0])(this.items)
+            return _.groupBy(o => o.date_start.split('-')[0])(this.items)
         },
         itemsSomeYear (): Array<conference> {
             return (this.pubYear === 'all') ? this.items : this.itemsGroupByYear[this.pubYear]
@@ -54,10 +52,9 @@ export default {
         }
     },
     filters: {
-        formatDate (value: string): string {
+        formatDate (value) {
             return value.split('-')[0]
-        },
-        formatClass
+        }
     }
 }
 

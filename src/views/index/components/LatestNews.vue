@@ -16,7 +16,6 @@ div
 // @flow
 
 import {event, news} from 'flow/typedef.js'
-import axios from 'axios'
 import moment from 'moment'
 
 export default {
@@ -28,10 +27,10 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/events?limit=1').then(res => {
+        this.getData('events?limit=1').then(res => {
             this.events = res.data
         })
-        axios.get('/api.php/news?limit=3').then(res => {
+        this.getData('news?limit=3').then(res => {
             this.latestNewsList = res.data
         })
     },

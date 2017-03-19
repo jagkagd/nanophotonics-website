@@ -10,7 +10,6 @@ div#slider
 // @flow
 
 import reserachHighlight from 'flow/typedef.js'
-import axios from 'axios'
 import SliderItem from './SliderItem'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import _ from 'lodash'
@@ -32,7 +31,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/slides?limit=6').then(res => {
+        this.getData('slides?limit=6').then(res => {
             _.map(res.data, (o) => {
                 o.animActive = false
             })

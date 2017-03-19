@@ -21,7 +21,6 @@ div
 // @flow
 
 import people from 'flow/typedef.js'
-import axios from 'axios'
 
 export default {
     name: 'FormerGroup',
@@ -31,7 +30,7 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/people?category=former_group_members').then(res => {
+        this.getData('people?category=former_group_members').then(res => {
             this.items = res.data
         })
     }

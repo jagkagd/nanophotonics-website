@@ -27,8 +27,6 @@ div
 // @flow
 
 import journal from 'flow/typedef.js'
-import { formatJournal, formatAuthors } from 'utils/utils-filters.js'
-import axios from 'axios'
 import _ from 'lodash/fp'
 
 export default {
@@ -40,13 +38,13 @@ export default {
         }
     },
     mounted () {
-        axios.get('/api.php/journals').then(res => {
+        this.getData('journals').then(res => {
             this.items = res.data
         })
     },
     computed: {
         yearRange (): Array<string> {
-            return _.flow(_.map((o): string => o.year), _.uniq, _.sortBy(x => x))(this.items)
+            return _.flow(_.map(o => o.year), _.uniq, _.sortBy(x => x))(this.items)
         },
         itemsGroupByYear (): {[year: string]: Array<journal>} {
             return _.groupBy('year')(this.items)
@@ -57,10 +55,6 @@ export default {
         pubLength () :number {
             return this.itemsSomeYear.length
         }
-    },
-    filters: {
-        formatJournal,
-        formatAuthors
     }
 }
 
