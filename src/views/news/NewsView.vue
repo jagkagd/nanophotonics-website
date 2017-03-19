@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle News and Highlights
     ul
         li(v-for="item in items" v-bind:id="'news-'+item.id")
             news-item(:item="item")

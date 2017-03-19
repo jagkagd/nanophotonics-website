@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Fundings
     ol
         li(v-for="item in items") {{ item }}
 </template>

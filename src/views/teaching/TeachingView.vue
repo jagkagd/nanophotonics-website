@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Grad and Undergrad Courses
     ol
         li(v-for="item in items")
             span.course {{ item.course[la] }} 

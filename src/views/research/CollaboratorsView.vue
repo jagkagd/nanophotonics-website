@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTItle Collaborators
     ol
         li(v-for="item in items")
             a(:href="item.url")

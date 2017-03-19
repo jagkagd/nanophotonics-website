@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Former Group Members
     table.formerGroup
         thead
             tr

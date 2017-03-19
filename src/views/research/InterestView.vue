@@ -1,6 +1,5 @@
 <template lang="pug">
 div
-    h1.viewTitle Research interests  
     div.section.pure-g(v-for="(item, index) in content" key="index")
         img.pure-u-1-4(:src="item.imgpath")
         div.info.pure-u-3-4
