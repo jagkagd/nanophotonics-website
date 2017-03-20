@@ -2,7 +2,7 @@ import marked from 'marked'
 import _ from 'lodash/fp'
 import {getData} from './methods'
 import {formatJournal, formatAuthors, formatClass} from './filters'
-import {la, meta} from './computed'
+import {la, routeInfo} from './computed'
 
  marked.setOptions({
      breaks: true
@@ -18,7 +18,7 @@ export default {
         Vue.mixin({
             computed: {
                 la,
-                meta
+                routeInfo
             },
             methods: {
                 getData

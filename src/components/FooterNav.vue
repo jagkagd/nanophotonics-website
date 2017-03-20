@@ -1,19 +1,22 @@
 <template lang="pug">
 ul#footer-nav-list
-    li(v-for="menu in menuList")
-        router-link(:to='menu.routerTo') {{ menu.label[la] }}
+    li(v-for="menu in menuData")
+        router-link(:to='menu.routerTo') {{ menu.li[la] }}
         ul
             li(v-for="sMenu in menu.children")
-                router-link(:to='sMenu.routerTo') {{ sMenu.label[la] }}
+                router-link(:to='sMenu.routerTo') {{ sMenu.li[la] }}
 </template>
 
 <script>
 // @flow
+import {menuData} from 'static/meta-data'
 
 export default {
     name: 'FooterNav',
-    props: {
-        menuList: Array
+    data () {
+        return {
+            menuData
+        }
     }
 }
 </script>

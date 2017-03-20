@@ -36,6 +36,18 @@ export default {
             }catch(err){
                 return require('assets/images/people/' + this.item.id + '-intro.jpg')
             }
+        },
+        menuName () {
+            const cor = {
+                'undergraduate':       'undergrad_students',
+                'master':              'grad_students',
+                'PhD':                 'grad_students',
+                'poster doctor':       'post_docs',
+                'admin staff':         'admin_staff',
+                'professor':           'faculty',
+                'associate professor': 'faculty'
+            }
+            return cor[this.item.degree]
         }
     },
     filters: {

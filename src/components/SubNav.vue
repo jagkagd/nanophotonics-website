@@ -1,23 +1,23 @@
 <template lang="pug">
 ul
-    li(v-for="item in subItemList")
-        router-link(:to="'/' + menuName + '/' + item.path") {{ item.text[la] }}
+    li(v-for="item in subMenu" v-bind:class="{currentMenu: item.k.name === menuName}" )
+        router-link(:to="item.routerTo") {{ item.li[la] }}
 </template>
 
 <script>
 // @flow
 
-import _ from 'lodash/fp'
+import {keyMenuData} from 'static/meta-data'
 
 export default {
     name: 'SubNav',
     props: {
-        menuList: Array,
+        parentName: String,
         menuName: String
     },
     computed: {
-        subItemList () {
-            return _.find(o => o.label.en === this.menuName)(this.menuList)
+        subMenu () {
+            return this.parentName ? (keyMenuData[this.parentName].subMenu || []) : []
         }
     }
 }

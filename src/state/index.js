@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        lang: 'en'
+        lang: 'en',
+        menuName: ''
     },
     mutations: {
         switchLang (state) {
             state.lang = (state.lang === 'en') ? 'zh' : 'en'
+        },
+        changeMenuName (state, name) {
+            state.menuName = name
         }
     }
 })
