@@ -19,6 +19,7 @@ export default {
         }
     },
     mounted () {
+        this.$store.commit('changeMenuName', this.menuName || '')
         this.getData('people?category=' + this.category).then(res => {
             this.items = res.data
         })
@@ -29,13 +30,17 @@ export default {
     computed: {
         category () {
             return this.$route.params.people_category
+        },
+        menuName () {
+            return this.category
         }
     },
     watch: {
         '$route' (to, from) {
-             this.getData('people?category=' + this.category).then(res => {
+            this.getData('people?category=' + this.category).then(res => {
                 this.items = res.data
             })
+            this.$store.commit('changeMenuName', this.menuName)
         }
     }
 }

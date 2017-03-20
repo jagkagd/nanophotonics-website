@@ -3,11 +3,13 @@ import _ from 'lodash/fp'
 const metaData = [
     {
         label: {
-            en: 'Home',
+            en: 'Index',
             zh: '主页'
         },
-        name: 'Index',
-        file: 'Index',
+        li: {
+            en: 'Home'
+        },
+        notPreset: true,
         children: []
     }, {
         label: {
@@ -19,14 +21,12 @@ const metaData = [
                 label: {
                     en: 'Research Highlight',
                     zh: '科研进展'
-                },
-                file: 'NewsSub'
+                }
             }, {
                 label: {
                     en: 'Latest News',
                     zh: '近期新闻'
-                },
-                file: 'NewsSub'
+                }
             }
         ]
     }, {

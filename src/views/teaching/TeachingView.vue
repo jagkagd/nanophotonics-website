@@ -1,12 +1,11 @@
 <template lang="pug">
 div
-    h1.viewTitle {{ label }}
     ol
         li(v-for="item in items")
             span.course {{ item.course[la] }} 
-            span.num (Course No.{{ item.number }}, {{ item.grad[la] }})
+            span.num (No.{{ item.number }}, {{ item.grad[la] }})
             br
-            span.lecturers Lecturers: {{ item.lecturers[la] }}
+            span.lecturers {{ lecturersLabel[la] }}: {{ item.lecturers[la] }}
 </template>
 
 <script>
@@ -17,7 +16,11 @@ import course from 'flow/typedef.js'
 export default {
     data (): {items: Array<course>}{
         return {
-            items: []
+            items: [],
+            lecturersLabel: {
+                en: 'Lecturers',
+                zh: '教师'
+            }
         }
     },
     mounted () {

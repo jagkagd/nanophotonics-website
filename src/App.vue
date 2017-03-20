@@ -1,24 +1,18 @@
 <template lang="pug">
 #app
-    web-header(:menuList="menuData")
+    web-header
     router-view
-    web-footer(:menuList="menuData")
+    web-footer
 </template>
 
 <script>
 // @flow
 
-import WebHeader from './components/WebHeader'
-import WebFooter from './components/WebFooter'
-import {menuData} from 'static/meta-data'
+import WebHeader from 'components/WebHeader'
+import WebFooter from 'components/WebFooter'
 
 export default {
     name: 'app',
-    data () {
-        return {
-            menuData
-        }
-    },
     components: {
         WebHeader,
         WebFooter

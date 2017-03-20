@@ -3,12 +3,15 @@
 import metaData from './meta'
 import _ from 'lodash/fp'
 
-function trims(value) {
-    return _.replace(' ')('')(value)
-}
+const trims = _.replace(' ')('')
 
-function extractInfo(item) {
+function extractInfo(item){
+    const lings = ['zh', 'en']
     item.ll = item.label.en // label
+    item.title = item.title || {}
+    _.map(o => { item.title[o] = item.title[o] || item.label[o] })(lings)
+    item.li = item.li || {}
+    _.map(o => { item.li[o] = item.li[o] || item.label[o] })(lings)
     item.c = {}
     item.c.name = item.name || item.ll // k for route match name
     item.c.path = item.path || item.c.name // k for router path
@@ -37,5 +40,17 @@ const traverse = _.curry(_traverse)
 const routeData = traverse(o => true)(extractInfo)(metaData)
 const menuData = traverse(o => !o.notOnMenu)(_.identity)(routeData)
 
-export {routeData, menuData}
+function list2obj(data){
+    return _.reduce((res, o) => {
+        res[_.snakeCase(o.ll)] = _.cloneDeep(o)
+        res[_.snakeCase(o.ll)].children = _.cloneDeep(list2obj(o.children))
+        res[_.snakeCase(o.ll)].subMenu = _.cloneDeep(o.children)
+        return res
+    }, {})(data)
+}
+
+const keyRouteData = list2obj(routeData)
+const keyMenuData = list2obj(menuData)
+
+export {routeData, menuData, keyRouteData, keyMenuData}
 

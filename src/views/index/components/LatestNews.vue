@@ -1,12 +1,12 @@
 <template lang="pug">
 div
     div.subNews(v-if="hasEvent")
-        h1 {{ eventState }} Events
+        h1 {{ eventsTitle[eventState][la] }}
         ul
             li(v-for="item in events")
                 router-link(:to="item.router") {{ item.date }} - {{ item.short_content }} 
     div.subNews
-        h1 Latest News
+        h1 {{ latestNewsTitle[la] }}
         ul
             li(v-for="item in latestNewsList")
                 router-link(:to="'/news#news-'+item.id") {{ item.date }} - {{ item.short_content }}
@@ -23,7 +23,25 @@ export default {
     data (): {events: Array<event>, latestNewsList: Array<news>} {
         return {
             events: [],
-            latestNewsList: []
+            latestNewsList: [],
+            eventsTitle: {
+                'Upcoming': {
+                    en: 'Upcoming Events',
+                    zh: ''
+                },
+                'Ongoing': {
+                    en: 'Ongoing Events',
+                    zh: ''
+                },
+                'Previous': {
+                    en: 'Previous Events',
+                    zh: ''
+                }
+            },
+            latestNewsTitle: {
+                en: 'Latest News',
+                zh: '近期新闻'
+            }
         }
     },
     mounted () {

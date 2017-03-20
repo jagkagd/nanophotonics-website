@@ -1,6 +1,6 @@
 <template lang="pug">
 ul#header-list
-    header-nav-li(v-for="(menu, index) in menuList" v-bind:key="index" v-bind:menu="menu")
+    header-nav-li(v-for="(menu, index) in menuData" v-bind:key="index" v-bind:menu="menu")
     header-lang-li
 </template>
 
@@ -9,11 +9,14 @@ ul#header-list
 
 import HeaderNavLi from './HeaderNavLi.vue'
 import HeaderLangLi from './HeaderLangLi.vue'
+import {menuData} from 'static/meta-data'
 
 export default {
     name: 'HeaderNav',
-    props: {
-        menuList: Array
+    data () {
+        return {
+            menuData
+        }
     },
     components: {
         HeaderNavLi,

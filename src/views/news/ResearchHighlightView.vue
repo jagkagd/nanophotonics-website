@@ -1,8 +1,7 @@
 <template lang="pug">
 div
-    h1.viewTitle {{ title }}
     router-view
-    sub-nav(:menuName="'research'")
+    sub-nav(:menuName="'news'")
 </template>
 
 <script>
@@ -11,7 +10,7 @@ div
 import SubNav from 'components/SubNav.vue'
 
 export default {
-    name: 'ResearchView',
+    name: 'PeopleView',
     components: {
         SubNav
     }
