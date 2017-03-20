@@ -44,8 +44,7 @@ const metaData = [
                 label: {
                     en: 'Research Interests',
                     zh: '研究兴趣'
-                },
-                file: 'Interest'
+                }
             }, {
                 label: {
                     en: 'Facilities',
