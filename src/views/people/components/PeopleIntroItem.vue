@@ -4,8 +4,8 @@ div.peopleItem
         img(:src="imgPath")
     router-link(:to="{name: 'person_page', params: {id: item.id}}")
         div.info
-            p.name {{ item.name[la] }}
-            p.email {{ item.email }} 
+            p.name {{ item.name | formatProfileName(item.degree, la) }}
+            p.email Email: {{ item.email }} 
 </template>
 
 <script>
@@ -24,6 +24,25 @@ export default {
                 return require('assets/images/people/' + this.item.id + '-1.jpg')
             }
         }
+    },
+    filters: {
+        formatProfileName (value, degree, la) {
+            const name = value[la]
+            const profileAbbr = {
+                'professor': {
+                    en: 'Prof.',
+                    zh: '教授'
+                },
+                'associate professor': {
+                    en: 'Assoc. Prof.',
+                    zh: '副教授'
+                }
+            }[degree][la] || ''
+            return profileAbbr ? {
+                en: profileAbbr + ' ' + name,
+                zh: name + ' ' + profileAbbr
+            }[la] : name
+        }
     }
 }
 </script>
@@ -32,20 +51,19 @@ export default {
 @import '~static/basecolors.styl'
 
 .peopleItem
-    width: 340px
+    margin: 5px
     background-color: base1
     padding: 5px
     border-radius: 5px
     border: 1px solid base3
-    > a
-        display: inline-block
+    display: flex
     img
-        display: inline
         width: 110px
         height: 110px
 
 .info
-    padding-left: 10px
+    margin-left: 15px
+
 .name
     color: blue
     font-size: 16px

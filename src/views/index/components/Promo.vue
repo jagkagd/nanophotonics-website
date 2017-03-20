@@ -24,6 +24,7 @@ export default {
 <style lang="stylus" scoped>
 div
     height: 386px
+
 img
     max-width: 90%
     max-height: auto

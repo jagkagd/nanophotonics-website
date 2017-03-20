@@ -1,7 +1,7 @@
 <template lang="pug">
 div(v-if="showPage")
     div.thumb
-        img(:src="imgPath" width="160" height="200")
+        img(:src="imgPath")
     div.basicInfo
         p {{ item.name[la] }}
         p {{ item.degree | trans2FormalDegree }}
@@ -69,7 +69,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.thumb, .basicInfo
+.thumb
+    width: 160px
+    height: 200px
     display: inline-block
+
+.basicInfo
+    display: inline-block
+    margin-left: 20px
 </style>
 

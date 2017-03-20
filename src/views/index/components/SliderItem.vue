@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     router-link(:to="'/news?id='+item.id")
-        img(:src="imgPath" width="512" height="384" alt="")
+        img(:src="imgPath")
         div.bottom
             p
                 span.title {{ item.title }}

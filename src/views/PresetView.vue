@@ -1,6 +1,7 @@
 <template lang="pug">
 div
     h1.viewTitle {{ title }}
+    hr
     router-view
     sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
@@ -30,3 +31,13 @@ export default {
     }
 }
 </script>
+
+<style lang="stylus">
+div
+    font-size: 14px
+    line-height: 150%
+
+.viewTitle
+    font-size: 18px
+    font-weight: bold
+</style>

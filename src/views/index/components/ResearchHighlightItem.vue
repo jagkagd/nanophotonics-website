@@ -3,7 +3,7 @@ div.item
     h2.title {{ item.title_en }}
     div.pic
         router-link(:to="'/news#rh-'+item.id")
-            img(:src="imgPath" width="280" height="184")
+            img(:src="imgPath")
     div.content {{ item.abstract | formatContent(40, 2.3) }}
         |  
         span
@@ -54,6 +54,9 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
+img
+    width: 280px
+    height: 184px
 
 .item
     margin: 5px

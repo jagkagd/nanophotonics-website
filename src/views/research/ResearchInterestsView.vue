@@ -58,13 +58,14 @@ export default {
         width: 150px
         height: 150px
         border-radius: 5px
-    .info
-        padding-left: 10px
-        h2
-            text-size: 13px
-            margin: 10px 0px
-        p
-            text-size: 12px
-            color: blue
+
+.info
+    padding-left: 20px
+    h2
+        font-size: 15px
+        margin: 10px 0px
+    p
+        color: blue
+        line-height: 200%
 
 </style>
