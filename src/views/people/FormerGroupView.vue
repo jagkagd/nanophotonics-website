@@ -10,8 +10,8 @@ div
             tr(v-for="(item, index) in items" v-bind:class="(index % 2) ? '' : 'alt'")
                 td.
                     {{ item.name[la] }}
-                td {{ item.formerState }}
-                td {{ item.presentState }}
+                td {{ item.formerState[la] }}
+                td {{ item.presentState[la] }}
 </template>
 
 <script>

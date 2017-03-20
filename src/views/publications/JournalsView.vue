@@ -42,7 +42,6 @@ export default {
                 en: '--all--',
                 zh: '全部年份'
             }
-            
         }
     },
     mounted () {
