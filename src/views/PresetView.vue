@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     h1.viewTitle {{ title }}
-    router-view(ref="childView")
+    router-view
     sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 
@@ -13,11 +13,6 @@ import {keyRouteData} from 'static/meta-data'
 
 export default {
     name: 'PresetView',
-    data () {
-        return {
-            childName: ''
-        }
-    },
     computed: {
         title () {
             const parent = this.parentName ? (keyRouteData[this.parentName].children || keyRouteData) : keyRouteData
