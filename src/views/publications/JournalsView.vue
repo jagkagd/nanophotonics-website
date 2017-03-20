@@ -1,9 +1,9 @@
 <template lang="pug">
 div
     div
-        label(for='yearSelect') Year: 
+        label(for='yearSelect') {{ yearLabel[la] }}: 
         select#yearSelect(v-model='pubYear')
-            option(value='all') --all--
+            option(value='all') {{ allYearLabel[la] }}
             option(v-for='year in yearRange' v-bind:value='year') {{ year }}
     ol
         li(v-for='(item, index) in itemsSomeYear' v-bind:value="pubLength-index")
@@ -33,7 +33,16 @@ export default {
     data (): {items: Array<journal>, pubYear: string} {
         return {
             items: [],
-            pubYear: 'all'
+            pubYear: 'all',
+            yearLabel: {
+                en: 'Year',
+                zh: '年份'
+            },
+            allYearLabel: {
+                en: '--all--',
+                zh: '全部年份'
+            }
+            
         }
     },
     mounted () {

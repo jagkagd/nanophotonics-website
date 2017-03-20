@@ -3,7 +3,7 @@ div(v-if="showPage")
     div.thumb
         img(:src="imgPath" width="160" height="200")
     div.basicInfo
-        p {{ item.nameEn }} ({{ item.nameCn }})
+        p {{ item.name[la] }}
         p {{ item.degree | trans2FormalDegree }}
         p Department of Optical Engineering
         p Zhejiang University

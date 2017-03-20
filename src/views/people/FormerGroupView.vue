@@ -9,9 +9,7 @@ div
         tbody
             tr(v-for="(item, index) in items" v-bind:class="(index % 2) ? '' : 'alt'")
                 td.
-                    {{ item.nameEn }}
-                    br
-                    ({{ item.nameCn }})
+                    {{ item.name[la] }}
                 td {{ item.formerState }}
                 td {{ item.presentState }}
 </template>
