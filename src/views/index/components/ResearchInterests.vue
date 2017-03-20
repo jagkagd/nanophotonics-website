@@ -1,7 +1,7 @@
 <template lang="pug">
 div
-    h1 {{ title[$store.state.lang] }}
-    router-link(:to="{name: 'interests'}")
+    h1 {{ title[la] }}
+    router-link(:to="{name: 'research_interests'}")
         img(src="~assets/images/index/research_1.jpg")
         img(src="~assets/images/index/research_2.jpg")
         img(src="~assets/images/index/research_3.jpg")

@@ -1,18 +1,19 @@
 <template lang="pug">
 div
+    h2 {{ BooksTitle[la] }}
     ol
         li(v-for="item in itemsGroup['Book']")
             span.authors {{ item.authors2 }}, 
             span.title {{ item.title }}, 
             span.press {{ item.press }}, 
             span.year {{ item.year }}.
-    h2 Book chapters
+    h2 {{ ChaptersTitle[la] }}
     ol
         li(v-for="item in itemsGroup['Book chapter']")
             span.authors1 {{ item.authors1 }}, 
             span.chapter "{{ item.chapter}}", 
             span.title {{ item.title }}, 
-            span.authors2 {{ item.authors2 }}{{ etal[item.lang]['ed'] }}, 
+            span.authors2 {{ item.authors2 }}{{ etal[item.lang] }}, 
             span.press {{ item.press }}, 
             span.year {{ item.year }}.
 </template>
@@ -28,7 +29,18 @@ export default {
     data (): {items: Array<book>, etal: Object}{
         return {
             items: [],
-            etal: {zh: {ed: '编著'}, en: {ed: 'ed.'}}
+            etal: {
+                zh: '编著',
+                en:'ed.'
+            },
+            BooksTitle: {
+                en: 'Books',
+                zh: '著作'
+            },
+            ChaptersTitle: {
+                en: 'Book Chapters',
+                zh: '章节'
+            }
         }
     },
     mounted () {

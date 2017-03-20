@@ -2,9 +2,9 @@
 div.peopleItem
     router-link(:to="{name: 'person_page', params: {id: item.id}}")
         img(:src="imgPath")
-    router-link(:to="'/people/intro/'+item.id")
+    router-link(:to="{name: 'person_page', params: {id: item.id}}")
         div.info
-            p.name {{ item.nameEn }}
+            p.name {{ item.name[la] }}
             p.email {{ item.email }} 
 </template>
 
