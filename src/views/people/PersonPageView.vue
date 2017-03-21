@@ -3,7 +3,7 @@ div(v-if="showPage")
     div.thumb
         img(:src="imgPath")
     div.basicInfo
-        p {{ item.name[la] }}
+        p.name {{ item.name[la] }}
         p {{ item.degree | trans2FormalDegree }}
         p Department of Optical Engineering
         p Zhejiang University
@@ -77,5 +77,12 @@ export default {
 .basicInfo
     display: inline-block
     margin-left: 20px
+    font-style: italic
+
+.name
+    font-size: 20px
+    font-weight: bold
+    font-style: normal
+    color: rgb(204, 0, 51)
 </style>
 

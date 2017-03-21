@@ -11,6 +11,8 @@ div.peopleItem
 <script>
 // @flow
 
+import _ from 'lodash/fp'
+
 export default {
     name: 'PeopleIntroItem',
     props: {
@@ -28,7 +30,7 @@ export default {
     filters: {
         formatProfileName (value, degree, la) {
             const name = value[la]
-            const profileAbbr = {
+            let profileAbbr = {
                 'professor': {
                     en: 'Prof.',
                     zh: '教授'
@@ -37,7 +39,8 @@ export default {
                     en: 'Assoc. Prof.',
                     zh: '副教授'
                 }
-            }[degree][la] || ''
+            }[degree]
+            profileAbbr = _.isNil(profileAbbr) ? '' : profileAbbr[la]
             return profileAbbr ? {
                 en: profileAbbr + ' ' + name,
                 zh: name + ' ' + profileAbbr

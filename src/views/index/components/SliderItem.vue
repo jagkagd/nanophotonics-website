@@ -4,7 +4,7 @@ div
         img(:src="imgPath")
         div.bottom
             p
-                span.title {{ item.title }}
+                span.title {{ item.title[la] }}
             p
                 span.authors {{ paper.authors | formatAuthors(1) }} et al.
                 | , 

@@ -69,7 +69,7 @@ export default {
 
 <style lang="stylus" scoped>
 li
-    margin: 5px 0
+    margin: 8px 0
 
 .title
     color: blue

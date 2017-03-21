@@ -31,4 +31,7 @@ img
     clear: both
     display: block
     margin: auto
+
+p
+    text-align: justify
 </style>

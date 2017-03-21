@@ -41,11 +41,11 @@ export default {
         border: 1px solid #0241d2
         padding: 2px
     thead
-        background-color: rgb(2, 65, 210)
+        background-color: #569CE3
         color: white
         font-size: 15.5px
 
 .alt
-    background-color: rgb(86, 156, 227)
+    background-color: #CDD9E5
 </style>
     
