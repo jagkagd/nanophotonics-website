@@ -24,6 +24,6 @@ export default SubView.extend({
 
 <style lang="stylus" scoped>
 li
-    padding: 10px 0
+    line-height: 2em
     color: blue
 </style>

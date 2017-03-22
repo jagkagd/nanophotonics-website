@@ -1,10 +1,10 @@
 <template lang="pug">
 div
     router-link(:to="'/news?id='+item.id")
-        img(:src="imgPath" width="512" height="384" alt="")
+        img(:src="imgPath")
         div.bottom
             p
-                span.title {{ item.title }}
+                span.title {{ item.title[la] }}
             p
                 span.authors {{ paper.authors | formatAuthors(1) }} et al.
                 | , 

@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
     web-header
-    router-view
+    router-view#content
     web-footer
 </template>
 
@@ -25,9 +25,17 @@ export default {
 @import '~static/grids-responsive-min.css'
 
 #app
+    font-size: 14px
     background-image: url(./assets/images/bkg-page.jpg)
     > div
         width: 70%
         margin: auto
+
+#content
+    padding: 10px 0
+
+a
+    text-decoration: none
+    color: black
 
 </style>

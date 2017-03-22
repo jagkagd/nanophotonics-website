@@ -28,10 +28,7 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-a:active, :visited
-    text-decoration: none
-
 li
     color: blue
-    padding: 5px 0
+    line-height: 2em
 </style>

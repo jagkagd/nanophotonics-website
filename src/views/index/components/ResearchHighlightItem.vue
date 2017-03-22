@@ -1,17 +1,17 @@
 <template lang="pug">
 div.item
-    h2.title {{ item.title_en }}
+    h2.title {{ item.title[la] }}
     div.pic
         router-link(:to="'/news#rh-'+item.id")
-            img(:src="imgPath" width="280" height="184")
-    div.content {{ item.abstract | formatContent(40, 2.3) }}
+            img(:src="imgPath")
+    div.content {{ item.abstract | formatContent(40, 2.2) }}
         |  
         span
             router-link(:to="'/news#rh-'+item.id") Read more>>
     hr
     span.authors {{ paper.authors | formatAuthors(1) }} et al.
     | ,  
-    a(:href="paper.href")
+    a.cite(:href="paper.href")
         span.journal {{ paper.journal | formatJournal }} 
         span.volume {{ paper.volume }}
         | , 
@@ -54,6 +54,9 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
+img
+    width: 280px
+    height: 184px
 
 .item
     margin: 5px
@@ -62,16 +65,24 @@ export default {
     box-shadow: 1px 1px base2
     border: 1px solid base3
     border-radius: 4px
-
-.title
-    height: 2.2em
-    text-size: 13px
-
-.jounal, .volume, .pages, .year
-    color: blue
-    font-style: italic
-
-.pic
-    border-radius: 4px
+    font-size: 13px
+    .title
+        height: 3em
+        font-size: 13px
+        font-weight: bold
+        font-family: Arial
+        padding-top: 0
+    .content
+        font-size: 13px
+    .author
+        color: #666666
+        font-size: 13px
+    .cite
+        color: blue
+        font-size: 13px
+    .journal
+        font-style: italic
+    .pic
+        border-radius: 4px
 </style>
 

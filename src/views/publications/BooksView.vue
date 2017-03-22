@@ -2,14 +2,14 @@
 div
     h2 {{ BooksTitle[la] }}
     ol
-        li(v-for="item in itemsGroup['Book']")
+        li(v-for="(item, index) in itemsGroup['Book']" v-bind:value="booksLength-index")
             span.authors {{ item.authors2 }}, 
             span.title {{ item.title }}, 
             span.press {{ item.press }}, 
             span.year {{ item.year }}.
     h2 {{ ChaptersTitle[la] }}
     ol
-        li(v-for="item in itemsGroup['Book chapter']")
+        li(v-for="(item, index) in itemsGroup['Book chapter']" v-bind:value="chaptersLength-index")
             span.authors1 {{ item.authors1 }}, 
             span.chapter "{{ item.chapter}}", 
             span.title {{ item.title }}, 
@@ -52,6 +52,12 @@ export default SubView.extend({
     computed: {
         itemsGroup (): {[key: string]: Array<book>} {
             return _.groupBy(this.items, 'type')
+        },
+        booksLength () {
+            return this.itemsGroup['Book'].length
+        },
+        chaptersLength () {
+            return this.itemsGroup['Book Chapter'].length
         }
     }
 })
@@ -59,7 +65,7 @@ export default SubView.extend({
 
 <style lang="stylus" scoped>
 li
-    margin: 5px
+    margin: 8px 0
 
 .title
     font-style: italic

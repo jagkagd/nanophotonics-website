@@ -34,7 +34,7 @@ export default SubView.extend({
 
 <style lang="stylus" scoped>
 li
-    margin: 5px 0
+    margin: 0.5em 0
 
 .course
     font-weight: bold
