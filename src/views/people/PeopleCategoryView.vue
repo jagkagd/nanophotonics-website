@@ -10,8 +10,9 @@ div
 
 import PeopleIntroItem from './components/PeopleIntroItem'
 import people from 'flow/typedef.js'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'PeopleCategoryView',
     data (): {items: Array<people>} {
         return {
@@ -19,7 +20,7 @@ export default {
         }
     },
     mounted () {
-        this.$store.commit('changeMenuName', this.menuName || '')
+        this.$store.commit('changeMenuName', this.menuName)
         this.getData('people?category=' + this.category).then(res => {
             this.items = res.data
         })
@@ -43,7 +44,7 @@ export default {
             this.$store.commit('changeMenuName', this.menuName)
         }
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

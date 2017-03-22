@@ -6,8 +6,9 @@ div
 
 <script>
 // @flow
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'CurrentGroupView'
-}
+})
 </script>

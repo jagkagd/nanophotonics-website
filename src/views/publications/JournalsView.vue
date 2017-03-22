@@ -27,8 +27,9 @@ div
 
 import journal from 'flow/typedef.js'
 import _ from 'lodash/fp'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'JournalsView',
     data (): {items: Array<journal>, pubYear: string} {
         return {
@@ -63,7 +64,7 @@ export default {
             return this.itemsSomeYear.length
         }
     }
-}
+})
 
 </script>
 

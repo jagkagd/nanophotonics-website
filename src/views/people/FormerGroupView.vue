@@ -18,8 +18,9 @@ div
 // @flow
 
 import people from 'flow/typedef.js'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'FormerGroup',
     data (): {items: Array<people>} {
         return {
@@ -31,7 +32,7 @@ export default {
             this.items = res.data
         })
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

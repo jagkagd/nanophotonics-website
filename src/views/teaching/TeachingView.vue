@@ -12,8 +12,9 @@ div
 // @flow
 
 import course from 'flow/typedef.js'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     data (): {items: Array<course>}{
         return {
             items: [],
@@ -28,7 +29,7 @@ export default {
             this.items = res.data
         })
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

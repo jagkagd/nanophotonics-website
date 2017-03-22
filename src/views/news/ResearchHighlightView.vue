@@ -8,11 +8,12 @@ div
 // @flow
 
 import SubNav from 'components/SubNav.vue'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'PeopleView',
     components: {
         SubNav
     }
-}
+})
 </script>

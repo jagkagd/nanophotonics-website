@@ -6,8 +6,9 @@ div
 </template>
 
 <script>
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'ContactView',
     data () {
         return {
@@ -19,6 +20,6 @@ export default {
             }
         }
     }
-}
+})
 </script>
 

@@ -22,7 +22,6 @@ export default {
             return this.routeInfo[0].name
         },
         menuName () {
-            console.log(this.$store.state.menuName, this.routeInfo[1].name)
             return this.$store.state.menuName || this.routeInfo[1].name
         }
     },

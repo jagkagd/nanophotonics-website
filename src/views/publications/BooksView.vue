@@ -23,8 +23,9 @@ div
 
 import book from 'flow/typedef.js'
 import _ from 'lodash'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'BooksView',
     data (): {items: Array<book>, etal: Object}{
         return {
@@ -53,7 +54,7 @@ export default {
             return _.groupBy(this.items, 'type')
         }
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>
