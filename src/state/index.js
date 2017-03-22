@@ -13,6 +13,7 @@ export default new Vuex.Store({
             state.lang = (state.lang === 'en') ? 'zh' : 'en'
         },
         changeMenuName (state, name) {
+            console.log(name)
             state.menuName = name
         }
     }
