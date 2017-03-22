@@ -10,8 +10,10 @@ div
 
 <script>
 // @flow
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
+    name: 'ResearchInterestsView',
     data () {
         return {
             content: [
@@ -48,7 +50,7 @@ export default {
             ]
         }
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

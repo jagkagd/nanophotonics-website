@@ -7,6 +7,14 @@ div
     img#overview(src="~assets/images/research/overview.jpg")
 </template>
 
+<script>
+import {SubView} from 'plugin/SubView'
+
+export default SubView.extend({
+    name: 'OverviewView'
+})
+</script>
+
 <style lang="stylus" scoped>
 
 #overview

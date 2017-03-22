@@ -22,8 +22,9 @@ div
 
 import conference from 'flow/typedef.js'
 import _ from 'lodash/fp'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'ConferencesView',
     data (): {items: Array<conference>, pubYear: string} {
         return {
@@ -63,7 +64,7 @@ export default {
             return value.split('-')[0]
         }
     }
-}
+})
 
 </script>
 

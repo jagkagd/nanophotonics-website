@@ -10,8 +10,9 @@ div
 
 <script>
 // @flow
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'CollaboratorsView',
     data (): Object {
         return {
@@ -23,7 +24,7 @@ export default {
             this.items = res.data
         })
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

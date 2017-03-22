@@ -11,8 +11,9 @@ div
 import NewsItem from './components/NewsItem'
 import news from 'flow/typedef.js'
 import axios from 'axios'
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'NewsView',
     data (): {items: Array<news>} {
         return {
@@ -27,5 +28,5 @@ export default {
     components: {
         NewsItem
     }
-}
+})
 </script>

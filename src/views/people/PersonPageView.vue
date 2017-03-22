@@ -14,8 +14,9 @@ div(v-if="showPage")
 
 <script>
 // @flow
+import {SubView} from 'plugin/SubView'
 
-export default {
+export default SubView.extend({
     name: 'PersonPage',
     data () {
         return {
@@ -65,7 +66,7 @@ export default {
             return formalDegrees[value]
         }
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>

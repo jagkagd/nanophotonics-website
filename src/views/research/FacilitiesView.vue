@@ -17,6 +17,14 @@ div
     img(src="~assets/images/research/mc3.jpg")
 </template>
 
+<script>
+import {SubView} from 'plugin/SubView'
+
+export default SubView.extend({
+    name: 'FacilitiesView'
+})
+</script>
+
 <style lang="stylus" scoped>
 
 img

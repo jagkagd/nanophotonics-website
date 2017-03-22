@@ -6,8 +6,10 @@ div
 
 <script>
 // @flow
+import {SubView} from 'plugin/SubView'
 
-module.exports = {
+export default SubView.extend({
+    name: 'FundingsView',
     data (): {items: Array<string>} {
         return {
             items: [
@@ -17,7 +19,7 @@ module.exports = {
             ]
         }
     }
-}
+})
 </script>
 
 <style lang="stylus" scoped>
