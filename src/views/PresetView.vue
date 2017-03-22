@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.presetView
     h1.viewTitle {{ title }}
     hr
     router-view#sub-view-content
@@ -33,6 +33,10 @@ export default {
 </script>
 
 <style lang="stylus">
+.presetView
+    box-shadow: 2px 0 2px #888
+    padding: 0 10px
+
 #sub-view-content
     font-size: 14px
     line-height: 150%

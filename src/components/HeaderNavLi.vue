@@ -41,7 +41,7 @@ export default {
 .mainMenu > ul
     position: absolute
     list-style: none
-    width: 10em
+    width: 13em
     padding: 0
     margin: 0
     padding-top: 5px

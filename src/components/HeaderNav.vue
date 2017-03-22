@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
 @import 'nib/gradients'
 @import '~static/basecolors.styl'
@@ -50,5 +50,10 @@ export default {
         height: 2.5em
     > li:not(:last-child)
         border-right: 1px solid base2
+    > li > a
+        font-weight: bold
+    > li > a:hover
+        background-color: base4
+        color: white
 
 </style>

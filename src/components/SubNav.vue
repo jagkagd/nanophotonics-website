@@ -28,10 +28,10 @@ export default {
 
 ul
     position: fixed
-    right: 5%
+    right: 4%
     top: 30%
 
-    width: 20%
+    width: 10%
 
     padding: 0
     margin: 0
@@ -40,11 +40,14 @@ ul
     li
         border: 1px solid base0
         color: base4
+        text-align: center
+        margin: 2px 0
         a
-            width: 100%
-            height: 100%
             padding: 5px
             display: table
+            border-radius: 3px
+            width: 100%
+            box-shadow: 2px 2px 4px #888
         a:link, :visited
             background-color: base3
         a:active, :hover

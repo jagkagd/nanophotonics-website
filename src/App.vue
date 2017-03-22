@@ -31,7 +31,7 @@ export default {
         margin: auto
 
 #content
-    padding: 10px 0
+    margin: 10px 0
 
 a
     text-decoration: none
