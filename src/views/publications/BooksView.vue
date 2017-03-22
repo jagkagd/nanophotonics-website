@@ -57,7 +57,7 @@ export default SubView.extend({
             return this.itemsGroup['Book'].length
         },
         chaptersLength () {
-            return this.itemsGroup['Book Chapter'].length
+            return this.itemsGroup['Book chapter'].length
         }
     }
 })

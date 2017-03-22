@@ -24,9 +24,10 @@ export default SubView.extend({
             showPage: false
         }
     },
-    beforeMount () {
+    mounted () {
         this.getData('people?id=' + this.$route.params.id).then(res => {
             this.item = res.data[0]
+            this.$store.commit('changeMenuName', this.menuName)
             this.showPage = true
         })
     },
@@ -39,7 +40,8 @@ export default SubView.extend({
             }
         },
         menuName () {
-            const cor = {
+            console.log(this.item.degree)
+            return {
                 'undergraduate':       'undergrad_students',
                 'master':              'grad_students',
                 'PhD':                 'grad_students',
@@ -47,13 +49,12 @@ export default SubView.extend({
                 'admin staff':         'admin_staff',
                 'professor':           'faculty',
                 'associate professor': 'faculty'
-            }
-            return cor[this.item.degree]
+            }[this.item.degree]
         }
     },
     filters: {
         trans2FormalDegree (value: string): string {
-            const formalDegrees = {
+            return {
                 'undergraduate':       'Undergraduate Student',
                 'master':              'Master',
                 'PhD':                 'PhD Student',
@@ -62,8 +63,7 @@ export default SubView.extend({
                 'professor':           'Professor',
                 'associate professor': 'Associate Professor',
                 'former':              'Former'
-            }
-            return formalDegrees[value]
+            }[value]
         }
     }
 })
