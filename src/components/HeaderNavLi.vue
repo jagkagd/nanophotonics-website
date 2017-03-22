@@ -46,6 +46,7 @@ export default {
     margin: 0
     padding-top: 5px
     z-index: 200
+    font-size: 13px
     > li
         background-color: base1
         box-sizing: border-box

@@ -40,7 +40,6 @@ export default SubView.extend({
             }
         },
         menuName () {
-            console.log(this.item.degree)
             return {
                 'undergraduate':       'undergrad_students',
                 'master':              'grad_students',

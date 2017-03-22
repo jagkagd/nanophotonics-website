@@ -9,8 +9,7 @@ div
         li(v-for='(item, index) in itemsSomeYear' v-bind:value="pubLength-index")
             span.authors {{ item.authors | formatAuthors(-1) }} 
             br
-            span.title
-                a(:href='item.href') "{{ item.title }},"
+            a.title(:href='item.href') "{{ item.title }},"
             span.type {{ item.type }}
             br
             span.journal {{ item.journal | formatJournal }} 

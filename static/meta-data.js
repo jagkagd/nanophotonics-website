@@ -9,7 +9,7 @@ function extractInfo(item){
     const lings = ['zh', 'en']
     item.ll = item.label.en // label
     item.title = item.title || {}
-    _.map(o => { item.title[o] = item.title[o] || item.label[o] })(lings)
+    _.map(o => { item.title[o] = item.title[o] === '' ? '' : item.title[o] || item.label[o] })(lings)
     item.li = item.li || {}
     _.map(o => { item.li[o] = item.li[o] || item.label[o] })(lings)
     item.c = {}

@@ -66,6 +66,7 @@ export default {
 
 .info
     margin-left: 15px
+    line-height: 2.5em
 
 .name
     color: blue

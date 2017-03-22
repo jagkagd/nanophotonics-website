@@ -36,6 +36,7 @@ ul
     padding: 0
     margin: 0
     list-style: none
+    font-size: 14px
     li
         border: 1px solid base0
         color: base4

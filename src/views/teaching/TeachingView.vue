@@ -3,7 +3,7 @@ div
     ol
         li(v-for="item in items")
             span.course {{ item.course[la] }} 
-            span.num (No.{{ item.number }}, {{ item.grad[la] }})
+            span.num ({{ courseLabel[la] }}{{ item.number }}, {{ item.grad[la] }})
             br
             span.lecturers {{ lecturersLabel[la] }}: {{ item.lecturers[la] }}
 </template>
@@ -21,6 +21,10 @@ export default SubView.extend({
             lecturersLabel: {
                 en: 'Lecturers',
                 zh: '教师'
+            },
+            courseLabel: {
+                en: 'Course No.',
+                zh: 'No.'
             }
         }
     },

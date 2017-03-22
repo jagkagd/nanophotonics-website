@@ -25,7 +25,6 @@ export default {
 @import '~static/grids-responsive-min.css'
 
 #app
-    font-size: 14px
     background-image: url(./assets/images/bkg-page.jpg)
     > div
         width: 70%

@@ -32,6 +32,7 @@ export default {
     list-style: none
     display: flex
     align-items: flex-start
+    font-size: 14px
     > li
         width: (100%/7)
         display: block

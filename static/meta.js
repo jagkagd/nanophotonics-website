@@ -114,6 +114,9 @@ const metaData = [
                 label: {
                     en: 'Person Page'
                 },
+                title: {
+                    en: ''
+                },
                 pattern: 'Person Page',
                 notOnMenu: true
             }

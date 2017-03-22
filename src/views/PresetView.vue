@@ -2,7 +2,7 @@
 div
     h1.viewTitle {{ title }}
     hr
-    router-view
+    router-view#sub-view-content
     sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="stylus">
-div
+#sub-view-content
     font-size: 14px
     line-height: 150%
 

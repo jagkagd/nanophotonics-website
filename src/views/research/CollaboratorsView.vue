@@ -31,4 +31,6 @@ export default SubView.extend({
 li
     color: blue
     line-height: 2em
+    a
+        color: blue
 </style>
