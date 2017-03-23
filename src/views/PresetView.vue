@@ -34,10 +34,12 @@ export default {
 </script>
 
 <style lang="stylus">
+
 #presetContent
     z-index: 10
     position: relative
     padding: 0 10px
+    min-height: 500px
     box-shadow: 10px 0 10px -10px black
 
 #sub-view-content

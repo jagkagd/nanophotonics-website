@@ -30,17 +30,17 @@ ul
     z-index: 0
     position: fixed
     right: 0
-    top: 30%
+    top: 0
 
     width: 15%
     height: 400px
     
     padding: 0
     margin: 0
+    margin-top: 180px
+    margin-bottom: 250px
     font-size: 14px
     list-style: none
-    li:first-child
-        margin-top: 4em
     li
         border: 1px solid base0
         color: base4
