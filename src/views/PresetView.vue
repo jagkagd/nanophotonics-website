@@ -1,9 +1,10 @@
 <template lang="pug">
-div.presetView
-    h1.viewTitle {{ title }}
-    hr
-    router-view#sub-view-content
-    sub-nav(:parentName="parentName" v-bind:menuName="menuName")
+div#presetView
+    div#presetContent
+        h1.viewTitle {{ title }}
+        hr
+        router-view#sub-view-content
+    sub-nav#subNav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 
 <script>
@@ -33,9 +34,11 @@ export default {
 </script>
 
 <style lang="stylus">
-.presetView
-    box-shadow: 2px 0 2px #888
+#presetContent
+    z-index: 10
+    position: relative
     padding: 0 10px
+    box-shadow: 10px 0 10px -10px black
 
 #sub-view-content
     font-size: 14px
@@ -44,4 +47,5 @@ export default {
 .viewTitle
     font-size: 18px
     font-weight: bold
+
 </style>

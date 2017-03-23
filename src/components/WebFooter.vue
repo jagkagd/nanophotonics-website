@@ -36,6 +36,7 @@ export default {
 
 #web-footer
     border-top: 1px solid base4
+    margin-top: 10px
 
 #footerinfo
     margin: auto
