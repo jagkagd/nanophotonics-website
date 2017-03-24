@@ -19,7 +19,7 @@ const metaData = [
         children: [
             {
                 label: {
-                    en: 'Research Highlight',
+                    en: 'Research Highlights',
                     zh: '科研进展'
                 }
             }, {

@@ -34,7 +34,7 @@ export default {
             return this.item.paper
         },
         imgPath () {
-            return require('assets/images/researchhighlights/researchhighlight-' + this.item.imgpath)
+            return require('images/researchhighlights/researchhighlight-' + this.item.imgpath)
         }
     },
     filters: {

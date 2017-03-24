@@ -30,7 +30,11 @@ $app->get('/news', function(Request $request, Response $response){
 
 $app->get('/researchHighlights', function(Request $request, Response $response){
     $params = $request->getQueryParams();
-    $res = $GLOBALS['db']->query("select * from researchhighlights limit " . $params['limit']);
+    if(array_key_exists('limit', $params)){
+        $res = $GLOBALS['db']->query("select * from researchhighlights limit " . $params['limit']);
+    }else{
+        $res = $GLOBALS['db']->query("select * from researchhighlights");
+    }
     $res = $res->fetchAll(PDO::FETCH_ASSOC);
     $arrLength = count($res);
     for($x=0; $x<$arrLength; $x++){
