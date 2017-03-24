@@ -1,31 +1,30 @@
 <template lang="pug">
 div
     ul
-        li(v-for="item in items" v-bind:id="'news-'+item.id")
-            news-item(:item="item")
+        li(v-for="item in items" v-bind:id="'researchhighlights-'+item.id")
+            research-highlights-item(:item="item")
 </template>
 
 <script>
 // @flow
 
-import NewsItem from './components/NewsItem'
-import news from 'flow/typedef.js'
+import ResearchHighlightsItem from './components/ResearchHighlightsItem.vue'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
     name: 'NewsView',
-    data (): {items: Array<news>} {
+    data () {
         return {
             items: []
         }
     },
     mounted () {
-        this.getData('news').then(res => {
+        this.getData('researchHighlights').then(res => {
             this.items = res.data
         })
     },
     components: {
-        NewsItem
+        ResearchHighlightsItem
     }
 })
 </script>

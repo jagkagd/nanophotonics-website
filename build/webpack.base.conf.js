@@ -30,6 +30,7 @@ module.exports = {
             'routes': resolve('src/routes'),
             'flow': resolve('src/flow'),
             'assets': resolve('src/assets'),
+            'images': resolve('src/assets/images'),
             'components': resolve('src/components'),
             'static': resolve('static')
         }
