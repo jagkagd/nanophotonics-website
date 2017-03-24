@@ -30,7 +30,7 @@ export default {
             }
         })
         Vue.directive('md', (el, binding) => {
-            el.innerHTML = marked(binding.value, {renderer})
+            el.innerHTML = marked(binding.value || '', {renderer})
         })
     }
 }

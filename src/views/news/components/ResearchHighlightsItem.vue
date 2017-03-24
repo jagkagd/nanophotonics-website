@@ -2,7 +2,7 @@
 div(:class="item.style")
     h3.title {{ item.title[la] }}
     img(:src="imgPath")
-    p.abstract {{ item.abstract }}
+    p.abstract(v-md="item.abstract")
     p
         | ——
         span.authors {{ paper.authors | formatAuthors(1) }} et al.
@@ -19,8 +19,6 @@ div(:class="item.style")
 
 <script>
 // @flow
-
-// require.context('assets/images/researchhighlights/', true, /\.jpg/)
 
 export default {
     name: 'ResearchHighlightsItem',
@@ -53,6 +51,7 @@ img
     font-size: 13px
     :hover
         text-decoration: underline
+
 .journal
     font-style: italic
 
