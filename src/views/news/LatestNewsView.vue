@@ -12,6 +12,8 @@ import NewsItem from './components/NewsItem'
 import news from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
 
+require.context('assets/images/news/', true, /\.jpg/)
+
 export default SubView.extend({
     name: 'NewsView',
     data (): {items: Array<news>} {

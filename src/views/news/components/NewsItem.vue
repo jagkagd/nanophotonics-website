@@ -6,8 +6,6 @@ div(:class="item.style")
 <script>
 // @flow
 
-require.context('assets/images/news/', true, /\.jpg/)
-
 export default {
     name: 'NewsItem',
     data () {
