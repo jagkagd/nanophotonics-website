@@ -18,16 +18,33 @@ export default {
     },
     computed: {
         modifiedContent (): string {
-            return'<span class="date">' + this.item.date + '</span>, ' + this.item.content
+            return'<span class="news-date">' + this.item.date + '</span>, ' + this.item.content
         }
     }
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
-.date
-    display: inline
+.news-date
+    color: blue
+
+.news-image-caption
+    text-align: center
+    img
+        max-width: 600px
+    p
+        font-size: 12px
+        color: blue
+
+.news-imgs
+    text-align: center
+    > .news-image-caption
+        display: inline-block
+
+.news-images-right
+    float: right
+    padding: 0 10px
 
 </style>
 

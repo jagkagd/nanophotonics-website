@@ -5,12 +5,12 @@ import {formatJournal, formatAuthors, formatClass} from './filters'
 import {la, routeInfo} from './computed'
 
  marked.setOptions({
-     breaks: true
+     breaks: false
  })
 
 const renderer = new marked.Renderer()
 renderer.image = function(href, title, text) {
-    return '<div class="image-caption"><img src="/static/img/' + href + '" />' + '<p>' + (_.isNil(title) ? '' : title) + '</p></div>'
+    return '<div class="news-image-caption"><img src="/static/img/' + href + '" />' + '<p>' + (_.isNil(title) ? '' : title) + '</p></div>'
 }
 
 export default {
