@@ -2,6 +2,7 @@
 
 import _ from 'lodash/fp'
 import abbrs from './journalsAbbr.js'
+import moment from 'moment'
 
 export const formatJournal = (value: string): string => (value in abbrs) ? abbrs[value] : value
 
@@ -25,4 +26,24 @@ export function formatAuthors (value: string, num: number): string {
 }
 
 export const formatClass = _.kebabCase
+
+export function formatDate (value) {
+    if(!_.isNil(value.date)){
+        return value.date
+    }
+    const start = moment(value.date_start)
+    if(_.isNil(value.date_end)){
+        return start.format('MMM. D, YYYY')
+    }
+    const end = moment(value.date_end)
+    if(start.year() === end.year()){
+        if(start.month() === end.month()){
+            return start.format('MMM. D') + '-' + end.format('D, YYYY')
+        }else{
+            return start.format('MMM. D') + '-' + end.format('MMM. D, YYYY')
+        }
+    }else{
+        return start.format('MMM. D, YYYY') + '-' + end.format('MMM. D, YYYY')
+    }
+}
 

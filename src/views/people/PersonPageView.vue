@@ -8,7 +8,9 @@ div(v-if="showPage")
         p Department of Optical Engineering
         p Zhejiang University
         p Hangzhou 310027, China
-        p Tel: {{ item.tel }},  Email: {{ item.email }}
+        p
+            span(v-if="!item.tel") Tel: {{ item.tel }},
+            span Email: {{ item.email }}
     div.detailInfo(v-md="item.cv")
 </template>
 

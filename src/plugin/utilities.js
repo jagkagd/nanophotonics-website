@@ -1,7 +1,7 @@
 import marked from 'marked'
 import _ from 'lodash/fp'
 import {getData} from './methods'
-import {formatJournal, formatAuthors, formatClass} from './filters'
+import {formatJournal, formatAuthors, formatClass, formatDate} from './filters'
 import {la, routeInfo} from './computed'
 
  marked.setOptions({
@@ -26,7 +26,8 @@ export default {
             filters: {
                 formatJournal,
                 formatAuthors,
-                formatClass
+                formatClass,
+                formatDate
             }
         })
         Vue.directive('md', (el, binding) => {

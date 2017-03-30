@@ -11,7 +11,7 @@ div
             span.title "{{ item.title }}", 
             span.conference {{ item.conference }}, 
             span.pubinfo(v-if='item.pubinfo') {{ item.pubinfo }}, 
-            span.date {{ item.date_start | formatDate }}, 
+            span.date {{ item | formatDate }}, 
             span.location {{ item.location }}. 
             span.type(:class="item.type | formatClass") {{ item.type }} 
             span.award(:class="item.award | formatClass") {{ item.award }}
@@ -57,11 +57,6 @@ export default SubView.extend({
         },
         pubLength (): number {
             return this.itemsSomeYear.length
-        }
-    },
-    filters: {
-        formatDate (value) {
-            return value.split('-')[0]
         }
     }
 })
