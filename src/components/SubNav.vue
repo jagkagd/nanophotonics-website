@@ -1,5 +1,5 @@
 <template lang="pug">
-ul
+ul(@scroll="changeUlClass" v-bind:class="ulClass")
     li(v-for="item in subMenu")
         router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.k.name === menuName}") {{ item.li[la] }}
 </template>
@@ -8,9 +8,15 @@ ul
 // @flow
 
 import {keyMenuData} from 'static/meta-data'
+import _ from 'lodash'
 
 export default {
     name: 'SubNav',
+    data () {
+        return {
+            ulClass: 'fixTop'
+        }
+    },
     props: {
         parentName: String,
         menuName: String
@@ -19,6 +25,23 @@ export default {
         subMenu () {
             return this.parentName ? (keyMenuData[this.parentName].subMenu || []) : []
         }
+    },
+    methods: {
+        changeUlClass (event) {
+            const topSpace = 400
+            const bottomSpace = 400
+            if(!_.isNil(this.$el)){
+                console.log('ulClass')
+                const rect = this.$el.getBoundingClientRect()
+                if(rect.top < topSpace){
+                    this.ulClass = 'fixTop'
+                }else if(rect.bottom < bottomSpace){
+                    this.ulClass = 'fixBottom'
+                }else{
+                    this.ulClass = 'fixMiddle'
+                }
+            }
+        }
     }
 }
 </script>
@@ -26,19 +49,29 @@ export default {
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
 
-ul
-    z-index: 0
+.fixMiddle
     position: fixed
     right: 0
-    top: 0
+    top: 100px
+
+.fixTop
+    position: absolute
+    left: 80%
+    top: 200px
+
+.fixBottom
+    position: absolute
+    left: 80%
+    bottom: 100px
+
+ul
+    z-index: 0
 
     width: 15%
     height: 400px
     
     padding: 0
     margin: 0
-    margin-top: 180px
-    margin-bottom: 250px
     font-size: 14px
     list-style: none
     li
