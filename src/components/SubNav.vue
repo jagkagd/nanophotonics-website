@@ -1,5 +1,5 @@
 <template lang="pug">
-ul(@scroll="changeUlClass" v-bind:class="")
+ul(:class="ulClass")
     li(v-for="item in subMenu")
         router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.k.name === menuName}") {{ item.li[la] }}
 </template>
@@ -26,18 +26,24 @@ export default {
             return this.parentName ? (keyMenuData[this.parentName].subMenu || []) : []
         }
     },
+    mounted () {
+        window.addEventListener('scroll', this.changeUlClass)
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.changeUlClass)
+    },
     methods: {
-        changeUlClass (event) {
-            const topSpace = 400
-            const bottomSpace = 400
+        changeUlClass () {
             if(!_.isNil(this.$el)){
-                console.log('ulClass')
-                const rect = this.$el.getBoundingClientRect()
-                if(rect.top < topSpace){
+                const child = this.$el.getBoundingClientRect()
+                const childHeight = this.$el.offsetHeight
+                const parent = document.getElementById('sub-nav-container').getBoundingClientRect()
+                const parentHeight = document.getElementById('sub-nav-container').offsetHeight
+                if(parent.top >= 50){
                     this.ulClass = 'fixTop'
-                }else if(rect.bottom < bottomSpace){
+                }else if(childHeight + child.top > parentHeight + parent.top){
                     this.ulClass = 'fixBottom'
-                }else{
+                }else if(child.top + parent.top > 50){
                     this.ulClass = 'fixMiddle'
                 }
             }
@@ -51,25 +57,25 @@ export default {
 
 .fixMiddle
     position: fixed
-    right: 0
-    top: 100px
+    left: 85%
+    top: 70px
+    width: 15%
 
 .fixTop
     position: absolute
-    left: 80%
-    top: 200px
+    left: 0
+    top: 0
 
 .fixBottom
     position: absolute
-    left: 80%
-    bottom: 100px
+    left: 0
+    bottom: 0
 
 ul
-    position: relative
+    width: 100%
     z-index: 0
-    height: 400px
     padding: 0
-    margin: 20px 0
+    margin: 0
     font-size: 14px
     list-style: none
     li
@@ -88,7 +94,7 @@ ul
             transition: all .5s
         a:hover
             background-color: base0
-            padding-left: 23%
+            padding-left: 30%
 
 .currentMenu
     background-color: base0

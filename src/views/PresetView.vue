@@ -57,8 +57,8 @@ export default {
     left: 100%
     top: 0
     height: 100%
-    width: 20%
+    width: (15/70*100)%
     margin: 0
-    padding: 0
+    padding: 20px 0
 
 </style>
