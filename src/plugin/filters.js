@@ -18,7 +18,7 @@ export function formatAuthors (value: string, num: number): string {
             return lastNames + firstName
         })
     )(value)
-    if(num === 1){
+    if(num === 1 || authors.length === 1){
         return authors[0]
     }else{
         return flag ? authors.slice(0, num).join(', ') + ' and ' + authors[authors.length - 1] : authors.join(', ')

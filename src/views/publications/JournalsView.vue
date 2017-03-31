@@ -4,6 +4,7 @@ div
         label(for='yearSelect') {{ yearLabel[la] }}: 
         select#yearSelect(v-model='pubYear')
             option(value='all') {{ allYearLabel[la] }}
+            option(value='review') {{ reviewLabel[la] }}
             option(v-for='year in yearRange' v-bind:value='year') {{ year }}
     ol
         li(v-for='(item, index) in itemsSomeYear' v-bind:value="pubLength-index")
@@ -41,6 +42,10 @@ export default SubView.extend({
             allYearLabel: {
                 en: '--all--',
                 zh: '全部年份'
+            },
+            reviewLabel: {
+                en: '--Review--',
+                zh: '综述'
             }
         }
     },
@@ -57,7 +62,13 @@ export default SubView.extend({
             return _.groupBy('year')(this.items)
         },
         itemsSomeYear (): Array<journal> {
-            return (this.pubYear === 'all') ? this.items : this.itemsGroupByYear[this.pubYear]
+            if(this.pubYear === 'all'){
+                return this.items
+            }else if(this.pubYear === 'review'){
+                return _.filter(o => _.includes('review')(_.lowerCase(o.type)))(this.items)
+            }else{
+                return this.itemsGroupByYear[this.pubYear]
+            }
         },
         pubLength () :number {
             return this.itemsSomeYear.length
