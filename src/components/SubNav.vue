@@ -94,10 +94,12 @@ ul
             transition: all .5s
         a:hover
             background-color: base0
-            padding-left: 30%
+            padding-left: 15%
+            padding-right: 15%
 
 .currentMenu
     background-color: base0
-    padding-left: 30%
+    padding-left: 15%
+    padding-right: 15%
 
 </style>
