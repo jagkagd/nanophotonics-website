@@ -1,8 +1,8 @@
 <template lang="pug">
-div
+#promo
     router-link(to="/people")
-        img(src="~assets/images/index/group.jpg")
-    p(v-md="intro[la]")
+        img.promo-img(src="~assets/images/index/group.jpg")
+    .promo-text(v-md="intro[la]" v-bind:class="'promo-text-'+la")
 </template>
 
 <script>
@@ -21,22 +21,28 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-div
+<style lang="stylus">
+#promo
     height: 386px
 
-img
+.promo-img
     max-width: 90%
     max-height: auto
     clear: both
     display: block
     margin: auto
 
-p
-    text-align: justify
+.promo-text
+    p
+        text-align: justify
+        margin: 0 3px
+    a
+        text-decoration: none
+        color: blue
+        font-style: italic
 
-a
-    text-decoration: none
-    color: blue
-    font-sytle: italic
+.promo-text-zh > p
+    font-size: 14px
+    line-height: 2em
+    margin: 20px 0
 </style>

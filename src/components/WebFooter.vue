@@ -1,10 +1,9 @@
 <template lang="pug">
-div#web-footer
+#web-footer
     footer-nav
-    div#footerinfo
+    #footerinfo
         img#footerlogo(src="~assets/images/foot-logo.png" height=55)
-        div#footerwords
-            p(v-md="info[la]")
+        #footerwords(v-md="info")
 </template>
 
 <script>
@@ -16,12 +15,9 @@ export default {
     name: 'WebFooter',
     data () {
         return {
-            info: {
-                en: `State Key Laboratory of Modern Optical Instrumentation, College of Optical Science and Engineering 
+            info: `State Key Laboratory of Modern Optical Instrumentation, College of Optical Science and Engineering 
                     Zhejiang University, Hangzhou 310027, China
-                    ©2013 Nanophotonics Research Group.`,
-                zh: ''
-            }
+                    ©2013 Nanophotonics Research Group.`
         }
     },
     components: {
@@ -30,7 +26,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 @import '~static/basecolors.styl'
 @import 'nib/clearfix'
 
@@ -40,7 +36,7 @@ export default {
 
 #footerinfo
     margin: auto
-    padding: 0 3%
+    padding: 0 4%
     clearfix()
 
 #footerlogo
@@ -51,8 +47,8 @@ export default {
 #footerwords
     float: right
     text-align: center
-    font-size: 13px
-    p
+    > p
+        font-size: 13px
         margin: 0
         padding: 0
 
