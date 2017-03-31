@@ -9,7 +9,7 @@ div(v-if="showPage")
         p Zhejiang University
         p Hangzhou 310027, China
         p
-            span(v-if="!item.tel") Tel: {{ item.tel }},
+            span(v-if="item.tel") Tel: {{ item.tel }},
             span Email: {{ item.email }}
     div.detailInfo(v-md="item.cv")
 </template>

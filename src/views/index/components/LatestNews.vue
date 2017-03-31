@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    div.subNews(v-if="hasEvent")
+    div.subNews(v-if="showEvent")
         h1 {{ eventsTitle[eventState][la] }}
         ul
             li(v-for="item in events")
@@ -9,7 +9,7 @@ div
         h1 {{ latestNewsTitle[la] }}
         ul
             li(v-for="item in latestNewsList")
-                router-link(:to="'/news#news-'+item.id") {{ item | formatDate }} - {{ item.short_content }}
+                router-link(:to="'/news/latest_news#news-'+item.id") {{ item | formatDate }} - {{ item.short_content }}
 </template>
 
 <script>
@@ -17,6 +17,7 @@ div
 
 import {event, news} from 'flow/typedef.js'
 import moment from 'moment'
+import _ from 'lodash/fp'
 
 export default {
     name: 'LatestNews',
@@ -46,22 +47,27 @@ export default {
     },
     mounted () {
         this.getData('events?limit=1').then(res => {
-            this.events = res.data
+            this.events = _.reverse(_.sortBy('date_start')(res.data))
         })
         this.getData('news?limit=3').then(res => {
-            this.latestNewsList = res.data
+            this.latestNewsList = _.reverse(_.sortBy('date_start')(res.data))
         })
     },
     computed: {
-        hasEvent (): boolean {
-            return this.events.length > 0
-        },
         showEvent (): boolean {
-            return moment().subtract(moment(this.events[0].endDate)).days < 30
+            if(_.isEmpty(this.events)){
+                return false
+            }
+            const endDate = moment(this.events[0].date_end)
+            const today = moment()
+            if(today.diff(endDate, 'days') > 30){
+                return false
+            }
+            return true
         },
         eventState (): string {
-            const startDate = moment(this.events[0].startDate)
-            const endDate = moment(this.events[0].endDate)
+            const startDate = moment(this.events[0].date_start)
+            const endDate = moment(this.events[0].date_end)
             const today = moment()
             if(today.isBefore(startDate)){
                 return 'Upcoming'

@@ -13,7 +13,7 @@ function t2i(obj) {
             if(_.isNil(res[name])){
                 res[name] = {}
             }
-            res[name][lang] = res[o]
+            res[name][lang] = res[o] || obj[name + '_en']
         }
     })(_.keys(obj))
     res = _.mapValues(t2i)(res)

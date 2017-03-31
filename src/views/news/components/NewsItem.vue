@@ -1,5 +1,5 @@
 <template lang="pug">
-div(:class="item.style" v-md="modifiedContent")
+div(:class="item.style" v-md.nobreak.images="modifiedContent")
 </template>
 
 <script>

@@ -4,15 +4,6 @@ import {getData} from './methods'
 import {formatJournal, formatAuthors, formatClass, formatDate} from './filters'
 import {la, routeInfo} from './computed'
 
- marked.setOptions({
-     breaks: false
- })
-
-const renderer = new marked.Renderer()
-renderer.image = function(href, title, text) {
-    return '<div class="news-image-caption"><img src="/static/img/' + href + '" />' + '<p>' + (_.isNil(title) ? '' : title) + '</p></div>'
-}
-
 export default {
     install (Vue, options) {
         Vue.mixin({
@@ -31,6 +22,16 @@ export default {
             }
         })
         Vue.directive('md', (el, binding) => {
+            const modifiers = binding.modifiers
+            const renderer = new marked.Renderer()
+            marked.setOptions({
+                breaks: !modifiers.nobreak
+            })
+            if(modifiers.images){
+                renderer.image = function(href, title, text) {
+                    return '<div class="news-image-caption"><img src="/static/img/' + href + '" />' + (_.isNil(title) ? '' : '<p>' + title + '</p>') + '</div>'
+                }
+            }
             el.innerHTML = marked(binding.value || '', {renderer})
         })
     }
