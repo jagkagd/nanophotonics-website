@@ -1,10 +1,11 @@
 <template lang="pug">
-div#presetView
-    div#presetContent
+div
+    div#preset-content
         h1.viewTitle {{ title }}
         hr
         router-view#sub-view-content
-    sub-nav#subNav(:parentName="parentName" v-bind:menuName="menuName")
+    div#sub-nav-container
+        sub-nav#sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 
 <script>
@@ -35,9 +36,9 @@ export default {
 
 <style lang="stylus">
 
-#presetContent
-    z-index: 10
+#preset-content
     position: relative
+    z-index: 10
     padding: 0 10px
     min-height: 500px
     box-shadow: 10px 0 10px -10px black
@@ -49,5 +50,15 @@ export default {
 .viewTitle
     font-size: 18px
     font-weight: bold
+
+#sub-nav-container
+    position: absolute
+    z-index: 0
+    left: 100%
+    top: 0
+    height: 100%
+    width: 20%
+    margin: 0
+    padding: 0
 
 </style>

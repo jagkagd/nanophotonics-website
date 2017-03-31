@@ -1,5 +1,5 @@
 <template lang="pug">
-ul(@scroll="changeUlClass" v-bind:class="ulClass")
+ul(@scroll="changeUlClass" v-bind:class="")
     li(v-for="item in subMenu")
         router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.k.name === menuName}") {{ item.li[la] }}
 </template>
@@ -65,13 +65,11 @@ export default {
     bottom: 100px
 
 ul
+    position: relative
     z-index: 0
-
-    width: 15%
     height: 400px
-    
     padding: 0
-    margin: 0
+    margin: 20px 0
     font-size: 14px
     list-style: none
     li
@@ -90,10 +88,10 @@ ul
             transition: all .5s
         a:hover
             background-color: base0
-            width: 75%
+            padding-left: 23%
 
 .currentMenu
     background-color: base0
-    width: 75%
+    padding-left: 30%
 
 </style>

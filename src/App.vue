@@ -34,7 +34,7 @@ div
         margin: auto
 
 #content
-    margin: 10px 0
+    position: relative
 
 a
     text-decoration: none
