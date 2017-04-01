@@ -8,8 +8,7 @@ div
             leave-active-class="animated slideOutDown"
         )
             div.bottom(v-show="active")
-                p
-                    span.title {{ item.title[la] }}
+                p.title {{ item.title[la] }}
                 p
                     | -- 
                     span.authors {{ paper.authors | formatAuthors(1) }} et al.
