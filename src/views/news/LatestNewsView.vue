@@ -11,7 +11,6 @@ div
 import NewsItem from './components/NewsItem'
 import news from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
-import _ from 'lodash/fp'
 
 require.context('assets/images/news/', true, /\.jpg/)
 
@@ -24,7 +23,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('news').then(res => {
-            this.items = _.flow(_.sortBy('date_start'), _.reverse)(res.data)
+            this.items = this.sortByDate(res.data)
         })
     },
     components: {

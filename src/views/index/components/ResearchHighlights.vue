@@ -25,7 +25,7 @@ export default {
     },
     mounted () {
         this.getData('researchHighlights?limit=6').then(res => {
-            this.items = res.data
+            this.items = this.sortByDate(res.data)
         })
     },
     components: {

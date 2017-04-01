@@ -1,10 +1,9 @@
 <template lang="pug">
 div(v-if="showPage")
-    div.thumb
-        img(:src="imgPath")
+    img.thumb(:src="imgPath")
     div.basicInfo
         p.name {{ item.name[la] }}
-        p {{ item.degree | trans2FormalDegree }}
+        p {{ item.degree | trans2FormalDegree }} {{ item.degree_extra }}
         p Department of Optical Engineering
         p Zhejiang University
         p Hangzhou 310027, China

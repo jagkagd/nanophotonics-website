@@ -2,12 +2,11 @@
 div.item
     h2.title {{ item.title[la] }}
     div.pic
-        router-link(:to="'/news#rh-'+item.id")
+        router-link(:to="'/news/research_highlights#rh-'+item.id")
             img(:src="imgPath")
     div.content {{ item.abstract | formatContent(40, 2.2) }}
         |  
-        span
-            router-link.read-more(:to="'/news#rh-'+item.id") Read more>>
+        router-link.read-more(:to="'/news/research_highlights#rh-'+item.id") Read more>>
     hr
     span.authors {{ paper.authors | formatAuthors(1) }} et al.
     | ,  
@@ -72,20 +71,16 @@ img
         font-weight: bold
         font-family: Arial
         padding-top: 0
-    .content
-        font-size: 13px
     .read-more
         color: blue
-        :hover
-            text-decoration: underline
+    .read-more:hover
+        text-decoration: underline
     .author
         color: #666666
-        font-size: 13px
     .cite
         color: blue
-        font-size: 13px
-        :hover
-            text-decoration: underline
+    .cite:hover
+        text-decoration: underline
     .journal
         font-style: italic
     .pic

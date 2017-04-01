@@ -1,8 +1,8 @@
 <template lang="pug">
-div.peopleItem
-    router-link(:to="{name: 'person_page', params: {id: item.id}}")
+div.peopleItem.pure-g
+    router-link.pure-u-1-3(:to="{name: 'person_page', params: {id: item.id}}")
         img(:src="imgPath")
-    router-link(:to="{name: 'person_page', params: {id: item.id}}")
+    router-link.pure-u-2-3(:to="{name: 'person_page', params: {id: item.id}}")
         div.info
             p.name {{ item.name | formatProfileName(item.degree, la) }}
             p.email Email: {{ item.email }} 
@@ -59,10 +59,12 @@ export default {
     padding: 5px
     border-radius: 5px
     border: 1px solid base3
-    display: flex
     img
         width: 110px
         height: 110px
+    > a
+        padding: 0
+        margin: 0
 
 .info
     margin-left: 15px

@@ -4,7 +4,7 @@ div(:class="item.style")
     img(:src="imgPath")
     p.abstract(v-md="item.abstract")
     p
-        | ——
+        | -- 
         span.authors {{ paper.authors | formatAuthors(1) }} et al.
         | ,  
         a.cite(:href="paper.href")
@@ -14,7 +14,7 @@ div(:class="item.style")
             span.pages {{ paper.pages }} 
             span.year ({{ paper.year }}).
         span.award {{ item.award }}
-    p(v-md="item.attached")
+    div.research-attached(v-md="item.attached")
 </template>
 
 <script>
@@ -36,6 +36,11 @@ export default {
 }
 </script>
 
+<style lang="stylus">
+.research-attached a
+    color: blue
+</style>
+
 <style lang="stylus" scoped>
 
 .title
@@ -49,8 +54,8 @@ img
 .cite
     color: blue
     font-size: 13px
-    :hover
-        text-decoration: underline
+.cite:hover
+    text-decoration: underline
 
 .journal
     font-style: italic

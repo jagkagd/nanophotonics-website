@@ -1,6 +1,6 @@
 import marked from 'marked'
 import _ from 'lodash/fp'
-import {getData} from './methods'
+import {getData, sortByDate} from './methods'
 import {formatJournal, formatAuthors, formatClass, formatDate} from './filters'
 import {la, routeInfo} from './computed'
 
@@ -12,7 +12,8 @@ export default {
                 routeInfo
             },
             methods: {
-                getData
+                getData,
+                sortByDate
             },
             filters: {
                 formatJournal,

@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     ul
-        li(v-for="item in items" v-bind:id="'researchhighlights-'+item.id")
+        li(v-for="item in items" v-bind:id="'rh-'+item.id")
             research-highlights-item(:item="item")
 </template>
 
@@ -20,7 +20,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('researchHighlights').then(res => {
-            this.items = res.data
+            this.items = this.sortByDate(res.data)
         })
     },
     components: {

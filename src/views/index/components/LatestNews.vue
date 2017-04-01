@@ -47,10 +47,10 @@ export default {
     },
     mounted () {
         this.getData('events?limit=1').then(res => {
-            this.events = _.reverse(_.sortBy('date_start')(res.data))
+            this.events = this.sortByDate(res.data)
         })
         this.getData('news?limit=3').then(res => {
-            this.latestNewsList = _.reverse(_.sortBy('date_start')(res.data))
+            this.latestNewsList = this.sortByDate(res.data)
         })
     },
     computed: {

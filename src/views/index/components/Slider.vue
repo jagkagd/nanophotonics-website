@@ -35,7 +35,7 @@ export default {
             _.map(res.data, (o) => {
                 o.animActive = false
             })
-            this.items = res.data
+            this.items = this.sortByDate(res.data)
         })
     },
     methods: {
