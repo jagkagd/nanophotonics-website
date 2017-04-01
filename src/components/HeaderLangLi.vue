@@ -1,5 +1,5 @@
 <template lang="pug">
-li.mainMenu(@click="$store.commit('switchLang')")
+li(@click="$store.commit('switchLang')")
     a {{ lang[la] }}
 </template>
 
@@ -17,12 +17,3 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-
-.mainMenu > a
-    width: 100%
-    height: 100%
-    display: inline-table
-    line-height: 2.5em
-    
-</style>

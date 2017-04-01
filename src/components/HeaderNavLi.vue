@@ -1,5 +1,5 @@
 <template lang="pug">
-li.mainMenu(@mouseenter="openSubMenu" @mouseleave="closeSubMenu")
+li(@mouseenter="openSubMenu" @mouseleave="closeSubMenu")
     router-link(:to='menu.routerTo') {{ menu.li[la] }}
     ul(v-if="menu.children" v-show="showSubMenu")
         li(v-for="sMenu in menu.children")
@@ -29,16 +29,10 @@ export default {
 
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @import '~static/basecolors.styl'
 
-.mainMenu a
-    width: 100%
-    height: 100%
-    display: inline-table
-    line-height: 2.5em
-
-.mainMenu > ul
+li > ul
     position: absolute
     list-style: none
     width: 13em
@@ -48,9 +42,16 @@ export default {
     z-index: 200
     font-size: 13px
     > li
-        background-color: base1
-        box-sizing: border-box
-        border: 1px solid white
-        padding: 5px
+        background-color: base2
+        border-bottom: 1px solid base1
+        > a
+            width: 100%
+            height: 100%
+            display: inline-table
+            font-weight: normal
+            line-height: 3em
+        > a:hover
+            background-color: base4
+            color: white
 
 </style>

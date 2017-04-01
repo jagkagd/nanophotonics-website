@@ -51,6 +51,10 @@ export default {
     > li:not(:last-child)
         border-right: 1px solid base2
     > li > a
+        width: 100%
+        height: 100%
+        display: inline-table
+        line-height: 2.5em
         font-weight: bold
     > li > a:hover
         background-color: base4
