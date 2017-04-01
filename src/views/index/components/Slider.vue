@@ -1,7 +1,7 @@
 <template lang="pug">
-swiper#swiper(:options="swiperOption" ref="swiperInstant" v-on:trans="hhh")
+swiper#swiper(:options="swiperOption" ref="mySwiper")
     swiper-slide(v-for="(item, index) in items", v-bind:key="index")
-        slider-item.slider-item(:item="item")
+        slider-item.slider-item(:item="item" v-bind:active="$store.state.activeSlide === index")
     .swiper-pagination(slot="pagination")
 </template>
 
@@ -10,8 +10,7 @@ swiper#swiper(:options="swiperOption" ref="swiperInstant" v-on:trans="hhh")
 
 import reserachHighlight from 'flow/typedef.js'
 import SliderItem from './SliderItem'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
-import _ from 'lodash'
+import {swiper, swiperSlide} from 'vue-awesome-swiper'
 
 export default {
     name: 'Slider',
@@ -19,33 +18,26 @@ export default {
         return {
             items: [],
             swiperOption: {
-                autoplay: 5000,
+                autoplay: 3000,
                 loop: true,
                 effect: 'fade',
                 setWrapperSize :true,
                 autoHeight: true,
                 pagination: '.swiper-pagination',
                 paginationClickable: true,
-                onTransitionStart (swiper) {
-                    // this.dispatchEvent('trans', swiper)
-                    // this.items[swiper.activeIndex].animActive = true
-                    // this.items[swiper.previousIndex].animActive = false
+                onTransitionStart: swiper => {
+                    this.$store.commit('changeActiveSlide', -1)
+                },
+                onTransitionEnd: swiper => {
+                    this.$store.commit('changeActiveSlide', swiper.activeIndex - 1)
                 }
             }
         }
     },
     mounted () {
         this.getData('slides?limit=6').then(res => {
-            _.map(res.data, (o) => {
-                o.animActive = false
-            })
             this.items = this.sortByDate(res.data)
         })
-    },
-    methods: {
-        hhh (swiper) {
-            console.log(swiper.activeIndex)
-        }
     },
     components: {
         swiper,

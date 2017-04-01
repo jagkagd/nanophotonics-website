@@ -42,7 +42,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('conferences').then(res => {
-            this.items = _.flow(_.sortBy('date_start'), _.reverse)(res.data)
+            this.items = this.sortByDate(res.data)
         })
     },
     computed: {

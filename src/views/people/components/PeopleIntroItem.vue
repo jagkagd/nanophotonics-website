@@ -1,9 +1,9 @@
 <template lang="pug">
-div.peopleItem.pure-g
+.peopleItem.pure-g
     router-link.pure-u-1-3(:to="{name: 'person_page', params: {id: item.id}}")
         img(:src="imgPath")
     router-link.pure-u-2-3(:to="{name: 'person_page', params: {id: item.id}}")
-        div.info
+        .info
             p.name {{ item.name | formatProfileName(item.degree, la) }}
             p.email Email: {{ item.email }} 
 </template>

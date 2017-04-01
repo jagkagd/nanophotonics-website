@@ -1,11 +1,10 @@
 <template lang="pug">
-div
-    ol
-        li(v-for="item in items")
-            span.course {{ item.course[la] }} 
-            span.num ({{ courseLabel[la] }}{{ item.number }}, {{ item.grad[la] }})
-            br
-            span.lecturers {{ lecturersLabel[la] }}: {{ item.lecturers[la] }}
+ol
+    li(v-for="item in items")
+        span.course {{ item.course[la] }} 
+        span.num ({{ courseLabel[la] }}{{ item.number }}, {{ item.grad[la] }})
+        br
+        span.lecturers {{ lecturersLabel[la] }}: {{ item.lecturers[la] }}
 </template>
 
 <script>

@@ -14,7 +14,7 @@ div(:class="item.style")
             span.pages {{ paper.pages }} 
             span.year ({{ paper.year }}).
         span.award {{ item.award }}
-    div.research-attached(v-md="item.attached")
+    .research-attached(v-md="item.attached")
 </template>
 
 <script>

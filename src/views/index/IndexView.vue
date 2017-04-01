@@ -1,10 +1,10 @@
 <template lang="pug">
-div.pure-g
-    div.pure-u-13-24
+.pure-g
+    .pure-u-13-24
         slider
-    div.pure-u-11-24
+    .pure-u-11-24
         promo.comp
-    div.pure-u-2-3
+    .pure-u-2-3
         research-highlights.comp
     #down-right.pure-u-1-3
         latest-news.comp

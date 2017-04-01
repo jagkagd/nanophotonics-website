@@ -1,7 +1,6 @@
 <template lang="pug">
-div
-    ol
-        li(v-for="item in items") {{ item }}
+ol
+    li(v-for="item in items") {{ item }}
 </template>
 
 <script>

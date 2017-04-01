@@ -39,11 +39,11 @@ img
         text-align: justify
         margin: 0 5px
     a
-        text-decoration: none
         color: blue
         font-style: italic
 
 .promo-text-zh > p
+    margin: 0 5px
     font-size: 14px
     line-height: 2em
     margin: 20px 0

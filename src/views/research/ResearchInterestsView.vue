@@ -1,11 +1,11 @@
 <template lang="pug">
 div
-    div.section.pure-g(v-for="(item, index) in content" key="index")
+    .section.pure-g(v-for="(item, index) in content" v-bind:key="index")
         img.pure-u-1-4(:src="item.imgpath")
-        div.info.pure-u-3-4
+        .info.pure-u-3-4
             h2 {{ item.title[la] }}
             hr
-            p(v-md="item.examples")
+            .examples(v-md="item.examples")
 </template>
 
 <script>
@@ -66,7 +66,7 @@ export default SubView.extend({
     h2
         font-size: 15px
         margin: 10px 0px
-    p
+    .examples
         color: blue
         line-height: 200%
 

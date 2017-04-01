@@ -1,7 +1,7 @@
 <template lang="pug">
 div(v-if="showPage")
     img.thumb(:src="imgPath")
-    div.basicInfo
+    .basicInfo
         p.name {{ item.name[la] }}
         p {{ item.degree | trans2FormalDegree }} {{ item.degree_extra }}
         p Department of Optical Engineering
@@ -10,7 +10,7 @@ div(v-if="showPage")
         p
             span(v-if="item.tel") Tel: {{ item.tel }},
             span Email: {{ item.email }}
-    div.detailInfo(v-md="item.cv")
+    .detailInfo(v-md="item.cv")
 </template>
 
 <script>

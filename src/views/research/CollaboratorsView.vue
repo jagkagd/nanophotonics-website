@@ -1,11 +1,10 @@
 <template lang="pug">
-div
-    ol
-        li(v-for="item in items")
-            a(:href="item.url")
-                span.group {{ item.group }}, 
-                span.university {{ item.university }}, 
-                span.country {{ item.country }}.
+ol
+    li(v-for="item in items")
+        a(:href="item.url")
+            span.group {{ item.group }}, 
+            span.university {{ item.university }}, 
+            span.country {{ item.country }}.
 </template>
 
 <script>

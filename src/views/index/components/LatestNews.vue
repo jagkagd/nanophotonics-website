@@ -1,11 +1,11 @@
 <template lang="pug">
 div
-    div.subNews(v-if="showEvent")
+    .subNews(v-if="showEvent")
         h1 {{ eventsTitle[eventState][la] }}
         ul
             li(v-for="item in events")
                 router-link(:to="item.router") {{ item | formatDate }} - {{ item.short_content }} 
-    div.subNews
+    .subNews
         h1 {{ latestNewsTitle[la] }}
         ul
             li(v-for="item in latestNewsList")
