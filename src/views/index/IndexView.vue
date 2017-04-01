@@ -1,7 +1,7 @@
 <template lang="pug">
 div.pure-g
     div.pure-u-13-24
-        slider.comp
+        slider
     div.pure-u-11-24
         promo.comp
     div.pure-u-2-3

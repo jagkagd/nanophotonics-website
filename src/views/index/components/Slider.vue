@@ -1,9 +1,8 @@
 <template lang="pug">
-div#slider
-    swiper(:options="swiperOption" ref="swiperInstant" v-on:trans="hhh")
-        swiper-slide(v-for="(item, index) in items", v-bind:key="index")
-            slider-item(:item="item")
-        div.swiper-pagination(slot="pagination")
+swiper#swiper(:options="swiperOption" ref="swiperInstant" v-on:trans="hhh")
+    swiper-slide(v-for="(item, index) in items", v-bind:key="index")
+        slider-item.slider-item(:item="item")
+    .swiper-pagination(slot="pagination")
 </template>
 
 <script>
@@ -20,6 +19,11 @@ export default {
         return {
             items: [],
             swiperOption: {
+                autoplay: 5000,
+                loop: true,
+                effect: 'fade',
+                setWrapperSize :true,
+                autoHeight: true,
                 pagination: '.swiper-pagination',
                 paginationClickable: true,
                 onTransitionStart (swiper) {
@@ -52,6 +56,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-#slider
-    height: 386px
+#swiper
+    padding: 0
+    font-size: 13px
+    border-radius: 5px
+    border: 0
+    margin: 5px
+
 </style>

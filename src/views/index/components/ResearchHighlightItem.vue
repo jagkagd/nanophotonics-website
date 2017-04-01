@@ -1,9 +1,8 @@
 <template lang="pug">
 div.item
     h2.title {{ item.title[la] }}
-    div.pic
-        router-link(:to="'/news/research_highlights#rh-'+item.id")
-            img(:src="imgPath")
+    router-link.pic(:to="'/news/research_highlights#rh-'+item.id")
+        img(:src="imgPath")
     div.content {{ item.abstract | formatContent(40, 2.2) }}
         |  
         router-link.read-more(:to="'/news/research_highlights#rh-'+item.id") Read more>>
@@ -83,7 +82,7 @@ img
         text-decoration: underline
     .journal
         font-style: italic
-    .pic
+    .pic > img
         border-radius: 4px
 </style>
 

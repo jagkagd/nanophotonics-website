@@ -23,7 +23,7 @@ export default {
 
 <style lang="stylus">
 #promo
-    height: 386px
+    height: 374px
 
 .promo-img
     max-width: 90%

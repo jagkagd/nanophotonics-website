@@ -1,11 +1,12 @@
 <template lang="pug">
 div
-    router-link(:to="'/news?id='+item.id")
-        img(:src="imgPath")
+    router-link(:to="'/news/research_highlights#rh-'+item.id" v-bind:style="{backgroundImage: 'url(' + imgPath + ')'}")
+        // img(:src="imgPath")
         div.bottom
             p
                 span.title {{ item.title[la] }}
             p
+                | -- 
                 span.authors {{ paper.authors | formatAuthors(1) }} et al.
                 | , 
                 span.journal {{ paper.journal | formatJournal }} 
@@ -38,17 +39,23 @@ export default {
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
 
-img
-    max-width: 100%
-    max-height: auto
-
-.title
-    font-weight: bold
+a
+    display: block
+    height: 374px
+    background-repeat: no-repeat
+    background-size:cover
+    background-position:50% 50%
 
 .bottom
     position: absolute
-    bottom: 0px
     width: 100%
+    bottom: 0px
     background-color: rgba(0, 0, 0, 0.5)
+    padding: 10px 0
     color: base0
+
+.title
+    font-weight: bold
+    font-size: 14px
+
 </style>

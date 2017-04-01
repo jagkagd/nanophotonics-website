@@ -50,6 +50,7 @@ export default {
 
 img
     margin: auto
+    max-height: 500px
 
 .cite
     color: blue
