@@ -92,7 +92,8 @@
         "lodash-webpack-plugin": "",
         "babel-plugin-lodash": "",
         "es6-promise-promise": "",
-        "vuex": ""
+        "vuex": "",
+        "animate.css": ""
     },
     "engines": {
         "node": ">= 4.0.0",
