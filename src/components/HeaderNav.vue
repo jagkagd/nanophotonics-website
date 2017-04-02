@@ -38,6 +38,7 @@ export default {
     list-style: none
     text-align: center
     background: linear-gradient(top, base2, base3, base4)
+    background: -ms-linear-gradient(top, base2, base3, base4)
     border: 1px solid base3
     border-radius: 5px
     font-size: 14px

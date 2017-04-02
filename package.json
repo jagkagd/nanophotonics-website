@@ -93,7 +93,8 @@
         "babel-plugin-lodash": "",
         "es6-promise-promise": "",
         "vuex": "",
-        "animate.css": ""
+        "animate.css": "",
+        "autoprefixer-stylus": ""
     },
     "engines": {
         "node": ">= 4.0.0",
@@ -101,7 +102,7 @@
     },
     "browserlist": [
         "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
+        "last 10 versions",
+        "ie > 8"
     ]
 }
