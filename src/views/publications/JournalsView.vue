@@ -51,7 +51,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('journals').then(res => {
-            this.items = res.data
+            this.items = this.sortByDate(res.data)
         })
     },
     computed: {

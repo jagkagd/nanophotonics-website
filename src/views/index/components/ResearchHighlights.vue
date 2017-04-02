@@ -11,6 +11,7 @@ div
 
 import researchHighlight from 'flow/typedef.js'
 import ResearchHighlightItem from './ResearchHighlightItem'
+import _ from 'lodash'
 
 export default {
     name: 'ResearchHighlights',
@@ -25,7 +26,7 @@ export default {
     },
     mounted () {
         this.getData('researchHighlights?limit=6').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = _.flow(_.sortBy(o => o.paper.date_start), _.reverse)(res.data)
         })
     },
     components: {
