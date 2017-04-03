@@ -24,7 +24,7 @@ export default {
 @import '~static/pure-min.css'
 @import '~static/grids-responsive-min.css'
 
-div
+*
     box-sizing: border-box
 
 #app

@@ -1,7 +1,6 @@
 <template lang="pug">
-div
+li
     router-link(:to="'/news/research_highlights#rh-'+item.id" v-bind:style="{backgroundImage: 'url(' + imgPath + ')'}")
-        // img(:src="imgPath")
         transition(
             name="up-down"
             enter-active-class="animated slideInUp"
@@ -46,11 +45,15 @@ export default {
 @import '~static/animate.min.css'
 
 a
+    position: relative
     display: block
     height: 380px
+    width: 100%
     background-repeat: no-repeat
     background-size:cover
     background-position:50% 50%
+    overflow: hidden
+    border-radius: 5px
 
 .bottom
     position: absolute

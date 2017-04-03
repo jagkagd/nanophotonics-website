@@ -88,7 +88,6 @@
         "stylus-loader": "",
         "marked": "",
         "vue-waterfall": "",
-        "vue-awesome-swiper": "",
         "lodash-webpack-plugin": "",
         "babel-plugin-lodash": "",
         "es6-promise-promise": "",
