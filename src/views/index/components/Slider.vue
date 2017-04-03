@@ -1,8 +1,18 @@
 <template lang="pug">
-swiper#swiper(:options="swiperOption" ref="mySwiper")
-    swiper-slide(v-for="(item, index) in items", v-bind:key="index")
-        slider-item.slider-item(:item="item" v-bind:active="$store.state.activeSlide === index")
-    .swiper-pagination(slot="pagination")
+ul#slider
+    transition-group(
+        name="fade"
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+    )
+        slider-item.slider-item(
+            v-for="(item, index) in items"
+            v-bind:key="index"
+            v-bind:item="item"
+            v-show="index === currentIndex"
+            v-bind:active="index === currentIndex"
+            v-bind:style="{zIndex: index}"
+        )
 </template>
 
 <script>
@@ -10,49 +20,51 @@ swiper#swiper(:options="swiperOption" ref="mySwiper")
 
 import reserachHighlight from 'flow/typedef.js'
 import SliderItem from './SliderItem'
-import {swiper, swiperSlide} from 'vue-awesome-swiper'
 
 export default {
     name: 'Slider',
     data (): {items: Array<reserachHighlight>} {
         return {
             items: [],
-            swiperOption: {
-                autoplay: 3000,
-                loop: true,
-                effect: 'fade',
-                setWrapperSize :true,
-                autoHeight: true,
-                pagination: '.swiper-pagination',
-                paginationClickable: true,
-                onTransitionStart: swiper => {
-                    this.$store.commit('changeActiveSlide', -1)
-                },
-                onTransitionEnd: swiper => {
-                    this.$store.commit('changeActiveSlide', swiper.activeIndex - 1)
-                }
-            }
+            currentIndex: -1,
+            anim: null
         }
     },
     mounted () {
         this.getData('slides?limit=6').then(res => {
             this.items = this.sortByDate(res.data)
+            this.anim = setInterval(this.nextIndex, 5000)
         })
     },
+    destroyed () {
+        clearInterval(this.anim)
+    },
     components: {
-        swiper,
-        swiperSlide,
         SliderItem
+    },
+    methods: {
+        nextIndex () {
+            this.currentIndex = (this.currentIndex + 1) % this.items.length
+        }
     }
 }
 </script>
 
 <style lang="stylus" scoped>
-#swiper
+@import '~static/animate.min.css'
+
+#slider
+    position: relative
     padding: 0
     font-size: 13px
-    border-radius: 5px
     border: 0
     margin: 5px
+    list-style: none
+
+.slider-item
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
 
 </style>

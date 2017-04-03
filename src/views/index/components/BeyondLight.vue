@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     h1 {{ title[la] }}
-    router-link(to="{name: 'beyond_light'}")
+    router-link(:to="{name: 'beyond_light'}")
         img(src="~assets/images/index/beyondlight.jpg")
 </template>
 

@@ -26,8 +26,6 @@ export default {
 </script>
 
 <style lang="stylus">
-
-@import 'nib/gradients'
 @import '~static/basecolors.styl'
 
 #header-list
@@ -37,8 +35,8 @@ export default {
     padding: 0px
     list-style: none
     text-align: center
-    background: linear-gradient(top, base2, base3, base4)
-    background: -ms-linear-gradient(top, base2, base3, base4)
+    background-image: url(../assets/images/header-nav.png)
+    background-size: contain
     border: 1px solid base3
     border-radius: 5px
     font-size: 14px
@@ -58,7 +56,8 @@ export default {
         line-height: 2.5em
         font-weight: bold
     > li > a:hover
-        background-color: base4
+        background-image: url(../assets/images/header-nav-hover.png)
+        background-size: contain
         color: white
 
 </style>
