@@ -86,7 +86,7 @@ module.exports = {
         new webpack.LoaderOptionsPlugin({
             options: {
                 stylus: {
-                    use: [require('nib')(), require('autoprefixer-stylus')({browsers: ['ie 11', 'last 10 versions']})],
+                    use: [require('nib')(), require('autoprefixer-stylus')({browsers: ['last 50 versions']})],
                     includePaths: [path.resolve(__dirname, 'src', 'stylus')]
                 },
                 context: '/'
