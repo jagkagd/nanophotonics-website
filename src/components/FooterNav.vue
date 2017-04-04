@@ -33,10 +33,7 @@ export default {
 
 #footer-nav-list
     width: 100%
-    padding: 0
     padding-bottom: 20px
-    margin: 0
-    list-style: none
     font-size: 14px
     > li
         margin: 0px
@@ -46,10 +43,7 @@ export default {
             text-align: center
             color: base4
         > ul
-            list-style: none
-            margin: 0px
             margin-top: 5px
-            padding: 0px
             text-align: center
             > li
                 white-space: nowrap

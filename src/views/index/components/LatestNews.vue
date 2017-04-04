@@ -86,8 +86,6 @@ export default {
 
 ul
     margin: 3px
-    padding: 0
-    list-style: none
     background-color: base1
     border: 1px solid base3
     box-shadow: 1px 1px base2

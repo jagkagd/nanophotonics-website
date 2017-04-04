@@ -25,10 +25,7 @@ li > ul
 li:hover > ul
     display: block
     position: absolute
-    list-style: none
     width: 13em
-    padding: 0
-    margin: 0
     padding-top: 5px
     z-index: 200
     font-size: 13px

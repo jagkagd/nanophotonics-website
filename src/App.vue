@@ -27,6 +27,11 @@ export default {
 *
     box-sizing: border-box
 
+ul
+    list-style: none
+    padding: 0
+    margin: 0
+
 #app
     background-image: url(./assets/images/bkg-page.jpg)
     > div
