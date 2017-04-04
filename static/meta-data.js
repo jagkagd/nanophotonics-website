@@ -9,16 +9,16 @@ function extractInfo(item){
     const lings = ['zh', 'en']
     item.ll = item.label.en // label
     item.title = item.title || {}
-    _.map(o => { item.title[o] = item.title[o] === '' ? '' : item.title[o] || item.label[o] })(lings)
+    _.map(o => {item.title[o] = item.title[o] === '' ? '' : item.title[o] || item.label[o]})(lings)
     item.li = item.li || {}
-    _.map(o => { item.li[o] = item.li[o] || item.label[o] })(lings)
+    _.map(o => {item.li[o] = item.li[o] || item.label[o]})(lings)
     item.c = {}
     item.c.name = item.name || item.ll // k for route match name
     item.c.path = item.path || item.c.name // k for router path
     item.c.pattern = item.pattern || item.c.path // k for router match path
     item.c.file = item.file || item.c.pattern // for import component
-    item.t = _.mapValues(o => trims(o))(item.c)
-    item.k = _.mapValues(o => _.snakeCase(o))(item.c)
+    item.t = _.mapValues(trims)(item.c)
+    item.k = _.mapValues(_.snakeCase)(item.c)
     item.routerTo = {name: item.k.pattern}
     if(!_.isNil(item.pattern)){
         item.routerTo.params = {}

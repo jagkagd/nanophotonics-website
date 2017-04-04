@@ -1,26 +1,15 @@
 import marked from 'marked'
 import _ from 'lodash/fp'
-import {getData, sortByDate} from './methods'
-import {formatJournal, formatAuthors, formatClass, formatDate} from './filters'
-import {la, routeInfo} from './computed'
+import * as methods from './methods'
+import * as filters from './filters'
+import * as computed from './computed'
 
 export default {
     install (Vue, options) {
         Vue.mixin({
-            computed: {
-                la,
-                routeInfo
-            },
-            methods: {
-                getData,
-                sortByDate
-            },
-            filters: {
-                formatJournal,
-                formatAuthors,
-                formatClass,
-                formatDate
-            }
+            computed,
+            methods,
+            filters
         })
         Vue.directive('md', (el, binding) => {
             const modifiers = binding.modifiers

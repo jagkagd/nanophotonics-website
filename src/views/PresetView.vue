@@ -1,10 +1,10 @@
 <template lang="pug">
 div
-    div#preset-content
+    #preset-content
         h1.viewTitle {{ title }}
         hr
         router-view#sub-view-content
-    div#sub-nav-container
+    #sub-nav-container
         sub-nav#sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 
