@@ -25,7 +25,7 @@ export default SubView.extend({
                     examples: `Quantum dots, Nanoparticles, Nanorods  
                                 Micro/nanofibers, Nanowire, Nanoribbons/nanobelts  
                                 Nanotubes/channels, Microrings/nanorings, Graphene`,
-                    imgpath: require('assets/images/research/research_1.png')
+                    imgpath: require('images/research/research_1.png')
                 },
                 {
                     title: {
@@ -35,7 +35,7 @@ export default SubView.extend({
                     examples: `Fiber Optics, Guide Wave Optics, Near Field Optics  
                                 Plasmonics, Nonlinear Optics, Quantum Optics  
                                 Optoelectronics, Optomechanics, Atom Optics`,
-                    imgpath: require('assets/images/research/research_2.png')
+                    imgpath: require('images/research/research_2.png')
                 },
                 {
                     title: {
@@ -45,7 +45,7 @@ export default SubView.extend({
                     examples: `Couplers, Filters, Gratings  
                                 Interferometers, Resonators, Detectors  
                                 Modulators, Lasers, Sensors`,
-                    imgpath: require('assets/images/research/research_3.png')
+                    imgpath: require('images/research/research_3.png')
                 }
             ]
         }

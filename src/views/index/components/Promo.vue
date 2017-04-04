@@ -1,7 +1,7 @@
 <template lang="pug">
 #promo
     router-link(to="/people")
-        img(src="~assets/images/index/group.jpg")
+        img(src="~images/index/group.jpg")
     .promo-text(v-md="intro[la]" v-bind:class="'promo-text-'+la")
 </template>
 

@@ -9,7 +9,7 @@ div
         h1 {{ latestNewsTitle[la] }}
         ul
             li(v-for="item in latestNewsList")
-                router-link(:to="'/news/latest_news#news-'+item.id") {{ item | formatDate }} - {{ item.short_content }}
+                router-link(:to="{name: 'latest_news'} + '#news-'+item.id") {{ item | formatDate }} - {{ item.short_content }}
 </template>
 
 <script>

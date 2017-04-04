@@ -2,7 +2,7 @@
 div
     h1 {{ title[la] }}
     router-link(:to="{name: 'beyond_light'}")
-        img(src="~assets/images/index/beyondlight.jpg")
+        img(src="~images/index/beyondlight.jpg")
 </template>
 
 <script>
