@@ -1,7 +1,7 @@
 <template lang="pug">
-li(@mouseenter="openSubMenu" @mouseleave="closeSubMenu")
+li
     router-link(:to='menu.routerTo') {{ menu.li[la] }}
-    ul(v-if="menu.children" v-show="showSubMenu")
+    ul(v-if="menu.children")
         li(v-for="sMenu in menu.children")
             router-link(:to='sMenu.routerTo') {{ sMenu.li[la] }}
 </template>
@@ -9,21 +9,8 @@ li(@mouseenter="openSubMenu" @mouseleave="closeSubMenu")
 <script>
 export default {
     name: 'HeaderNavLi',
-    data () {
-        return {
-            showSubMenu: false
-        }
-    },
     props: {
         menu: Object
-    },
-    methods: {
-        closeSubMenu () {
-            this.showSubMenu = false
-        },
-        openSubMenu () {
-            this.showSubMenu = true
-        }
     }
 }
 
@@ -33,6 +20,10 @@ export default {
 @import '~static/basecolors.styl'
 
 li > ul
+    display: none
+
+li:hover > ul
+    display: block
     position: absolute
     list-style: none
     width: 13em
@@ -41,9 +32,10 @@ li > ul
     padding-top: 5px
     z-index: 200
     font-size: 13px
+    > li:not(last-child)
+        border-bottom: 1px solid base1
     > li
         background-color: base2
-        border-bottom: 1px solid base1
         > a
             width: 100%
             height: 100%
