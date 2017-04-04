@@ -3,7 +3,12 @@ div
     #preset-content
         h1.viewTitle {{ title }}
         hr
-        router-view#sub-view-content
+        transition(
+            enter-active-class="animated fadeInRight"
+            leave-active-class="animated fadeOutLeft"
+            mode="out-in"
+        )
+            router-view#sub-view-content
     #sub-nav-container
         sub-nav#sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
@@ -35,6 +40,7 @@ export default {
 </script>
 
 <style lang="stylus">
+@import '~static/animate.min.css'
 
 #preset-content
     position: relative

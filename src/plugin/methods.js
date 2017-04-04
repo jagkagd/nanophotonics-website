@@ -26,5 +26,5 @@ export const getData = axios.create({
     transformResponse: [o => t2i(JSON.parse(o))]
 })
 
-export function sortByDate =  _.flow(_.sortBy('date_start'), _.reverse) 
+export const sortByDate = _.flow(_.sortBy('date_start'), _.reverse)
 

@@ -2,6 +2,7 @@
 ul#slider
     transition-group(
         name="fade"
+        mode="out-in"
         enter-active-class="animated fadeIn"
         leave-active-class="animated fadeOut"
     )

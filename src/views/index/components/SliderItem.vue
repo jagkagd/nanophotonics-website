@@ -3,6 +3,7 @@ li
     router-link(:to="'/news/research_highlights#rh-'+item.id" v-bind:style="{backgroundImage: 'url(' + imgPath + ')'}")
         transition(
             name="up-down"
+            mode="out-in"
             enter-active-class="animated slideInUp"
             leave-active-class="animated slideOutDown"
         )
