@@ -6,8 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         lang: 'en',
-        menuName: '',
-        activeSlide: -1
+        menuName: ''
     },
     mutations: {
         switchLang (state) {
@@ -15,9 +14,6 @@ export default new Vuex.Store({
         },
         changeMenuName (state, name) {
             state.menuName = name
-        },
-        changeActiveSlide (state, index) {
-            state.activeSlide = index
         }
     }
 })
