@@ -74,10 +74,7 @@ export default {
 ul
     width: 100%
     z-index: 0
-    padding: 0
-    margin: 0
     font-size: 14px
-    list-style: none
     li
         border: 1px solid base0
         color: base4

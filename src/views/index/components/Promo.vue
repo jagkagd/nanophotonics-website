@@ -43,8 +43,7 @@ img
         font-style: italic
 
 .promo-text-zh > p
-    margin: 0 5px
+    margin: 20px 5px
     font-size: 14px
     line-height: 2em
-    margin: 20px 0
 </style>

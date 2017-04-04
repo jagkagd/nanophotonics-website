@@ -33,10 +33,4 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-
-ul
-    list-style: none
-    margin: 0
-    padding: 0
-
 </style>

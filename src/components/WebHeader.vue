@@ -38,9 +38,7 @@ export default {
     margin-top: 0px
     margin-bottom: 10px
     border: 2px black
-    padding: 15px
-    padding-left: 30px
-    padding-right: 30px
+    padding: 15px 30px
     box-shadow: 3px 3px 3px black
     border-radius: 15px
     clearfix()

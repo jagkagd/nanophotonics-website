@@ -55,11 +55,9 @@ export default {
 
 #slider
     position: relative
-    padding: 0
     font-size: 13px
     border: 0
     margin: 5px
-    list-style: none
 
 .slider-item
     position: absolute
