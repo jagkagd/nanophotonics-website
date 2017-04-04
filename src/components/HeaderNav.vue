@@ -42,7 +42,6 @@ export default {
     > li
         display: inline-block
         width: (100%/8)
-        box-sizing: border-box
         height: 2.5em
     > li:not(:last-child)
         border-right: 1px solid base2

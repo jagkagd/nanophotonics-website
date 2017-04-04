@@ -50,7 +50,7 @@ a
     height: 380px
     width: 100%
     background-repeat: no-repeat
-    background-size:cover
+    background-size: cover
     background-position:50% 50%
     overflow: hidden
     border-radius: 5px
