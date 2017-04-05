@@ -2,6 +2,7 @@
 
 import metaData from './meta'
 import _ from 'lodash/fp'
+import {defaultTo} from 'lodash'
 
 const trims = _.replace(' ')('')
 
@@ -9,14 +10,14 @@ function extractInfo(item){
     const lings = ['zh', 'en']
     item.ll = item.label.en // label
     item.title = item.title || {}
-    _.map(o => {item.title[o] = item.title[o] === '' ? '' : item.title[o] || item.label[o]})(lings)
+    _.map(o => {item.title[o] = defaultTo(item.title[o], item.label[o])})(lings)
     item.li = item.li || {}
-    _.map(o => {item.li[o] = item.li[o] || item.label[o]})(lings)
+    _.map(o => {item.li[o] = defaultTo(item.li[o], item.label[o])})(lings)
     item.c = {}
-    item.c.name = item.name || item.ll // k for route match name
-    item.c.path = item.path || item.c.name // k for router path
-    item.c.pattern = item.pattern || item.c.path // k for router match path
-    item.c.file = item.file || item.c.pattern // for import component
+    item.c.name = defaultTo(item.name, item.ll) // k for route match name
+    item.c.path = defaultTo(item.path, item.c.name) // k for router path
+    item.c.pattern = defaultTo(item.pattern, item.c.path) // k for router match path
+    item.c.file = defaultTo(item.file, item.c.pattern) // for import component
     item.t = _.mapValues(trims)(item.c)
     item.k = _.mapValues(_.snakeCase)(item.c)
     item.routerTo = {name: item.k.pattern}

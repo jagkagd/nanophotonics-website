@@ -12,6 +12,7 @@
 // @flow
 
 import _ from 'lodash/fp'
+import {join} from 'lodash'
 
 export default {
     name: 'PeopleIntroItem',
@@ -40,10 +41,10 @@ export default {
                     zh: '副教授'
                 }
             }[degree]
-            profileAbbr = _.isNil(profileAbbr) ? '' : profileAbbr[la]
+            profileAbbr = _.isNil(profileAbbr) ? null : profileAbbr[la]
             return profileAbbr ? {
-                en: profileAbbr + ' ' + name,
-                zh: name + ' ' + profileAbbr
+                en: join([profileAbbr, name], ' '),
+                zh: join([name, profileAbbr], ' ')
             }[la] : name
         }
     }

@@ -62,12 +62,13 @@ export default SubView.extend({
             return _.groupBy('year')(this.items)
         },
         itemsSomeYear (): Array<journal> {
-            if(this.pubYear === 'all'){
-                return this.items
-            }else if(this.pubYear === 'review'){
-                return _.filter(o => _.includes('review')(_.lowerCase(o.type)))(this.items)
-            }else{
-                return this.itemsGroupByYear[this.pubYear]
+            switch(this.pubYear){
+                case 'all':
+                    return this.items
+                case 'review':
+                    return _.filter(o => _.includes('review')(_.lowerCase(o.type)))(this.items)
+                default:
+                    return this.itemsGroupByYear[this.pubYear]
             }
         },
         pubLength () :number {
