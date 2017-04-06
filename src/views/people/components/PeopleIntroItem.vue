@@ -31,7 +31,7 @@ export default {
     filters: {
         formatProfileName (value, degree, la) {
             const name = value[la]
-            let profileAbbr = {
+            const profileAbbr = ({
                 'professor': {
                     en: 'Prof.',
                     zh: '教授'
@@ -40,8 +40,7 @@ export default {
                     en: 'Assoc. Prof.',
                     zh: '副教授'
                 }
-            }[degree]
-            profileAbbr = _.isNil(profileAbbr) ? null : profileAbbr[la]
+            }[degree] ||{})[la]
             return profileAbbr ? {
                 en: join([profileAbbr, name], ' '),
                 zh: join([name, profileAbbr], ' ')
