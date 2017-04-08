@@ -109,8 +109,7 @@ const metaData = [
                     zh: '以前成员'
                 },
                 file: 'FormerGroup'
-            },
-            {
+            }, {
                 label: {
                     en: 'Person Page'
                 },
@@ -170,13 +169,52 @@ const metaData = [
             en: 'Beyond Light',
             zh: '科研之余'
         },
-        children: [],
-        notOnMenu: true
+        notOnMenu: true,
+        children: [
+            {
+                label: {
+                    en: 'Group Photos',
+                    zh: ''
+                },
+                pattern: 'Activity'
+            }, {
+                label: {
+                    en: 'Da Ming Mountain',
+                    zh: '大明山'
+                },
+                pattern: 'Activity'
+            }, {
+                label: {
+                    en: 'Lighting the Future',
+                    zh: ''
+                },
+                pattern: 'Activity'
+            }, {
+                label: {
+                    en: 'San Qing Moutain',
+                    zh: ''
+                },
+                pattern: 'Activity'
+            }, {
+                label: {
+                    en: 'Zhexi Grand Canyon',
+                    zh: ''
+                },
+                pattern: 'Activity'
+            }, {
+                label: {
+                    en: 'Jiu Xi',
+                    zh: ''
+                },
+                pattern: 'Activity'
+            }
+        ]
     }
 ]
 
 const pattern = {
     'People Category': '',
+    'Activity': '',
     'Person Page': 'intro/:id'
 }
 
