@@ -2,7 +2,7 @@
 div
     ul
         li(v-for="item in items" v-bind:id="'news-'+item.id")
-            news-item(:item="item")
+            news-item(:item="t2i(item)")
 </template>
 
 <script>

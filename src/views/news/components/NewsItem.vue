@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         modifiedContent (): string {
-            return'<span class="news-date">' + formatDate(this.item) + '</span>, ' + this.item.content
+            return'<span class="news-date">' + formatDate(this.item) + '</span>, ' + this.item.content[this.la]
         }
     }
 }
