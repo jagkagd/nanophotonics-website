@@ -1,5 +1,5 @@
 <template lang="pug">
-div#web-header
+header
     div#logos
         div#webTitle {{ group[la] }}
         img#logo(src="~assets/images/home-logo.png" width="527" height="70")

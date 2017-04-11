@@ -1,7 +1,7 @@
 <template lang="pug">
-div
+figure
     img(src="~assets/images/people/current_group.jpg")
-    p June, 2015 @ Yuquan Campus, Zhejiang University, Hangzhou. 
+    figcaption June, 2015 @ Yuquan Campus, Zhejiang University, Hangzhou. 
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-p
+figcaption
     text-align: center
 
 img

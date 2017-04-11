@@ -1,5 +1,5 @@
 <template lang="pug">
-div(:class="item.style" v-md.nobreak.images="modifiedContent")
+section(:class="item.style" v-md.nobreak.images:news="modifiedContent")
 </template>
 
 <script>
@@ -25,18 +25,17 @@ export default {
 .news-date
     color: blue
 
-.news-image-caption
+figure.news-figure
     text-align: center
     img
         max-width: 600px
-    p
+    figcaption
         font-size: 12px
-        color: blue
         margin: 4px
 
 .news-imgs
     text-align: center
-    > .news-image-caption
+    > figure
         display: inline-block
         margin: 2px
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-div.item
+section
     h2.title {{ item.title[la] }}
     router-link.pic(:to="'/news/research_highlights#rh-'+item.id")
         img(:src="imgPath")
@@ -56,7 +56,7 @@ img
     width: 280px
     height: 184px
 
-.item
+section
     margin: 5px
     padding: 5px
     background-color: base1

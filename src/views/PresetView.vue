@@ -9,7 +9,7 @@ div
             mode="out-in"
         )
             router-view#sub-view-content
-    #sub-nav-container
+    aside#sub-nav-container
         sub-nav#sub-nav(:parentName="parentName" v-bind:menuName="menuName")
 </template>
 

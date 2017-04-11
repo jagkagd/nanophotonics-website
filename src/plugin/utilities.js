@@ -13,16 +13,18 @@ export default {
         })
         Vue.directive('md', (el, binding) => {
             const modifiers = binding.modifiers
+            const category = binding.arg || 'default'
             const renderer = new marked.Renderer()
-            marked.setOptions({
-                breaks: !modifiers.nobreak
-            })
             if(modifiers.images){
                 renderer.image = function(href, title, text) {
-                    return '<div class="news-image-caption"><img src="/static/img/' + href + '" />' + (_.isNil(title) ? '' : '<p>' + title + '</p>') + '</div>'
+                    return '<figure class="' + category + '-figure"><img src="/static/img/' + href + '" />' + (_.isNil(title) ? '' : '<figcaption>' + title + '</figcaption>') + '</figure>'
                 }
             }
-            el.innerHTML = marked(binding.value || '', {renderer})
+            const options = {
+                renderer,
+                breaks: !modifiers.nobreak
+            }
+            el.innerHTML = marked.inlineLexer(binding.value || '', [], options)
         })
     }
 }
