@@ -15,6 +15,7 @@ export default {
             const modifiers = binding.modifiers
             const category = binding.arg || 'default'
             const renderer = new marked.Renderer()
+            const value = binding.value
             if(modifiers.images){
                 console.log('in renderer parent', modifiers, category)
                 renderer.image = function(href, title, text) {
@@ -25,7 +26,7 @@ export default {
             marked.setOptions({
                 breaks: !modifiers.nobreak
             })
-            el.innerHTML = marked(binding.value || '', {renderer})
+            el.innerHTML = modifiers.inline ? marked.inlineLexer(value, []) : marked(value, {renderer})
         })
     }
 }

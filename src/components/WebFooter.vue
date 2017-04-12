@@ -2,8 +2,8 @@
 footer
     footer-nav
     #footerinfo
-        img#footerlogo(src="~assets/images/foot-logo.png" height=55)
-        p#footerwords(v-md="info")
+        img#footerlogo(src="~images/foot-logo.png" height=55)
+        p#footerwords(v-md.inline="info")
 </template>
 
 <script>

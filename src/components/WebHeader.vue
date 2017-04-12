@@ -2,8 +2,8 @@
 header
     div#logos
         div#webTitle {{ group[la] }}
-        img#logo(src="~assets/images/home-logo.png" width="527" height="70")
-        img#university(src="~assets/images/ZJU.png" width="171" height="60")
+        img#logo(src="~images/home-logo.png" width="527" height="70")
+        img#university(src="~images/ZJU.png" width="171" height="60")
     header-nav
 </template>
 

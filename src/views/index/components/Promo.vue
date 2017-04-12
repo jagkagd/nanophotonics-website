@@ -2,7 +2,7 @@
 #promo
     router-link(to="/people")
         img(src="~images/index/group.jpg")
-    p.promo-text(v-md="intro[la]" v-bind:class="'promo-text-'+la")
+    p.promo-text(v-md.inline="intro[la]" v-bind:class="'promo-text-'+la")
 </template>
 
 <script>
