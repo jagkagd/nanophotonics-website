@@ -26,6 +26,7 @@ export default {
     color: blue
 
 figure.news-figure
+    margin: 2px
     text-align: center
     img
         max-width: 600px
@@ -37,12 +38,11 @@ figure.news-figure
     text-align: center
     > figure
         display: inline-block
-        margin: 2px
 
 .left-right
     > p
         display: inline-block
-        width: 80%
+        width: 78%
     > figure
         display: inline-block
         width: 18%

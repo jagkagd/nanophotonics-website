@@ -35,9 +35,9 @@ export default SubView.extend({
     computed: {
         imgPath () {
             try{
-                return require('assets/images/people/' + this.item.id + '-1.jpg')
+                return require('images/people/' + this.item.id + '-1.jpg')
             }catch(err){
-                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+                return require('images/people/' + this.item.id + '-intro.jpg')
             }
         },
         menuName () {
