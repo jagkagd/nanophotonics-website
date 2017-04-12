@@ -1,5 +1,5 @@
 <template lang="pug">
-section(:class="item.style" v-md.nobreak.images:news="modifiedContent")
+section(:class="item.style" v-md:news.nobreak.images="modifiedContent")
 </template>
 
 <script>
@@ -43,7 +43,7 @@ figure.news-figure
     > p
         display: inline-block
         width: 80%
-    > div
+    > figure
         display: inline-block
         width: 18%
 
