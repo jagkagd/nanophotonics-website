@@ -18,7 +18,7 @@ const routesData = _.map(page => {
     const res = {
         path: '/' + page.k.path
     }
-    if(!_.isEmpty(page.children)){
+    if(page.children){
         res.name = page.k.name
         res.component = comps[page.notPreset ? page.t.file : 'Preset']
         res.redirect = page.children[0].routerTo

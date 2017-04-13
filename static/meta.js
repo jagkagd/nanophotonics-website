@@ -76,7 +76,7 @@ export defalut [
                 },
             },
             Pattern({
-                pattern: 'People Category',
+                label: 'People Category',
                 matches: [
                     {
                         label: 'Faculty',
@@ -114,12 +114,11 @@ export defalut [
                 file: 'FormerGroup'
             },
             AjaxPattern({
-                label: 'Person Page' ,
+                label: 'Person Page',
                 li: {
                     en: ''
                 },
-                pattern: 'Person Page',
-                patternRouter: 'intro/:id',
+                pattern: 'intro/:id',
                 notOnMenu: true
             })
         ]

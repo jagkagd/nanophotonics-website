@@ -4,42 +4,39 @@ import metaData from './meta'
 import _ from 'lodash/fp'
 import {defaultTo} from 'lodash'
 
+const lings = ['zh', 'en']
+
 const trims = _.replace(' ')('')
+const defaultsList = values => 
+    values.length === 2 ? defaultTo(values[0], values[1]) : defaultTo(_.head(values), defaultsList(_.tail(values)))
 
 function extractInfo(item){
-    const lings = ['zh', 'en']
-    item.ll = item.label.en // label
-    item.title = item.title || {}
-    _.map(o => {item.title[o] = defaultTo(item.title[o], item.label[o])})(lings)
-    item.li = item.li || {}
-    _.map(o => {item.li[o] = defaultTo(item.li[o], item.label[o])})(lings)
-    item.c = {}
-    item.c.name = defaultTo(item.name, item.ll) // k for route match name
-    item.c.path = defaultTo(item.path, item.c.name) // k for router path
-    item.c.pattern = defaultTo(item.pattern, item.c.path) // k for router match path
-    item.c.file = defaultTo(item.file, item.c.pattern) // for import component
-    item.t = _.mapValues(trims)(item.c)
-    item.k = _.mapValues(_.snakeCase)(item.c)
-    item.routerTo = {name: item.k.pattern}
+    item.ll = _.snakeCase(item.label)
+    item.li = defaultTo(item.li, {}) // Nav Name
+    item.li.en = defaultTo(item.label, item.li.en)
+    item.li.zh = defaultTo(item.li.zh, '')
+    item.title = _.mapValues((value, key) => defaultTo(item.title[key], value))(item.li) // Title Name
+    item.file = trims(defaultsList(item.file, item.label)) // FileNameOfComponents
+    if(item.typename === 'pattern'){
+        item.pattern = defaultTo(item.pattern, _.join([':', item.ll])) // pattern_name
+    }
+    item.path = trims(defaultsList(item.path, item.pattern, item.label)) // router_name
+    item.routerTo = {name: item.ll}
     if(!_.isNil(item.pattern)){
         item.routerTo.params = {}
-        item.routerTo.params[item.k.pattern] = item.k.name
+        item.routerTo.params[item.pattern] = item.ll
     }
     return item
 }
 
-function _traverse(predict, modify, data) {
+function traverse(modify, data) {
     const _modify = o => {
         const oo = modify(_.cloneDeep(o))
-        oo.children = _traverse(predict, modify, oo.children)
+        oo.children = traverse(modify, oo.children)
         return oo
     }
-    return _.filter(predict)(_.map(_modify)(data))
+    return _.map(_modify)(data)
 }
-const traverse = _.curry(_traverse)
-
-const routeData = traverse(o => true)(extractInfo)(metaData)
-const menuData = traverse(o => !o.notOnMenu)(_.identity)(routeData)
 
 function list2obj(data){
     return _.reduce((res, o) => {
@@ -49,9 +46,7 @@ function list2obj(data){
         return res
     }, {})(data)
 }
+const menuData = list2obj(traverse(extractInfo, metaData))
 
-const keyRouteData = list2obj(routeData)
-const keyMenuData = list2obj(menuData)
-
-export {routeData, menuData, keyRouteData, keyMenuData}
+export default list2obj(menuData)
 
