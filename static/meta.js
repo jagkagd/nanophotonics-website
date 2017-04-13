@@ -1,137 +1,121 @@
 import _ from 'lodash/fp'
 
 const View = _.assign({children: []})
-const Origin = _.assign(View({typeName: 'origin'}))
 const Pattern = _.assign(View({typeName: 'pattern'}))
+const AjaxPattern = _.assign(View({typeName: 'ajax_pattern'}))
 
 const metaData = [
-    Origin({
-        label: {
-            en: 'Index',
+    {
+        label: 'Index',
+        li: {
+            en: 'Home',
             zh: '主页'
         },
-        li: {
-            en: 'Home'
-        },
         notPreset: true
-    }), 
-    Origin({
-        label: {
-            en: 'News',
+    }, {
+        label: 'News',
+        li: {
             zh: '组内新闻'
         },
         children: [
-            Origin({
-                label: {
-                    en: 'Research Highlights',
+            {
+                label: 'Research Highlights',
+                li: {
                     zh: '科研进展'
                 }
-            }), 
-            Origin({
-                label: {
-                    en: 'Latest News',
+            }, {
+                label: 'Latest News',
+                li: {
                     zh: '近期新闻'
                 }
-            })
+            }
         ]
-    }),
-    Origin({
-        label: {
-            en: 'Research',
+    }, {
+        label: 'Research',
+        li: {
             zh: '研究方向'
         },
         children: [
-            Origin({
-                label: {
-                    en: 'Overview',
+            {
+                label: 'Overview',
+                li: {
                     zh: '研究概况'
                 }
-            }),
-            Origin({
-                label: {
-                    en: 'Research Interests',
+            }, {
+                label: 'Research Interests',
+                li: {
                     zh: '研究兴趣'
                 }
-            }),
-            Origin({
-                label: {
-                    en: 'Facilities',
+            }, {
+                label: 'Facilities',
+                li: {
                     zh: '研究条件'
                 }
-            }),
-            Origin({
-                label: {
-                    en: 'Fundings',
+            }, {
+                label: 'Fundings',
+                li: {
                     zh: '研究项目'
                 }
-            }),
-            Origin({
-                label: {
-                    en: 'Collaborators',
+            }, {
+                label: 'Collaborators',
+                li: {
                     zh: '合作团队'
                 }
-            })
+            }
         ]
-    }),
-    Origin({
-        label: {
-            en: 'People',
+    }, {
+        label: 'People',
+        li: {
             zh: '小组成员'
         },
         children: [
-            Origin({
-                label: {
-                    en: 'Current Group',
+            {
+                label: 'Current Group',
+                li: {
                     zh: '目前成员'
-                }
-            }),
+                },
+            },
             Pattern({
                 pattern: 'People Category',
                 matches: [
-                    Origin({
-                        label: {
-                            en: 'Faculty',
+                    {
+                        label: 'Faculty',
+                        li: {
                             zh: '教师'
                         }
-                    }),
-                    Origin({
-                        label: {
-                            en: 'Admin Staff',
+                    }, {
+                        label: 'Admin Staff',
+                        li: {
                             zh: '行政助理'
                         }
-                    }),
-                    Origin({
-                        label: {
-                            en: 'Post Docs',
+                    }, {
+                        label: 'Post Docs',
+                        li: {
                             zh: '博士后'
                         }
-                    }),
-                    Origin({
-                        label: {
-                            en: 'Grad Students',
+                    }, {
+                        label: 'Grad Students',
+                        li: {
                             zh: '研究生'
                         }
-                    }),
-                    Origin({
-                        label: {
-                            en: 'Undergrad Students',
+                    }, {
+                        label: 'Undergrad Students',
+                        li: {
                             zh: '本科生'
                         }
-                    })
+                    }
                 ]
             }),
-            Origin({
-                label: {
-                    en: 'Former Group Members',
+            {
+                label: 'Former Group Members',
+                li: {
                     zh: '以前成员'
-                },
+                }
                 file: 'FormerGroup'
-            }),
-            Pattern({
-                label: {
-                    en: 'Person Page'
-                },
-                title: {
+            },
+            AjaxPattern({
+                label: 'Person Page' ,
+                li: {
                     en: ''
                 },
                 pattern: 'Person Page',
@@ -139,62 +123,54 @@ const metaData = [
                 notOnMenu: true
             })
         ]
-    }),
-    Origin({
-        label: {
-            en: 'Publications',
+    }, {
+        label: 'Publications',
+        li: {
             zh: '论文论著'
         },
         children: [
-            Origin({
-                label: {
-                    en: 'Journal',
+            {
+                label: 'Journal',
+                li: {
+                    en: 'Journal Papers'
                     zh: '期刊论文'
                 },
-                title: {
-                    en: 'Journal Papers'
-                },
                 file: 'Journals'
-            }),
-            Origin({
-                label: {
-                    en: 'Conference',
+            }, {
+                label: 'Conference',
+                li: {
                     zh: '会议论文'
                 },
                 file: 'Conferences'
-            }),
-            Origin({
-                label: {
-                    en: 'Books',
+            }, {
+                label: 'Books',
+                li: {
                     zh: '学术著作'
-                }
-            })
+                },
+            }
         ]
-    }),
-    Origin({
-        label: {
-            en: 'Teaching',
+    }, {
+        label: 'Teaching',
+        li: {
             zh: '教学工作'
         },
         title: {
             en: 'Grad and Undergrad Courses',
             zh: '研究生及本科生课程'
         }
-    }),
-    Origin({
-        label: {
-            en: 'Contact',
+    }, {
+        label: 'Contact',
+        li: {
             zh: '联系地址'
-        }
-    }),
-    Origin({
-        label: {
-            en: 'Beyond Light',
+        },
+    }, {
+        label: 'Beyond Light',
+        li: {
             zh: '科研之余'
         },
         children: [],
         notOnMenu: true
-    })
+    }
 ]
 
 export {metaData as default, patternMap}
