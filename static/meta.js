@@ -4,7 +4,7 @@ const View = _.assign({children: []})
 const Pattern = _.assign(View({typeName: 'pattern'}))
 const AjaxPattern = _.assign(View({typeName: 'ajax_pattern'}))
 
-const metaData = [
+export defalut [
     {
         label: 'Index',
         li: {
@@ -173,4 +173,3 @@ const metaData = [
     }
 ]
 
-export {metaData as default, patternMap}
