@@ -2,9 +2,8 @@ import _ from 'lodash/fp'
 
 const View = _.assign({children: []})
 const Pattern = _.assign(View({typeName: 'pattern'}))
-const AjaxPattern = _.assign(View({typeName: 'ajax_pattern'}))
 
-export defalut [
+export default [
     {
         label: 'Index',
         li: {
@@ -73,11 +72,11 @@ export defalut [
                 label: 'Current Group',
                 li: {
                     zh: '目前成员'
-                },
+                }
             },
             Pattern({
                 label: 'People Category',
-                matches: [
+                children: [
                     {
                         label: 'Faculty',
                         li: {
@@ -110,10 +109,10 @@ export defalut [
                 label: 'Former Group Members',
                 li: {
                     zh: '以前成员'
-                }
+                },
                 file: 'FormerGroup'
             },
-            AjaxPattern({
+            Pattern({
                 label: 'Person Page',
                 li: {
                     en: ''
@@ -131,7 +130,7 @@ export defalut [
             {
                 label: 'Journal',
                 li: {
-                    en: 'Journal Papers'
+                    en: 'Journal Papers',
                     zh: '期刊论文'
                 },
                 file: 'Journals'
@@ -145,7 +144,7 @@ export defalut [
                 label: 'Books',
                 li: {
                     zh: '学术著作'
-                },
+                }
             }
         ]
     }, {
@@ -161,7 +160,7 @@ export defalut [
         label: 'Contact',
         li: {
             zh: '联系地址'
-        },
+        }
     }, {
         label: 'Beyond Light',
         li: {

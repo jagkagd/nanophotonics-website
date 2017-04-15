@@ -12,7 +12,7 @@ ul#footer-nav-list.pure-g
 
 <script>
 // @flow
-import {menuData} from 'static/meta-data'
+import {menuData} from 'src/meta-data'
 
 export default {
     name: 'FooterNav',
