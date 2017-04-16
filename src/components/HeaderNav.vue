@@ -9,7 +9,7 @@ ul#header-list
 
 import HeaderNavLi from './HeaderNavLi.vue'
 import HeaderLangLi from './HeaderLangLi.vue'
-import {menuData} from 'static/meta-data'
+import {menuData} from 'src/meta-data'
 
 export default {
     name: 'HeaderNav',

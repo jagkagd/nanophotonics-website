@@ -1,5 +1,5 @@
 <template lang="pug">
-div(:class="item.style" v-md.nobreak.images="modifiedContent")
+section(:class="item.style" v-md:news.nobreak.images="modifiedContent")
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         modifiedContent (): string {
-            return'<span class="news-date">' + formatDate(this.item) + '</span>, ' + this.item.content
+            return'<span class="news-date">' + formatDate(this.item) + '</span>, ' + this.item.content[this.la]
         }
     }
 }
@@ -25,26 +25,25 @@ export default {
 .news-date
     color: blue
 
-.news-image-caption
+figure.news-figure
+    margin: 2px
     text-align: center
     img
         max-width: 600px
-    p
+    figcaption
         font-size: 12px
-        color: blue
         margin: 4px
 
 .news-imgs
     text-align: center
-    > .news-image-caption
+    > figure
         display: inline-block
-        margin: 2px
 
 .left-right
     > p
         display: inline-block
-        width: 80%
-    > div
+        width: 78%
+    > figure
         display: inline-block
         width: 18%
 

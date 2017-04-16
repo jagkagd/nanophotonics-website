@@ -34,7 +34,7 @@ ul
 
 #app
     background-image: url(./assets/images/bkg-page.jpg)
-    > div
+    > *
         width: 70%
         margin: auto
 

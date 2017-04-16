@@ -1,5 +1,5 @@
 <template lang="pug">
-div(:class="item.style")
+section(:class="item.style")
     h3.title {{ item.title[la] }}
     img(:src="imgPath")
     p.abstract(v-md="item.abstract")

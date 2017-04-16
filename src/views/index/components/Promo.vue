@@ -2,7 +2,7 @@
 #promo
     router-link(to="/people")
         img(src="~images/index/group.jpg")
-    .promo-text(v-md="intro[la]" v-bind:class="'promo-text-'+la")
+    p.promo-text(v-md.inline="intro[la]" v-bind:class="'promo-text-'+la")
 </template>
 
 <script>
@@ -35,14 +35,13 @@ img
 
 <style lang="stylus">
 .promo-text
-    p
-        text-align: justify
-        margin: 0 5px
+    text-align: justify
+    margin: 0 5px
     a
         color: blue
         font-style: italic
 
-.promo-text-zh > p
+.promo-text-zh
     margin: 20px 5px
     font-size: 14px
     line-height: 2em

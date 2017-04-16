@@ -11,7 +11,6 @@
 <script>
 // @flow
 
-import _ from 'lodash/fp'
 import {join} from 'lodash'
 
 export default {
@@ -40,7 +39,7 @@ export default {
                     en: 'Assoc. Prof.',
                     zh: '副教授'
                 }
-            }[degree] ||{})[la]
+            }[degree] || {})[la]
             return profileAbbr ? {
                 en: join([profileAbbr, name], ' '),
                 zh: join([name, profileAbbr], ' ')

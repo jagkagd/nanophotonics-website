@@ -1,8 +1,8 @@
 <template lang="pug">
 div
     h1 {{ title[la] }}
-    ul.pure-g
-        li.pure-u-1-2(v-for="item in items")
+    .pure-g
+        .pure-u-1-2(v-for="item in items")
             research-highlight-item(:item="item")
 </template>
 
@@ -35,5 +35,3 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-</style>

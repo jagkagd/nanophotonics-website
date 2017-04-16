@@ -1,8 +1,6 @@
 <template lang="pug">
 div
-    ul
-        li(v-for="item in items" v-bind:id="'news-'+item.id")
-            news-item(:item="item")
+    news-item(v-for="item in items" v-bind:id="'news-'+item.id" v-bind:item="item")
 </template>
 
 <script>
@@ -32,5 +30,3 @@ export default SubView.extend({
 })
 </script>
 
-<style lang="stylus" scoped>
-</style>

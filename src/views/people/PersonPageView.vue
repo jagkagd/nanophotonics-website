@@ -1,5 +1,5 @@
 <template lang="pug">
-div(v-if="showPage")
+article(v-if="showPage")
     img.thumb(:src="imgPath")
     .basicInfo
         p.name {{ item.name[la] }}
@@ -35,9 +35,9 @@ export default SubView.extend({
     computed: {
         imgPath () {
             try{
-                return require('assets/images/people/' + this.item.id + '-1.jpg')
+                return require('images/people/' + this.item.id + '-1.jpg')
             }catch(err){
-                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+                return require('images/people/' + this.item.id + '-intro.jpg')
             }
         },
         menuName () {

@@ -1,5 +1,5 @@
 import marked from 'marked'
-import _ from 'lodash/fp'
+import _ from 'lodash'
 import * as methods from './methods'
 import * as filters from './filters'
 import * as computed from './computed'
@@ -12,17 +12,24 @@ export default {
             filters
         })
         Vue.directive('md', (el, binding) => {
+            const value = binding.value || ''
             const modifiers = binding.modifiers
+            const category = binding.arg || 'default'
             const renderer = new marked.Renderer()
+            if(modifiers.images){
+                renderer.image = (href, title, text) => _.template(
+                    `<figure class="<%= category %>-figure">
+                        <img src="/static/img/<%= href %>" />
+                            <% if(title){ %>
+                                <figcaption><%= title %></figcaption>
+                            <% } %>
+                    </figure>`
+                )({href, title, category})
+            }
             marked.setOptions({
                 breaks: !modifiers.nobreak
             })
-            if(modifiers.images){
-                renderer.image = function(href, title, text) {
-                    return '<div class="news-image-caption"><img src="/static/img/' + href + '" />' + (_.isNil(title) ? '' : '<p>' + title + '</p>') + '</div>'
-                }
-            }
-            el.innerHTML = marked(binding.value || '', {renderer})
+            el.innerHTML = modifiers.inline ? marked.inlineLexer(value, []) : marked(value, {renderer})
         })
     }
 }

@@ -1,9 +1,9 @@
 <template lang="pug">
-#web-footer
+footer
     footer-nav
     #footerinfo
-        img#footerlogo(src="~assets/images/foot-logo.png" height=55)
-        #footerwords(v-md="info")
+        img#footerlogo(src="~images/foot-logo.png" height=55)
+        p#footerwords(v-md.inline="info")
 </template>
 
 <script>
@@ -30,7 +30,7 @@ export default {
 @import '~static/basecolors.styl'
 @import 'nib/clearfix'
 
-#web-footer
+footer
     border-top: 1px solid base4
     margin-top: 10px
 
@@ -47,10 +47,9 @@ export default {
 #footerwords
     float: right
     text-align: center
-    > p
-        font-size: 13px
-        margin: 0
-        padding: 0
+    font-size: 13px
+    margin: 0
+    padding: 0
 
 </style>
 
