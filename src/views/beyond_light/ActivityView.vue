@@ -22,7 +22,7 @@ export default {
     },
     mounted () {
         this.$store.commit('changeMenuName', this.menuName)
-    }
+    },
     components: {
         Waterfall,
         WaterfallSlot
