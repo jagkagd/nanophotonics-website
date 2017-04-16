@@ -51,5 +51,4 @@ export const menuData = traverse(_.filter(o => !o.notOnMenu))(_.nthArg(0))({chil
 
 const list2obj = (res, o) => _.assign(res)({[o.ll]: _.assign(cloneDeep(o))({subMenu: cloneDeep(o.children)})})
 export const keyMetaData = traverse(_.reduce(list2obj, {}))(_.nthArg(0))({children: expandPatternData})
-console.log(JSON.stringify(menuData))
 

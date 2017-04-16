@@ -14,7 +14,6 @@ _.forEach(page => {
 comps['Preset'] = require('src/views/PresetView.vue')
 
 const routesData = _.map(page => {
-    console.log(page)
     const init = {
         path: '/' + page.path,
         component: page.notPreset === true ? comps[page.label] : comps['Preset']
@@ -38,8 +37,6 @@ const routesData = _.map(page => {
     }
     return _.assign(init)(_.isEmpty(page.children) ? noChildren : hasChildren)
 })(_.tail(routeData))
-
-console.log(routesData)
 
 routesData.unshift({
     path: '/',
