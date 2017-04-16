@@ -17,13 +17,13 @@ div
 // @flow
 
 import SubNav from 'components/SubNav.vue'
-import {keyRouteData} from 'static/meta-data'
+import {keyMetaData} from 'src/meta-data'
 
 export default {
     name: 'PresetView',
     computed: {
         title () {
-            const parent = this.parentName ? (keyRouteData[this.parentName].children || keyRouteData) : keyRouteData
+            const parent = this.parentName ? (keyMetaData[this.parentName].children || keyMetaData) : keyMetaData
             return parent[this.menuName] ? (parent[this.menuName].title[this.la] || '') : ''
         },
         parentName () {

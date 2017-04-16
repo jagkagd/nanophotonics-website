@@ -1,13 +1,13 @@
 <template lang="pug">
 ul(:class="ulClass")
     li(v-for="item in subMenu")
-        router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.k.name === menuName}") {{ item.li[la] }}
+        router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.ll === menuName}") {{ item.li[la] }}
 </template>
 
 <script>
 // @flow
 
-import {keyMenuData} from 'static/meta-data'
+import {keyMetaData} from 'src/meta-data'
 import _ from 'lodash'
 
 export default {
@@ -23,7 +23,7 @@ export default {
     },
     computed: {
         subMenu () {
-            return this.parentName ? (keyMenuData[this.parentName].subMenu || []) : []
+            return this.parentName ? (keyMetaData[this.parentName].subMenu || []) : []
         }
     },
     mounted () {
