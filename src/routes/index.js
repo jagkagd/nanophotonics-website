@@ -5,21 +5,23 @@ import _ from 'lodash/fp'
 const comps = {}
 _.forEach(page => {
     if(_.isEmpty(page.children)){
-        comps[page.label] = require('src/views/' + page.file.toLowerCase() + '/' + page.file + 'View.vue')
+        comps[page.label] = require('src/views/' + page.ll + '/' + page.file + 'View.vue')
     }
     _.forEach(item => {
-        comps[item.label] = require('src/views/' + page.file.toLowerCase() + '/' + item.file + 'View.vue')
+        comps[item.label] = require('src/views/' + page.ll + '/' + item.file + 'View.vue')
     })(page.children)
 })(routeData)
+comps['Preset'] = require('src/views/PresetView.vue')
 
 const routesData = _.map(page => {
+    console.log(page)
     const init = {
         path: '/' + page.path,
-        component: comps[page.label]
+        component: page.notPreset === true ? comps[page.label] : comps['Preset']
     }
     const hasChildren = {
         name: page.ll,
-        redirect: page.children[0].routerTo,
+        redirect: (page.children[0] || {}).routerTo,
         children: _.map(item => ({
             path: item.path,
             name: item.ll,
@@ -34,12 +36,15 @@ const routesData = _.map(page => {
             component: comps[page.label]
         }]
     }
-    return Object.assign(init, page.children ? hasChildren : noChildren)
-})(routeData)
+    return _.assign(init)(_.isEmpty(page.children) ? noChildren : hasChildren)
+})(_.tail(routeData))
+
+console.log(routesData)
 
 routesData.unshift({
     path: '/',
-    redirect: 'index'
+    name: 'index',
+    component: comps['Index']
 })
 
 export default new Router({

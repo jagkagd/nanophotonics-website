@@ -1,7 +1,6 @@
 import _ from 'lodash/fp'
 
-const View = _.assign({children: []})
-const Pattern = _.assign(View({typeName: 'pattern'}))
+const Pattern = _.assign({typeName: 'pattern'})
 
 export default [
     {
@@ -166,7 +165,6 @@ export default [
         li: {
             zh: '科研之余'
         },
-        children: [],
         notOnMenu: true
     }
 ]
