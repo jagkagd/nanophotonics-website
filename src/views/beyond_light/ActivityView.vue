@@ -13,19 +13,24 @@ import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 export default {
     name: 'BeyondLight',
     computed: {
-        menuName () {
-            return this.$route.params.menuName
+        activity () {
+            return this.$route.params.activity
         },
         info () {
             return this.routeInfo[1]
         }
     },
     mounted () {
-        this.$store.commit('changeMenuName', this.menuName)
+        this.$store.commit('changeMenuName', this.activity)
     },
     components: {
         Waterfall,
         WaterfallSlot
+    },
+    watch: {
+        '$route' (to, from) {
+            this.$store.commit('changeMenuName', this.activity)
+        }
     }
 }
 </script>

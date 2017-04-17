@@ -1,5 +1,5 @@
 <template lang="pug">
-section(:class="item.style" v-md:news.nobreak.images="modifiedContent")
+section.news-item(:class="item.style" v-md:news.nobreak.images="modifiedContent")
 </template>
 
 <script>
@@ -21,6 +21,10 @@ export default {
 </script>
 
 <style lang="stylus">
+
+.news-item strong
+    color: #ba8a31
+    font-weight: normal
 
 .news-date
     color: blue
