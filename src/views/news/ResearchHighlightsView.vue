@@ -19,7 +19,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('researchHighlights').then(res => {
-            this.items = _.flow(_.sortBy(o => o.paper.date_start), _.reverse)(res.data)
+            this.items = this.sortBy(['paper', 'date_start'])(res.data)
         })
     },
     components: {

@@ -52,6 +52,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
+
 img
     width: 280px
     height: 184px

@@ -21,7 +21,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('news').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
         })
     },
     components: {

@@ -42,25 +42,24 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('conferences').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
         })
     },
     computed: {
         yearRange (): Array<string> {
             return _.flow(_.map(o => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
         },
-        itemsGroupByYear (): {[year: string]: Array<conference>} {
-            return _.groupBy(o => o.date_start.split('-')[0])(this.items)
-        },
         itemsSomeYear (): Array<conference> {
-            return (this.pubYear === 'all') ? this.items : this.itemsGroupByYear[this.pubYear]
+            return R.cond([
+                [R.equals('all'), R.always(R.identity)],
+                [R.T, year => _.groupBy(o => o.date_start.split('-')[0])(R._)[year]]
+            ])(this.pubYear)(this.items)
         },
         pubLength (): number {
             return this.itemsSomeYear.length
         }
     }
 })
-
 </script>
 
 <style lang="stylus" scoped>

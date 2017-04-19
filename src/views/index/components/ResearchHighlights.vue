@@ -26,7 +26,7 @@ export default {
     },
     mounted () {
         this.getData('researchHighlights?limit=6').then(res => {
-            this.items = _.flow(_.sortBy(o => o.paper.date_start), _.reverse)(res.data)
+            this.items = this.sortBy(['paper', 'start_date'])(res.data)
         })
     },
     components: {

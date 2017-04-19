@@ -3,8 +3,9 @@
 import _ from 'lodash/fp'
 import abbrs from './journalsAbbr.js'
 import moment from 'moment'
+import R from 'ramda'
 
-export const formatJournal = (value: string): string => (value in abbrs) ? abbrs[value] : value
+export const formatJournal = (value: string): string => R.propOr(value, value, abbrs)
 
 export function formatAuthors (value: string, num: number): string {
     let flag = false

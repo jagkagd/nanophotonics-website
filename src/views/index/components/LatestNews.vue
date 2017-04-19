@@ -47,10 +47,10 @@ export default {
     },
     mounted () {
         this.getData('events?limit=1').then(res => {
-            this.events = this.sortByDate(res.data)
+            this.events = this.sortBy(['date_start'])(res.data)
         })
         this.getData('news?limit=3').then(res => {
-            this.latestNewsList = this.sortByDate(res.data)
+            this.latestNewsList = this.sortBy(['date_start'])(res.data)
         })
     },
     computed: {
@@ -95,5 +95,4 @@ ul
         border-bottom: 1px solid base3
     li:last-child
         border-bottom: 0px
-
 </style>

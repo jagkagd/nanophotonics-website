@@ -26,7 +26,6 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-
 img
     margin: 10px
     width: 320px
@@ -35,5 +34,4 @@ img
 h2
     color: blue
     font-size: 14px
-
 </style>

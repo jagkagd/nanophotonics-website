@@ -44,5 +44,3 @@ export default SubView.extend({
 })
 </script>
 
-<style lang="stylus" scoped>
-</style>

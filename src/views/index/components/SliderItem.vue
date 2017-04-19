@@ -69,5 +69,4 @@ a
 .title
     font-weight: bold
     font-size: 14px
-
 </style>

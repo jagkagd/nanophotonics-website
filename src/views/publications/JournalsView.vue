@@ -28,6 +28,7 @@ div
 import journal from 'flow/typedef.js'
 import _ from 'lodash/fp'
 import {SubView} from 'plugin/SubView'
+import R from 'ramda'
 
 export default SubView.extend({
     name: 'JournalsView',
@@ -51,32 +52,25 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('journals').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
         })
     },
     computed: {
         yearRange (): Array<string> {
             return _.flow(_.map(o => o.year), _.uniq, _.sortBy(x => x))(this.items)
         },
-        itemsGroupByYear (): {[year: string]: Array<journal>} {
-            return _.groupBy('year')(this.items)
-        },
         itemsSomeYear (): Array<journal> {
-            switch(this.pubYear){
-                case 'all':
-                    return this.items
-                case 'review':
-                    return _.filter(o => _.includes('review')(_.lowerCase(o.type)))(this.items)
-                default:
-                    return this.itemsGroupByYear[this.pubYear]
-            }
+            return R.cond([
+                [R.equals('all'), R.always(R.identity)],
+                [R.equals('review'), R.always(R.filter(o => _.includes('review')(_.lowerCase(o.type))))],
+                [R.T, year => _.groupBy('year')(R._)[year]]
+            ])(this.pubYear)(this.items)
         },
         pubLength () :number {
             return this.itemsSomeYear.length
         }
     }
 })
-
 </script>
 
 <style lang="stylus" scoped>

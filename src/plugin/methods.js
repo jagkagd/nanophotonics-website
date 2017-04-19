@@ -1,5 +1,6 @@
 import _ from 'lodash/fp'
 import axios from 'axios'
+import R from 'ramda'
 
 function t2i(obj) {
     if(_.isArray(obj)) return _.map(o => t2i(o))(obj)
@@ -26,5 +27,5 @@ export const getData = axios.create({
     transformResponse: [o => t2i(JSON.parse(o))]
 })
 
-export const sortByDate = _.flow(_.sortBy('date_start'), _.reverse)
+export const sortBy = prop => _.flow(_.sortBy(o => R.path(prop)(o)), _.reverse)
 

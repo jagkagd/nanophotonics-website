@@ -21,7 +21,6 @@ export default {
 </script>
 
 <style lang="stylus">
-
 .news-item strong
     color: #ba8a31
     font-weight: normal
@@ -50,6 +49,5 @@ figure.news-figure
     > figure
         display: inline-block
         width: 18%
-
 </style>
 
