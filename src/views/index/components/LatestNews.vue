@@ -17,7 +17,7 @@ div
 
 import {event, news} from 'flow/typedef.js'
 import moment from 'moment'
-import _ from 'lodash/fp'
+import R from 'ramda'
 
 export default {
     name: 'LatestNews',
@@ -55,7 +55,7 @@ export default {
     },
     computed: {
         showEvent (): boolean {
-            if(_.isEmpty(this.events)){
+            if(R.isEmpty(this.events)){
                 return false
             }
             const endDate = moment(this.events[0].date_end)

@@ -26,7 +26,6 @@ div
 // @flow
 
 import journal from 'flow/typedef.js'
-import _ from 'lodash/fp'
 import {SubView} from 'plugin/SubView'
 import R from 'ramda'
 
@@ -57,13 +56,13 @@ export default SubView.extend({
     },
     computed: {
         yearRange (): Array<string> {
-            return _.flow(_.map(o => o.year), _.uniq, _.sortBy(x => x))(this.items)
+            return R.pipe(R.map(R.prop('year')), R.uniq, R.sortBy(R.identity))(this.items)
         },
         itemsSomeYear (): Array<journal> {
             return R.cond([
                 [R.equals('all'),    R.always(R.identity)],
-                [R.equals('review'), R.always(R.filter(o => _.includes('review')(_.lowerCase(o.type))))],
-                [R.T,                year => _.groupBy('year')(R._)[year]]
+                [R.equals('review'), R.always(R.filter(R.contains('review')))],
+                [R.T,                year => R.groupBy('year')(R._)[year]]
             ])(this.pubYear)(this.items)
         },
         pubLength () :number {

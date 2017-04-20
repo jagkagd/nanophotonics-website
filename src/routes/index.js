@@ -1,19 +1,19 @@
 import Router from 'vue-router'
 import {routeData} from 'src/meta-data'
-import _ from 'lodash/fp'
+import R from 'ramda'
 
 const comps = {}
-_.forEach(page => {
-    if(_.isEmpty(page.children)){
+R.forEach(page => {
+    if(R.isEmpty(page.children)){
         comps[page.label] = require('src/views/' + page.ll + '/' + page.file + 'View.vue')
     }
-    _.forEach(item => {
+    R.forEach(item => {
         comps[item.label] = require('src/views/' + page.ll + '/' + item.file + 'View.vue')
     })(page.children)
 })(routeData)
 comps['Preset'] = require('src/views/PresetView.vue')
 
-const routesData = _.map(page => {
+const routesData = R.map(page => {
     const init = {
         path: '/' + page.path,
         component: page.notPreset === true ? comps[page.label] : comps['Preset']
@@ -21,7 +21,7 @@ const routesData = _.map(page => {
     const hasChildren = {
         name: page.ll,
         redirect: (page.children[0] || {}).routerTo,
-        children: _.map(item => ({
+        children: R.map(item => ({
             path: item.path,
             name: item.ll,
             component: comps[item.label]
@@ -35,8 +35,8 @@ const routesData = _.map(page => {
             component: comps[page.label]
         }]
     }
-    return _.assign(init)(_.isEmpty(page.children) ? noChildren : hasChildren)
-})(_.tail(routeData))
+    return R.merge(init)(R.isEmpty(page.children) ? noChildren : hasChildren)
+})(R.tail(routeData))
 
 routesData.unshift({
     path: '/',

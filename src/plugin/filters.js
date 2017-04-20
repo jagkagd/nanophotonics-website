@@ -1,6 +1,6 @@
 // @flow
 
-import _ from 'lodash/fp'
+import _ from 'lodash'
 import abbrs from './journalsAbbr.js'
 import moment from 'moment'
 import R from 'ramda'
@@ -9,15 +9,17 @@ export const formatJournal = (value: string): string => R.propOr(value, value, a
 
 export function formatAuthors (value: string, num: number): string {
     let flag = false
-    const authors = _.flow(
-        _.split(' and '),
-        _.map((o: string): Array<string> => _.split(', ')(o)),
-        _.map((o: Array<string>): string => {
-            const firstName = o[0]
-            flag = (o.length > 1)
-            const lastNames = flag ? _.flow(_.split(' '), _.map(o => o[0] + '. '), _.join(''))(o[1]) : ''
-            return lastNames + firstName
-        })
+    const authors = R.pipe(
+        R.split(' and '),
+        R.map(R.pipe(
+            R.split(', '),
+            (o: Array<string>): string => {
+                const firstName = o[0]
+                flag = (o.length > 1)
+                const lastNames = flag ? R.pipe(R.split(' '), R.map(o => o[0] + '. '), R.join(''))(o[1]) : ''
+                return lastNames + firstName
+            }
+        ))
     )(value)
     if(num === 1 || authors.length === 1){
         return authors[0]
@@ -29,11 +31,11 @@ export function formatAuthors (value: string, num: number): string {
 export const formatClass = _.kebabCase
 
 export function formatDate (value) {
-    if(!_.isNil(value.date)){
+    if(!R.isNil(value.date)){
         return value.date
     }
     const start = moment(value.date_start)
-    if(_.isNil(value.date_end)){
+    if(R.isNil(value.date_end)){
         return start.format('MMM. D, YYYY')
     }
     const end = moment(value.date_end)

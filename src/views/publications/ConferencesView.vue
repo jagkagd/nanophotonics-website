@@ -21,7 +21,7 @@ div
 // @flow
 
 import conference from 'flow/typedef.js'
-import _ from 'lodash/fp'
+import R from 'ramda'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
@@ -47,12 +47,12 @@ export default SubView.extend({
     },
     computed: {
         yearRange (): Array<string> {
-            return _.flow(_.map(o => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
+            return R.pipe(R.map(o => o.date_start.split('-')[0]), R.uniq, R.sortBy(R.identity))(this.items)
         },
         itemsSomeYear (): Array<conference> {
             return R.cond([
                 [R.equals('all'), R.always(R.identity)],
-                [R.T, year => _.groupBy(o => o.date_start.split('-')[0])(R._)[year]]
+                [R.T, year => R.groupBy(o => o.date_start.split('-')[0])(R._)[year]]
             ])(this.pubYear)(this.items)
         },
         pubLength (): number {
