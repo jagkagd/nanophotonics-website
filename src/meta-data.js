@@ -3,6 +3,7 @@
 import metaData from './meta'
 import _ from 'lodash/fp'
 import {defaultTo, cloneDeep} from 'lodash'
+import R from 'ramda'
 
 const lings = ['zh', 'en']
 
@@ -20,11 +21,9 @@ const traverse = _.curry(_traverse)
 function extractInfo(item, parent = {}){
     let res = cloneDeep(item)
     res.ll = _.snakeCase(res.label)
-    res.li = defaultTo(res.li, {}) // Nav Name
-    res.li.en = defaultTo(res.li.en, res.label)
-    res.li = _.fromPairs(_.map(key => [key, defaultTo(res.li[key], '')])(lings))
-    res.title = defaultTo(res.title, {}) // Nav Name
-    res.title = _.mapValues((value, key) => defaultTo(res.title[key], value))(res.li) // Title Name
+    res.li.en = defaultTo(R.path(['li', 'en'], res), res.label)
+    res.li = _.fromPairs(_.map(key => [key, defaultTo(R.path(['li', key], res), '')])(lings))
+    res.title = _.mapValues((value, key) => defaultTo(R.path(['title', key], res), value))(res.li) // Title Name
     res.file = trims(defaultTo(res.file, res.label)) // FileNameOfComponents
     if(res.typeName === 'pattern'){
         res.pattern = defaultTo(res.pattern, ':' + res.ll) // pattern_name

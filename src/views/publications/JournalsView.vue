@@ -61,9 +61,9 @@ export default SubView.extend({
         },
         itemsSomeYear (): Array<journal> {
             return R.cond([
-                [R.equals('all'), R.always(R.identity)],
+                [R.equals('all'),    R.always(R.identity)],
                 [R.equals('review'), R.always(R.filter(o => _.includes('review')(_.lowerCase(o.type))))],
-                [R.T, year => _.groupBy('year')(R._)[year]]
+                [R.T,                year => _.groupBy('year')(R._)[year]]
             ])(this.pubYear)(this.items)
         },
         pubLength () :number {
