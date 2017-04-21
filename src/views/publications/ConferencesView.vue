@@ -21,7 +21,7 @@ div
 // @flow
 
 import conference from 'flow/typedef.js'
-import _ from 'lodash/fp'
+import R from 'ramda'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
@@ -42,25 +42,26 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('conferences').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
         })
     },
     computed: {
         yearRange (): Array<string> {
-            return _.flow(_.map(o => o.date_start.split('-')[0]), _.uniq, _.sortBy(x => x))(this.items)
-        },
-        itemsGroupByYear (): {[year: string]: Array<conference>} {
-            return _.groupBy(o => o.date_start.split('-')[0])(this.items)
+            return R.pipe(R.map(o => o.date_start.split('-')[0]), R.uniq, R.sortBy(R.identity))(this.items)
         },
         itemsSomeYear (): Array<conference> {
-            return (this.pubYear === 'all') ? this.items : this.itemsGroupByYear[this.pubYear]
+            /* eslint-disable no-multi-spaces */
+            return R.cond([
+                [R.equals('all'), R.always(R.identity)],
+                [R.T,             year => items => R.groupBy(o => o.date_start.split('-')[0])(items)[year]]
+            ])(this.pubYear)(this.items)
+            /* eslint-enable */
         },
         pubLength (): number {
             return this.itemsSomeYear.length
         }
     }
 })
-
 </script>
 
 <style lang="stylus" scoped>

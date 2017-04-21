@@ -15,6 +15,7 @@ article(v-if="showPage")
 
 <script>
 // @flow
+
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
@@ -61,8 +62,7 @@ export default SubView.extend({
                 'poster doctor':       'Postdoctor',
                 'admin staff':         'Admin Staff',
                 'professor':           'Professor',
-                'associate professor': 'Associate Professor',
-                'former':              'Former'
+                'associate professor': 'Associate Professor'
             }[value]
         }
     }

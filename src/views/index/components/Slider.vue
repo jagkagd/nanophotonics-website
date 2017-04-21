@@ -33,7 +33,7 @@ export default {
     },
     mounted () {
         this.getData('slides?limit=6').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
             this.anim = setInterval(this.nextIndex, 5000)
         })
     },

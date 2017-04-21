@@ -11,7 +11,7 @@
 <script>
 // @flow
 
-import {join} from 'lodash'
+import R from 'ramda'
 
 export default {
     name: 'PeopleIntroItem',
@@ -29,8 +29,7 @@ export default {
     },
     filters: {
         formatProfileName (value, degree, la) {
-            const name = value[la]
-            const profileAbbr = ({
+            const profileAbbr = R.path([degree, la], {
                 'professor': {
                     en: 'Prof.',
                     zh: '教授'
@@ -39,11 +38,12 @@ export default {
                     en: 'Assoc. Prof.',
                     zh: '副教授'
                 }
-            }[degree] || {})[la]
-            return profileAbbr ? {
-                en: join([profileAbbr, name], ' '),
-                zh: join([name, profileAbbr], ' ')
-            }[la] : name
+            })
+            const name = value[la]
+            return R.join(profileAbbr ? ' ' : '')({
+                en: [profileAbbr, name],
+                zh: [name, profileAbbr]
+            }[la])
         }
     }
 }
@@ -75,5 +75,4 @@ export default {
 
 .email
     font-style: italic
-
 </style>

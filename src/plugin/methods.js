@@ -1,23 +1,16 @@
-import _ from 'lodash/fp'
+import _ from 'lodash'
 import axios from 'axios'
+import R from 'ramda'
 
 function t2i(obj) {
-    if(_.isArray(obj)) return _.map(o => t2i(o))(obj)
+    if(_.isArray(obj)) return R.map(t2i)(obj)
     if(!_.isPlainObject(obj)) return obj
     const ling = ['zh', 'en']
-    let res = _.cloneDeep(obj)
-    _.map(o => {
-        const name = o.split('_')[0]
-        const lang = o.split('_')[1]
-        if(_.includes(lang)(ling)){
-            if(_.isNil(res[name])){
-                res[name] = {}
-            }
-            res[name][lang] = res[o] || obj[name + '_en']
-        }
-    })(_.keys(obj))
-    res = _.mapValues(t2i)(res)
-    return res
+    const res = R.reduce((res, o) => {
+        const [name, lang] = o.split('_')
+        return R.contains(lang)(ling) ? R.assocPath([name, lang], R.defaultTo(obj[name + '_en'])(res[o]), res) : res
+    }, R.clone(obj))(R.keys(obj))
+    return R.map(t2i)(res)
 }
 
 export const getData = axios.create({
@@ -26,5 +19,5 @@ export const getData = axios.create({
     transformResponse: [o => t2i(JSON.parse(o))]
 })
 
-export const sortByDate = _.flow(_.sortBy('date_start'), _.reverse)
+export const sortBy = prop => R.pipe(R.sortBy(R.path(prop)), R.reverse)
 

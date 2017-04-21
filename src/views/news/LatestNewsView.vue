@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    news-item(v-for="item in items" v-bind:id="'news-'+item.id" v-bind:item="item")
+    news-item(v-for="item in items" v-bind:id="'news-'+item.id" v-bind:item="item" v-bind:key="item.id")
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default SubView.extend({
     },
     mounted () {
         this.getData('news').then(res => {
-            this.items = this.sortByDate(res.data)
+            this.items = this.sortBy(['date_start'])(res.data)
         })
     },
     components: {

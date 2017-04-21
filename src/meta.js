@@ -165,7 +165,46 @@ export default [
         li: {
             zh: '科研之余'
         },
-        notOnMenu: true
+        notOnMenu: true,
+        children: [
+            {
+                label: 'Group Photos',
+                li: {
+                    zh: ''
+                }
+            },
+            Pattern({
+                label: 'Activity',
+                children: [
+                    {
+                        label: 'Da Ming Mountain',
+                        li: {
+                            zh: '大明山'
+                        }
+                    }, {
+                        label: 'Lighting the Future',
+                        li: {
+                            zh: ''
+                        }
+                    }, {
+                        label: 'San Qing Moutain',
+                        li: {
+                            zh: ''
+                        }
+                    }, {
+                        label: 'Zhexi Grand Canyon',
+                        li: {
+                            zh: ''
+                        }
+                    }, {
+                        label: 'Jiu Xi',
+                        li: {
+                            zh: ''
+                        }
+                    }
+                ]
+            })
+        ]
     }
 ]
 

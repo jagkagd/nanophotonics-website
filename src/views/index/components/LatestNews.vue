@@ -17,7 +17,7 @@ div
 
 import {event, news} from 'flow/typedef.js'
 import moment from 'moment'
-import _ from 'lodash/fp'
+import R from 'ramda'
 
 export default {
     name: 'LatestNews',
@@ -47,15 +47,15 @@ export default {
     },
     mounted () {
         this.getData('events?limit=1').then(res => {
-            this.events = this.sortByDate(res.data)
+            this.events = this.sortBy(['date_start'])(res.data)
         })
         this.getData('news?limit=3').then(res => {
-            this.latestNewsList = this.sortByDate(res.data)
+            this.latestNewsList = this.sortBy(['date_start'])(res.data)
         })
     },
     computed: {
         showEvent (): boolean {
-            if(_.isEmpty(this.events)){
+            if(R.isEmpty(this.events)){
                 return false
             }
             const endDate = moment(this.events[0].date_end)
@@ -95,5 +95,4 @@ ul
         border-bottom: 1px solid base3
     li:last-child
         border-bottom: 0px
-
 </style>

@@ -10,6 +10,7 @@ div
 
 <script>
 // @flow
+
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
@@ -54,7 +55,6 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-
 .section
     img
         width: 150px
@@ -69,5 +69,4 @@ export default SubView.extend({
     .examples
         color: blue
         line-height: 200%
-
 </style>

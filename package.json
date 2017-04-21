@@ -93,7 +93,9 @@
         "es6-promise-promise": "",
         "vuex": "",
         "animate.css": "",
-        "autoprefixer-stylus": ""
+        "autoprefixer-stylus": "",
+        "ramda": "",
+        "babel-plugin-ramda": ""
     },
     "engines": {
         "node": ">= 4.0.0",

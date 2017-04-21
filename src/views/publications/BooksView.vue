@@ -22,7 +22,7 @@ div
 // @flow
 
 import book from 'flow/typedef.js'
-import _ from 'lodash'
+import R from 'ramda'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
@@ -51,7 +51,7 @@ export default SubView.extend({
     },
     computed: {
         itemsGroup (): {[key: string]: Array<book>} {
-            return _.groupBy(this.items, 'type')
+            return R.groupBy(R.prop('type'))(this.items)
         },
         booksLength () {
             return this.itemsGroup['Book'].length

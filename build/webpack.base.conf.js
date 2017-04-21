@@ -94,6 +94,7 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             Promise: 'es6-promise-promise'
-        })
+        }),
+        new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en|zh-cn)$/)
     ]
 }

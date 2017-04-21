@@ -16,11 +16,9 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
-
 img
     width: 700px
     height: auto
     margin: auto
     display: block
-
 </style>

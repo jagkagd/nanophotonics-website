@@ -59,5 +59,4 @@ export default {
         font-family: "Myriad Pro"
         font-weight: bold
         text-align: center
-
 </style>

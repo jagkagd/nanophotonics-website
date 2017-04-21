@@ -20,7 +20,7 @@ section
 <script>
 // @flow
 
-import _ from 'lodash'
+import R from 'ramda'
 
 export default {
     name: 'ResearchHighlightItem',
@@ -43,7 +43,7 @@ export default {
                 res[i + 1] = res[i] + c.length + 1
                 return res
             }, [0])
-            const wordsNumber: number = _.findIndex(accumulateLength, o => o > maxLength)
+            const wordsNumber: number = R.findIndex(R.gt(R.__, maxLength))(accumulateLength)
             return value.slice(0, accumulateLength[wordsNumber - 1] - 1) + '...'
         }
     }
@@ -52,6 +52,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
+
 img
     width: 280px
     height: 184px

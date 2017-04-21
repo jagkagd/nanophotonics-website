@@ -20,7 +20,7 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.$store.commit('changeMenuName', this.menuName)
+        this.$store.commit('changeMenuName', this.category)
         this.getData('people?category=' + this.category).then(res => {
             this.items = res.data
         })
@@ -31,9 +31,6 @@ export default SubView.extend({
     computed: {
         category () {
             return this.$route.params.people_category
-        },
-        menuName () {
-            return this.category
         }
     },
     watch: {
@@ -41,11 +38,9 @@ export default SubView.extend({
             this.getData('people?category=' + this.category).then(res => {
                 this.items = res.data
             })
-            this.$store.commit('changeMenuName', this.menuName)
+            this.$store.commit('changeMenuName', this.category)
         }
     }
 })
 </script>
 
-<style lang="stylus" scoped>
-</style>
