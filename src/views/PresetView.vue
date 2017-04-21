@@ -18,13 +18,15 @@ div
 
 import SubNav from 'components/SubNav.vue'
 import {keyMetaData} from 'src/meta-data'
-import R from 'ramda'
+// import R from 'ramda'
 
 export default {
     name: 'PresetView',
     computed: {
         title () {
-            return R.propOr('', [this.menuName, 'title', this.la])(R.propOr(keyMetaData, [this.parentName, 'children'])(keyMetaData))
+            const parent = this.parentName ? (keyMetaData[this.parentName].children || keyMetaData) : keyMetaData
+            return parent[this.menuName] ? (parent[this.menuName].title[this.la] || '') : ''
+            // return R.propOr('', [this.menuName, 'title', this.la])(R.propOr(keyMetaData, [this.parentName, 'children'])(keyMetaData))
         },
         parentName () {
             return this.routeInfo[0].name

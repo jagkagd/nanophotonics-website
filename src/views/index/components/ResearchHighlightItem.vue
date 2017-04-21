@@ -43,7 +43,7 @@ export default {
                 res[i + 1] = res[i] + c.length + 1
                 return res
             }, [0])
-            const wordsNumber: number = R.findIndex(R.gt(R._, maxLength))(accumulateLength)
+            const wordsNumber: number = R.findIndex(R.gt(R.__, maxLength))(accumulateLength)
             return value.slice(0, accumulateLength[wordsNumber - 1] - 1) + '...'
         }
     }

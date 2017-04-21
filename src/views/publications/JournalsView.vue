@@ -59,11 +59,13 @@ export default SubView.extend({
             return R.pipe(R.map(R.prop('year')), R.uniq, R.sortBy(R.identity))(this.items)
         },
         itemsSomeYear (): Array<journal> {
+            /* eslint-disable no-multi-spaces */
             return R.cond([
                 [R.equals('all'),    R.always(R.identity)],
-                [R.equals('review'), R.always(R.filter(R.contains('review')))],
-                [R.T,                year => R.groupBy('year')(R._)[year]]
+                [R.equals('review'), R.always(R.filter(R.compose(R.contains('review'), R.toLower, R.prop('type'))))],
+                [R.T,                year => items => R.groupBy(R.prop('year'))(items)[year]]
             ])(this.pubYear)(this.items)
+            /* eslint-enable */
         },
         pubLength () :number {
             return this.itemsSomeYear.length

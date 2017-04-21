@@ -11,7 +11,6 @@ div
 
 import researchHighlight from 'flow/typedef.js'
 import ResearchHighlightItem from './ResearchHighlightItem'
-import _ from 'lodash'
 
 export default {
     name: 'ResearchHighlights',

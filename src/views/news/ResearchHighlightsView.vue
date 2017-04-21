@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    research-highlights-item(v-for="item in items" v-bind:id="'rh-'+item.id" v-bind:item="item")
+    research-highlights-item(v-for="item in items" v-bind:id="'rh-'+item.id" v-bind:item="item" v-bind:key="item.id")
 </template>
 
 <script>
@@ -8,7 +8,6 @@ div
 
 import ResearchHighlightsItem from './components/ResearchHighlightsItem.vue'
 import {SubView} from 'plugin/SubView'
-import _ from 'lodash'
 
 export default SubView.extend({
     name: 'NewsView',

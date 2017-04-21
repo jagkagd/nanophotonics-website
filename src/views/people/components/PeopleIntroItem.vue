@@ -4,14 +4,13 @@
         img(:src="imgPath")
     router-link.pure-u-2-3(:to="{name: 'person_page', params: {id: item.id}}")
         .info
-            p.name {{ item.name | formatProfileName(item.degree) }}
+            p.name {{ item.name | formatProfileName(item.degree, la) }}
             p.email Email: {{ item.email }} 
 </template>
 
 <script>
 // @flow
 
-import {join} from 'lodash'
 import R from 'ramda'
 
 export default {
@@ -29,8 +28,8 @@ export default {
         }
     },
     filters: {
-        formatProfileName (value, degree) {
-            const profileAbbr = R.path([degree, this.la], {
+        formatProfileName (value, degree, la) {
+            const profileAbbr = R.path([degree, la], {
                 'professor': {
                     en: 'Prof.',
                     zh: '教授'
@@ -40,11 +39,11 @@ export default {
                     zh: '副教授'
                 }
             })
-            const name = value[this.la]
+            const name = value[la]
             return R.join(profileAbbr ? ' ' : '')({
                 en: [profileAbbr, name],
                 zh: [name, profileAbbr]
-            }[this.la])
+            }[la])
         }
     }
 }

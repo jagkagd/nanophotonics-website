@@ -50,10 +50,12 @@ export default SubView.extend({
             return R.pipe(R.map(o => o.date_start.split('-')[0]), R.uniq, R.sortBy(R.identity))(this.items)
         },
         itemsSomeYear (): Array<conference> {
+            /* eslint-disable no-multi-spaces */
             return R.cond([
                 [R.equals('all'), R.always(R.identity)],
-                [R.T, year => R.groupBy(o => o.date_start.split('-')[0])(R._)[year]]
+                [R.T,             year => items => R.groupBy(o => o.date_start.split('-')[0])(items)[year]]
             ])(this.pubYear)(this.items)
+            /* eslint-enable */
         },
         pubLength (): number {
             return this.itemsSomeYear.length

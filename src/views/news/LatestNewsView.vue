@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-    news-item(v-for="item in items" v-bind:id="'news-'+item.id" v-bind:item="item")
+    news-item(v-for="item in items" v-bind:id="'news-'+item.id" v-bind:item="item" v-bind:key="item.id")
 </template>
 
 <script>
