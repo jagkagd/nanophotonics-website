@@ -1,12 +1,12 @@
 <template lang="pug">
 .pure-g
-    .pure-u-13-24
+    .pure-u-lg-13-24.pure-u-md-1
         slider
-    .pure-u-11-24
+    .pure-u-lg-11-24.pure-u-md-1
         promo.comp
-    .pure-u-2-3
+    .pure-u-lg-2-3.pure-u-md-1
         research-highlights.comp
-    #down-right.pure-u-1-3
+    #down-right.pure-u-lg-1-3.pure-u-md-1
         latest-news.comp
         research-interests.comp
         beyond-light.comp

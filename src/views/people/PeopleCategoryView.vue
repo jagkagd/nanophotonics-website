@@ -1,7 +1,7 @@
 <template lang="pug">
 div
     ul.pure-g
-        li.pure-u-1-2(v-for="item in items")
+        li.pure-u-lg-1-2.pure-u-md-1-1(v-for="item in items")
             people-intro-item(:item="item")
 </template>
 

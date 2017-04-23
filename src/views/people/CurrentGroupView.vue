@@ -1,6 +1,6 @@
 <template lang="pug">
-figure
-    img(src="~assets/images/people/current_group.jpg")
+figure.pure-u-1-1
+    img.pure-img(src="~assets/images/people/current_group.jpg")
     figcaption June, 2015 @ Yuquan Campus, Zhejiang University, Hangzhou. 
 </template>
 
@@ -15,12 +15,11 @@ export default SubView.extend({
 </script>
 
 <style lang="stylus" scoped>
+figure
+    margin: 0
+    padding: 0 10%
+
 figcaption
     text-align: center
 
-img
-    width: 740px
-    height: 405px
-    display: block
-    margin: auto
 </style>

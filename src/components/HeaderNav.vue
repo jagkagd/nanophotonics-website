@@ -1,7 +1,7 @@
 <template lang="pug">
 ul#header-list
-    header-nav-li(v-for="(menu, index) in menuData" v-bind:key="index" v-bind:menu="menu")
-    header-lang-li
+    header-nav-li.pure-u-lg-1-8.pure-u-md-1-4.pure-u-1-2(v-for="(menu, index) in menuData" v-bind:key="index" v-bind:menu="menu")
+    header-lang-li.pure-u-lg-1-8.pure-u-md-1-4.pure-u-1-2
 </template>
 
 <script>
@@ -40,8 +40,6 @@ export default {
 
 #header-list
     > li
-        display: inline-block
-        width: (100%/8)
         height: 2.5em
     > li:not(:last-child)
         border-right: 1px solid base2

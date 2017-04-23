@@ -8,7 +8,7 @@ ul(:class="ulClass")
 // @flow
 
 import {keyMetaData} from 'src/meta-data'
-import _ from 'lodash'
+import R from 'ramda'
 
 export default {
     name: 'SubNav',
@@ -23,7 +23,7 @@ export default {
     },
     computed: {
         subMenu () {
-            return this.parentName ? (keyMetaData[this.parentName].subMenu || []) : []
+            return R.pathOr([], [this.parentName, 'subMenu'])(keyMetaData)
         }
     },
     mounted () {
@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         changeUlClass () {
-            if(!_.isNil(this.$el)){
+            if(!R.isNil(this.$el)){
                 const child = this.$el.getBoundingClientRect()
                 const childHeight = this.$el.offsetHeight
                 const parent = document.getElementById('sub-nav-container').getBoundingClientRect()

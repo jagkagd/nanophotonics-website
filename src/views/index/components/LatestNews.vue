@@ -59,8 +59,7 @@ export default {
                 return false
             }
             const endDate = moment(this.events[0].date_end)
-            const today = moment()
-            if(today.diff(endDate, 'days') > 30){
+            if(moment().diff(endDate, 'days') > 30){
                 return false
             }
             return true

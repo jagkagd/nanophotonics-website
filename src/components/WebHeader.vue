@@ -1,9 +1,8 @@
 <template lang="pug">
 header
-    div#logos
-        div#webTitle {{ group[la] }}
-        img#logo(src="~images/home-logo.png" width="527" height="70")
-        img#university(src="~images/ZJU.png" width="171" height="60")
+    #logos
+        img#logo(src="~images/home-logo.png")
+        img#university(src="~images/ZJU.png")
     header-nav
 </template>
 
@@ -45,8 +44,12 @@ export default {
 
 #logo
     float: left
+    width: 527px
+    height: 70px
 
 #university
     float: right
+    width: 171px
+    height: 60px
 </style>
 
