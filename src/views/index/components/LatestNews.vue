@@ -4,12 +4,12 @@ div
         h1 {{ eventsTitle[eventState][la] }}
         ul
             li(v-for="item in events")
-                router-link(:to="item.router") {{ item | formatDate }} - {{ item.short_content }} 
+                router-link(:to="item.router") {{ item | formatDate(la) }} - {{ item.short_content }} 
     .subNews
         h1 {{ latestNewsTitle[la] }}
         ul
             li(v-for="item in latestNewsList")
-                router-link(:to="{name: 'latest_news'} + '#news-'+item.id") {{ item | formatDate }} - {{ item.short_content }}
+                router-link(:to="{name: 'latest_news'} + '#news-'+item.id") {{ item | formatDate(la) }} - {{ item.short_content }}
 </template>
 
 <script>

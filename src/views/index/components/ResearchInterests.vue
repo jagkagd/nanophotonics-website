@@ -2,9 +2,9 @@
 div
     h1 {{ title[la] }}
     router-link(:to="{name: 'research_interests'}")
-        img(src="~assets/images/index/research_1.jpg")
-        img(src="~assets/images/index/research_2.jpg")
-        img(src="~assets/images/index/research_3.jpg")
+        img(:src="getImgPath(1, la)")
+        img(:src="getImgPath(2, la)")
+        img(:src="getImgPath(3, la)")
 </template>
 
 <script>
@@ -18,6 +18,11 @@ export default {
                 en: 'Research Interests',
                 zh: '研究兴趣'
             }
+        }
+    },
+    methods: {
+        getImgPath (id, la) {
+            return require('assets/images/index/research_' + id + '-' + la + '.jpg')
         }
     }
 }

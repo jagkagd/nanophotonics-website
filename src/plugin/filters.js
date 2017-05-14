@@ -30,23 +30,38 @@ export function formatAuthors (value: string, num: number): string {
 
 export const formatClass = _.kebabCase
 
-export function formatDate (value) {
+export function formatDate (value, la) {
+    moment.locale({en: 'en', zh: 'zh-cn'}[la])
+    const singleFormat = {
+        en: 'MMM. D, YYYY',
+        zh: 'YYYY年M月D日'
+    }
+    const rangeFormat = {
+        sY: {
+            sM: {
+                en: {start: 'MMM. D', end: 'D, YYYY'},
+                zh: {start: 'YYYY年M月D日', end: 'D日'}
+            },
+            dM: {
+                en: {start: 'MMM. D', end: 'MMM. D, YYYY'},
+                zh: {start: 'YYYY年M月D日', end: 'M月D日'}
+            }
+        },
+        dY: {
+            en: {start: 'MMM. D, YYYY', end: 'MMM. D, YYYY'},
+            zh: {start: 'YYYY年M月D日', end: 'YYYY年M月D日'}
+        }
+    }
     if(!R.isNil(value.date)){
         return value.date
     }
     const start = moment(value.date_start)
     if(R.isNil(value.date_end)){
-        return start.format('MMM. D, YYYY')
+        return start.format(singleFormat[la])
     }
     const end = moment(value.date_end)
-    if(start.year() === end.year()){
-        if(start.month() === end.month()){
-            return start.format('MMM. D') + '-' + end.format('D, YYYY')
-        }else{
-            return start.format('MMM. D') + '-' + end.format('MMM. D, YYYY')
-        }
-    }else{
-        return start.format('MMM. D, YYYY') + '-' + end.format('MMM. D, YYYY')
-    }
+    const compareMonth = (start.month() === end.month()) ? 'sM' : 'dM'
+    const format = (start.year() === end.year()) ? rangeFormat['sY'][compareMonth] : rangeFormat['dY']
+    return start.format(format[la].start) + '-' + end.format(format[la].end)
 }
 
