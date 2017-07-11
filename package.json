@@ -95,7 +95,8 @@
         "animate.css": "",
         "autoprefixer-stylus": "",
         "ramda": "",
-        "babel-plugin-ramda": ""
+        "babel-plugin-ramda": "",
+        "immutable": ""
     },
     "engines": {
         "node": ">= 4.0.0",

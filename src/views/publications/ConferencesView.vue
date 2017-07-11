@@ -11,7 +11,7 @@ div
             span.title "{{ item.title }}", 
             span.conference {{ item.conference }}, 
             span.pubinfo(v-if='item.pubinfo') {{ item.pubinfo }}, 
-            span.date {{ item | formatDate }}, 
+            span.date {{ item | formatDate(la) }}, 
             span.location {{ item.location }}. 
             span.type(:class="item.type | formatClass") {{ item.type }} 
             span.award(:class="item.award | formatClass") {{ item.award }}

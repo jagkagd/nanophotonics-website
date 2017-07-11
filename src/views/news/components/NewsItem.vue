@@ -43,11 +43,12 @@ figure.news-figure
         display: inline-block
 
 .left-right
-    > p
+    > *
         display: inline-block
-        width: 78%
+        vertical-align: middle
     > figure
-        display: inline-block
-        width: 18%
+        width: 40%
+    > p
+        width: 50%
 </style>
 

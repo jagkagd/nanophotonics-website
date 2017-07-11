@@ -52,8 +52,8 @@ export function formatDate (value, la) {
             zh: {start: 'YYYY年M月D日', end: 'YYYY年M月D日'}
         }
     }
-    if(!R.isNil(value.date)){
-        return value.date
+    if(!R.isNil(R.path(['date', 'la'])(value))){
+        return value.date[la]
     }
     const start = moment(value.date_start)
     if(R.isNil(value.date_end)){
