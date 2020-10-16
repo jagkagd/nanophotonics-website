@@ -1,5 +1,5 @@
 <template lang="pug">
-footer
+#footer
     footer-nav
     #footerinfo
         img#footerlogo(src="~images/foot-logo.png" height=55)
@@ -7,7 +7,6 @@ footer
 </template>
 
 <script>
-// @flow
 
 import FooterNav from './FooterNav.vue'
 
@@ -28,28 +27,26 @@ export default {
 
 <style lang="stylus">
 @import '~static/basecolors.styl'
-@import 'nib/clearfix'
 
-footer
+#footer
     border-top: 1px solid base4
+    padding: 5px
     margin-top: 10px
 
 #footerinfo
     margin: auto
     padding: 0 4%
-    clearfix()
+    display: flex
+    justify-content: space-between
 
 #footerlogo
     padding: 0
     border: 0
-    float: left
 
 #footerwords
-    float: right
     text-align: center
     font-size: 13px
     margin: 0
     padding: 0
 
 </style>
-

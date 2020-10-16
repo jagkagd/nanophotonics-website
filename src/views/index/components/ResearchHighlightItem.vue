@@ -2,7 +2,7 @@
 section
     h2.title {{ item.title[la] }}
     router-link.pic(:to="'/news/research_highlights#rh-'+item.id")
-        img(:src="imgPath")
+        img.pure-img(:src="imgPath")
     div.content {{ item.abstract | formatContent(40, 2.2) }}
         |  
         router-link.read-more(:to="'/news/research_highlights#rh-'+item.id") Read more>>
@@ -18,9 +18,8 @@ section
 </template>
 
 <script>
-// @flow
 
-import R from 'ramda'
+import * as R from 'ramda'
 
 export default {
     name: 'ResearchHighlightItem',
@@ -32,19 +31,19 @@ export default {
             return this.item.paper
         },
         imgPath () {
-            return require('images/researchhighlights/researchhighlight-' + this.item.imgpath)
+            return require('images/researchhighlights/' + this.item.paper.id + '-1.png')
         }
     },
     filters: {
-        formatContent (value: string, emPerLine: number, scale: number): string {
+        formatContent (value, emPerLine, scale) {
             const maxLength = emPerLine * scale - 3
             const stringArray = value.split(' ')
-            const accumulateLength: Array<number> = stringArray.reduce((res, c, i): number => {
+            const accumulateLength = stringArray.reduce((res, c, i) => {
                 res[i + 1] = res[i] + c.length + 1
                 return res
             }, [0])
-            const wordsNumber: number = R.findIndex(R.gt(R.__, maxLength))(accumulateLength)
-            return value.slice(0, accumulateLength[wordsNumber - 1] - 1) + '...'
+            const wordsNumber = R.findIndex(R.gt(R.__, maxLength))(accumulateLength)
+            return value.slice(0, accumulateLength[wordsNumber - 1] - 2) + '...'
         }
     }
 }
@@ -54,8 +53,10 @@ export default {
 @import '~static/basecolors.styl'
 
 img
-    width: 280px
-    height: 184px
+    text-align: center
+    width: 230px
+    height: 151px
+    margin: 5px auto
 
 section
     margin: 5px
@@ -66,24 +67,29 @@ section
     border-radius: 4px
     font-size: 13px
     .title
-        height: 3em
+        height: 2.5em
         font-size: 13px
         font-weight: bold
         font-family: Arial
-        padding-top: 0
+        padding: 0
+        margin: 0
+        margin-bottom: 3px
+    .content
+        line-height: 1.5em
     .read-more
-        color: blue
+        color: baseblue
     .read-more:hover
         text-decoration: underline
-    .author
-        color: #666666
+    .authors
+        color: #636363
     .cite
-        color: blue
+        color: baseblue
     .cite:hover
         text-decoration: underline
     .journal
         font-style: italic
-    .pic > img
-        border-radius: 4px
+    .pic
+        margin: 0 auto
+        img
+            border-radius: 4px
 </style>
-

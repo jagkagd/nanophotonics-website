@@ -5,4 +5,3 @@ export const SubView = Vue.extend({
         this.$store.commit('changeMenuName', '')
     }
 })
-

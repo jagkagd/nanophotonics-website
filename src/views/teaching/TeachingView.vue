@@ -8,13 +8,11 @@ ol
 </template>
 
 <script>
-// @flow
 
-import course from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
-    data (): {items: Array<course>}{
+    data () {
         return {
             items: [],
             lecturersLabel: {
@@ -22,26 +20,26 @@ export default SubView.extend({
                 zh: '教师'
             },
             courseLabel: {
-                en: 'Course No.',
+                en: 'Course No. ',
                 zh: 'No.'
             }
         }
     },
     mounted () {
-        this.getData('courses').then(res => {
-            this.items = res.data
-        })
+        this.items = this.getData('courses');
     }
 })
 </script>
 
 <style lang="stylus" scoped>
-li
-    margin: 0.5em 0
+ol
+    list-style-position: outside
+    li
+        margin: 0.5em 0
 
 .course
     font-weight: bold
 
 .num
-    color: blue
+    color: #0080cf
 </style>

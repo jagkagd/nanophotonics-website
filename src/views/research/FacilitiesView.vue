@@ -7,7 +7,7 @@ div
     img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/s1.jpg")
     img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/s2.jpg")
     h2 Microscopes  
-    img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/M1.jpg")
+    img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/m1.jpg")
     h2 Micro/nanofiber drawing systems  
     img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/mn1.jpg")
     img.pure-u-1-1.pure-u-md-1-2.pure-img(src="~images/research/mn2.jpg")
@@ -30,6 +30,6 @@ img
     padding: 3%
 
 h2
-    color: blue
+    color: #0099ff
     font-size: 14px
 </style>

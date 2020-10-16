@@ -1,13 +1,12 @@
 <template lang="pug">
 header
     #logos
-        img#logo(src="~images/home-logo.png")
-        img#university(src="~images/ZJU.png")
+        img#logo.pure-img(src="~images/home-logo.png")
+        img#university.pure-img(src="~images/ZJU.png")
     header-nav
 </template>
 
 <script>
-// @flow
 
 import HeaderNav from './HeaderNav.vue'
 
@@ -30,7 +29,6 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~static/basecolors.styl'
-@import 'nib/clearfix'
 
 #logos
     background-color: base1
@@ -40,16 +38,14 @@ export default {
     padding: 15px 30px
     box-shadow: 3px 3px 3px black
     border-radius: 15px
-    clearfix()
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
 
 #logo
-    float: left
     width: 527px
-    height: 70px
 
 #university
-    float: right
-    width: 171px
-    height: 60px
+    width: 200px
 </style>
-

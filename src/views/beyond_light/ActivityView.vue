@@ -1,14 +1,8 @@
 <template lang="pug">
-waterfall(:line-gap="10")
-    waterfall-slot(v-for="id in info.number" key="id" v-bind:width="320" v-bind:height="320")
-        img(:src="require('images/beyond_light/'+info.path+'/'+info.path+'-'+id+'.jpg')" width="320" height="320")
+    img(:src="require('images/beyond_light/'+ activity + '.jpg')")
 </template>
 
 <script>
-// @flow
-
-import Waterfall from 'vue-waterfall/lib/waterfall'
-import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot'
 
 export default {
     name: 'BeyondLight',
@@ -23,10 +17,6 @@ export default {
     mounted () {
         this.$store.commit('changeMenuName', this.activity)
     },
-    components: {
-        Waterfall,
-        WaterfallSlot
-    },
     watch: {
         '$route' (to, from) {
             this.$store.commit('changeMenuName', this.activity)
@@ -35,3 +25,9 @@ export default {
 }
 </script>
 
+<style lang="stylus" scoped>
+
+img
+    width: 95%
+    
+</style>

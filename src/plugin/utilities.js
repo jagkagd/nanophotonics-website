@@ -1,8 +1,8 @@
-import marked from 'marked'
+import * as marked from 'marked'
 import _ from 'lodash'
-import * as methods from './methods'
-import * as filters from './filters'
-import * as computed from './computed'
+import methods from './methods'
+import filters from './filters'
+import computed from './computed'
 
 export default {
     install (Vue, options) {
@@ -12,10 +12,10 @@ export default {
             filters
         })
         Vue.directive('md', (el, binding) => {
-            const value = binding.value || ''
-            const modifiers = binding.modifiers
-            const category = binding.arg || 'default'
-            const renderer = new marked.Renderer()
+            const value = binding.value || '';
+            const modifiers = binding.modifiers;
+            const category = binding.arg || 'default';
+            const renderer = new marked.Renderer();
             if(modifiers.images){
                 renderer.image = (href, title, text) => _.template(
                     `<figure class="<%= category %>-figure">
@@ -28,8 +28,8 @@ export default {
             }
             marked.setOptions({
                 breaks: !modifiers.nobreak
-            })
-            el.innerHTML = modifiers.inline ? marked.inlineLexer(value, []) : marked(value, {renderer})
+            });
+            el.innerHTML = modifiers.inline ? marked.parseInline(value) : marked(value, {renderer});
         })
     }
 }

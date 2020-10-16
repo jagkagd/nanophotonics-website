@@ -1,15 +1,14 @@
 <template lang="pug">
-ul#header-list
+ul#header-list.pure-g
     header-nav-li.pure-u-lg-1-8.pure-u-md-1-4.pure-u-1-2(v-for="(menu, index) in menuData" v-bind:key="index" v-bind:menu="menu")
     header-lang-li.pure-u-lg-1-8.pure-u-md-1-4.pure-u-1-2
 </template>
 
 <script>
-// @flow
 
 import HeaderNavLi from './HeaderNavLi.vue'
 import HeaderLangLi from './HeaderLangLi.vue'
-import {menuData} from 'src/meta-data'
+import {menuData} from '@/meta-data'
 
 export default {
     name: 'HeaderNav',
@@ -32,18 +31,19 @@ export default {
     width: 100%
     border: 2px #c6c6c6
     text-align: center
-    background-image: url(../assets/images/header-nav.png)
     background-size: contain
     border: 1px solid base3
     border-radius: 5px
-    font-size: 14px
 
 #header-list
     > li
+        background-image: url(../assets/images/header-nav.png)
         height: 2.5em
     > li:not(:last-child)
         border-right: 1px solid base2
     > li > a
+        font-size: 16px
+        color: base4
         width: 100%
         height: 100%
         display: inline-table

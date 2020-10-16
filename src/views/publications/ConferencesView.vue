@@ -13,20 +13,18 @@ div
             span.pubinfo(v-if='item.pubinfo') {{ item.pubinfo }}, 
             span.date {{ item | formatDate(la) }}, 
             span.location {{ item.location }}. 
-            span.type(:class="item.type | formatClass") {{ item.type }} 
-            span.award(:class="item.award | formatClass") {{ item.award }}
+            span.type(v-if="item.type" :class="item.type | formatClass") {{ item.type }} 
+            span.award(v-if="item.award" :class="item.award | formatClass") {{ item.award }}
 </template>
 
 <script>
-// @flow
 
-import conference from 'flow/typedef.js'
-import R from 'ramda'
+import * as R from 'ramda'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
     name: 'ConferencesView',
-    data (): {items: Array<conference>, pubYear: string} {
+    data () {
         return {
             items: [],
             pubYear: 'all',
@@ -41,15 +39,13 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.getData('conferences').then(res => {
-            this.items = this.sortBy(['date_start'])(res.data)
-        })
+        this.items = R.reverse(this.getData('conferences'));
     },
     computed: {
-        yearRange (): Array<string> {
+        yearRange () {
             return R.pipe(R.map(o => o.date_start.split('-')[0]), R.uniq, R.sortBy(R.identity))(this.items)
         },
-        itemsSomeYear (): Array<conference> {
+        itemsSomeYear () {
             /* eslint-disable no-multi-spaces */
             return R.cond([
                 [R.equals('all'), R.always(R.identity)],
@@ -57,7 +53,7 @@ export default SubView.extend({
             ])(this.pubYear)(this.items)
             /* eslint-enable */
         },
-        pubLength (): number {
+        pubLength () {
             return this.itemsSomeYear.length
         }
     }
@@ -75,10 +71,10 @@ li
     display: none
 
 .invited-talk
-    color: blue
+    color: #0070c9
 
 .poster
-    color: cyan
+    color: #00acbf
 
 .plenary-talk
     color: #4617B4
@@ -96,5 +92,5 @@ li
     color: green
 
 .keynote-speaker
-    color: red
+    color: #b81b24
 </style>

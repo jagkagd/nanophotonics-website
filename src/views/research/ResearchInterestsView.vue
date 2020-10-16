@@ -9,7 +9,6 @@ div
 </template>
 
 <script>
-// @flow
 
 import {SubView} from 'plugin/SubView'
 
@@ -67,6 +66,6 @@ export default SubView.extend({
         font-size: 15px
         margin: 10px 0px
     .examples
-        color: blue
+        color: #0099ff
         line-height: 200%
 </style>

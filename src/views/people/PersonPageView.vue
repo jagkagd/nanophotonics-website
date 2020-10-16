@@ -14,7 +14,6 @@ article(v-if="showPage")
 </template>
 
 <script>
-// @flow
 
 import {SubView} from 'plugin/SubView'
 
@@ -27,18 +26,16 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.getData('people?id=' + this.$route.params.id).then(res => {
-            this.item = res.data[0]
-            this.$store.commit('changeMenuName', this.menuName)
-            this.showPage = true
-        })
+        this.item = this.getData('people', {id: this.$route.params.id})[0];
+        this.$store.commit('changeMenuName', this.menuName);
+        this.showPage = true;
     },
     computed: {
         imgPath () {
             try{
-                return require('images/people/' + this.item.id + '-1.jpg')
+                return require('assets/images/people/' + this.item.id + '-1.jpg')
             }catch(err){
-                return require('images/people/' + this.item.id + '-intro.jpg')
+                return require('assets/images/people/' + this.item.id + '-intro.jpg')
             }
         },
         menuName () {
@@ -54,7 +51,7 @@ export default SubView.extend({
         }
     },
     filters: {
-        trans2FormalDegree (value: string): string {
+        trans2FormalDegree (value) {
             return {
                 'undergraduate':       'Undergraduate Student',
                 'master':              'Master',
@@ -86,4 +83,3 @@ export default SubView.extend({
     font-style: normal
     color: rgb(204, 0, 51)
 </style>
-

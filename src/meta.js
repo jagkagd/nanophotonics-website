@@ -64,7 +64,7 @@ export default [
     }, {
         label: 'People',
         li: {
-            zh: '小组成员'
+            zh: '团队成员'
         },
         children: [
             {
@@ -117,7 +117,8 @@ export default [
                     en: ''
                 },
                 pattern: 'intro/:id',
-                notOnMenu: true
+                notOnMenu: true,
+                notOnSub: true
             })
         ]
     }, {
@@ -156,9 +157,9 @@ export default [
             zh: '研究生及本科生课程'
         }
     }, {
-        label: 'Contact',
+        label: 'Subgroups',
         li: {
-            zh: '联系地址'
+            zh: 'Subgroups'
         }
     }, {
         label: 'Beyond Light',
@@ -170,13 +171,43 @@ export default [
             {
                 label: 'Group Photos',
                 li: {
-                    zh: ''
+                    zh: '研究组合照'
                 }
             },
             Pattern({
                 label: 'Activity',
                 children: [
                     {
+                        label: 'Huihang Ancient Trail',
+                        li: {
+                            zh: '徽杭古道'
+                        }
+                    }, {
+                        label: "New Year's Party",
+                        li: {
+                            zh: '新年晚会'
+                        }
+                    }, {
+                        label: 'Yixing Hiking',
+                        li: {
+                            zh: '秋季毅行'
+                        }
+                    }, {
+                        label: 'Ultra Trail Race',
+                        li: {
+                            zh: '越野赛'
+                        }
+                    }, {
+                        label: 'Wu Yuan',
+                        li: {
+                            zh: '婺源'
+                        }
+                    }, {
+                        label: 'Mount Huangshan',
+                        li: {
+                            zh: '黄山'
+                        }
+                    }, {
                         label: 'Da Ming Mountain',
                         li: {
                             zh: '大明山'
@@ -184,22 +215,27 @@ export default [
                     }, {
                         label: 'Lighting the Future',
                         li: {
-                            zh: ''
+                            zh: '点亮未来'
                         }
                     }, {
-                        label: 'San Qing Moutain',
+                        label: 'San Qing Mountain',
                         li: {
-                            zh: ''
+                            zh: '三清山'
                         }
                     }, {
                         label: 'Zhexi Grand Canyon',
                         li: {
-                            zh: ''
+                            zh: '浙西大峡谷'
                         }
                     }, {
                         label: 'Jiu Xi',
                         li: {
-                            zh: ''
+                            zh: '九溪'
+                        }
+                    }, {
+                        label: 'More Activities',
+                        li: {
+                            zh: '更多活动'
                         }
                     }
                 ]
@@ -207,4 +243,3 @@ export default [
         ]
     }
 ]
-

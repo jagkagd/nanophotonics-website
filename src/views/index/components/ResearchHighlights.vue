@@ -1,20 +1,19 @@
 <template lang="pug">
-div
+#research-highlights
     h1 {{ title[la] }}
     .pure-g
-        .pure-u-lg-1-2.pure-u-md-1-1(v-for="item in items")
-            research-highlight-item(:item="item")
+        .pure-u-lg-1-2.pure-u-1(v-for="item in items")
+            research-highlight-item.item(:item="item")
 </template>
 
 <script>
-// @flow
 
-import researchHighlight from 'flow/typedef.js'
 import ResearchHighlightItem from './ResearchHighlightItem'
+import * as R from 'ramda'
 
 export default {
     name: 'ResearchHighlights',
-    data (): {items: Array<researchHighlight>}{
+    data () {
         return {
             items: [],
             title: {
@@ -24,9 +23,7 @@ export default {
         }
     },
     mounted () {
-        this.getData('researchHighlights?limit=6').then(res => {
-            this.items = this.sortBy(['paper', 'start_date'])(res.data)
-        })
+        this.items = R.compose(R.take(4), R.reverse, R.sortBy(item => parseInt(R.path(['paper', 'id'], item))))(this.getData('researchHighlights', {}));
     },
     components: {
         ResearchHighlightItem
@@ -34,3 +31,7 @@ export default {
 }
 </script>
 
+<style lang="stylus">
+@import '~static/basecolors.styl'
+
+</style>

@@ -1,14 +1,13 @@
 <template lang="pug">
-ul(:class="ulClass")
+ul.fixTop
     li(v-for="item in subMenu")
         router-link(:to="item.routerTo" v-bind:class="{currentMenu: item.ll === menuName}") {{ item.li[la] }}
 </template>
 
 <script>
-// @flow
 
-import {keyMetaData} from 'src/meta-data'
-import R from 'ramda'
+import {keyMetaData} from '@/meta-data'
+import * as R from 'ramda'
 
 export default {
     name: 'SubNav',
@@ -26,29 +25,6 @@ export default {
             return R.pathOr([], [this.parentName, 'subMenu'])(keyMetaData)
         }
     },
-    mounted () {
-        window.addEventListener('scroll', this.changeUlClass)
-    },
-    destroyed () {
-        window.removeEventListener('scroll', this.changeUlClass)
-    },
-    methods: {
-        changeUlClass () {
-            if(!R.isNil(this.$el)){
-                const child = this.$el.getBoundingClientRect()
-                const childHeight = this.$el.offsetHeight
-                const parent = document.getElementById('sub-nav-container').getBoundingClientRect()
-                const parentHeight = document.getElementById('sub-nav-container').offsetHeight
-                if(parent.top >= 50){
-                    this.ulClass = 'fixTop'
-                }else if(childHeight + child.top > parentHeight + parent.top){
-                    this.ulClass = 'fixBottom'
-                }else if(child.top + parent.top > 50){
-                    this.ulClass = 'fixMiddle'
-                }
-            }
-        }
-    }
 }
 </script>
 
@@ -57,7 +33,7 @@ export default {
 
 .fixMiddle
     position: fixed
-    left: 85%
+    left: 82.2%
     top: 70px
     width: 15%
 

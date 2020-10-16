@@ -1,14 +1,12 @@
-// @flow
-
 import metaData from './meta'
 import _ from 'lodash'
-import R from 'ramda'
+import * as R from 'ramda'
 
 const lings = ['zh', 'en']
 
 const trims = R.replace(' ')('')
 
-function _traverse(fold, transform, data) {
+function _traverse (fold, transform, data) {
     return R.clone(fold(R.map(o => {
         const oo = transform(R.clone(o), R.clone(data))
         oo.children = _traverse(fold, transform, oo)
@@ -17,7 +15,7 @@ function _traverse(fold, transform, data) {
 }
 const traverse = R.curry(_traverse)
 
-function extractInfo(item, parent = {}){
+function extractInfo (item, parent = {}){
     let res = R.clone(item)
     res.ll = _.snakeCase(res.label)
     res.li = R.merge(res.li)({en: R.defaultTo(res.label)(R.path(['li', 'en'], res))})
@@ -41,12 +39,11 @@ function extractInfo(item, parent = {}){
     return res
 }
 
-export const routeData = traverse(R.identity)(extractInfo)({children: metaData})
+export const routeData = traverse(R.identity, extractInfo, {children: metaData})
 
-const toMenuData = (res, o) => R.concat(res)((o.typeName === 'pattern' && !R.isEmpty(o.children)) ? o.children : [o])
-export const expandPatternData = traverse(R.reduce(toMenuData, []))(R.nthArg(0))({children: routeData})
-export const menuData = traverse(R.reject(R.prop('notOnMenu')))(R.nthArg(0))({children: expandPatternData})
+const toMenuData = (res, o) => R.concat(res, (o.typeName === 'pattern' && !R.isEmpty(o.children)) ? o.children : [o])
+export const expandPatternData = traverse(R.reduce(toMenuData, []), R.nthArg(0), {children: routeData})
+export const menuData = traverse(R.reject(R.prop('notOnMenu')), R.nthArg(0), {children: expandPatternData})
 
-const list2obj = (res, o) => R.merge(res)({[o.ll]: R.merge(R.clone(o))({subMenu: R.clone(o.children)})})
-export const keyMetaData = traverse(R.reduce(list2obj, {}))(R.nthArg(0))({children: expandPatternData})
-
+const list2obj = (res, o) => R.merge(res, {[o.ll]: R.merge(R.clone(o), {subMenu: R.clone(o.children)})})
+export const keyMetaData = traverse(item => R.reduce(list2obj, {})(R.reject(R.prop('notOnSub'), item)), R.nthArg(0), {children: expandPatternData})

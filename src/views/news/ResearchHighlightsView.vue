@@ -4,10 +4,10 @@ div
 </template>
 
 <script>
-// @flow
 
 import ResearchHighlightsItem from './components/ResearchHighlightsItem.vue'
 import {SubView} from 'plugin/SubView'
+import * as R from 'ramda'
 
 export default SubView.extend({
     name: 'NewsView',
@@ -17,13 +17,10 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.getData('researchHighlights').then(res => {
-            this.items = this.sortBy(['paper', 'date_start'])(res.data)
-        })
+        this.items = R.reverse(R.sortBy(item => parseInt(R.path(['paper', 'id'], item)), this.getData('researchHighlights', {})));
     },
     components: {
         ResearchHighlightsItem
     }
 })
 </script>
-

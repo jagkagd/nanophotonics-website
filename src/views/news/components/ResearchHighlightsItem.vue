@@ -1,7 +1,7 @@
 <template lang="pug">
 section(:class="item.style")
     h3.title {{ item.title[la] }}
-    img(:src="imgPath")
+    img.pure-img(:src="imgPath")
     p.abstract(v-md="item.abstract")
     p
         | -- 
@@ -18,42 +18,44 @@ section(:class="item.style")
 </template>
 
 <script>
-// @flow
 
 export default {
     name: 'ResearchHighlightsItem',
     props: {
-        item: Object
+        item: Object,
     },
     computed: {
         paper () {
             return this.item.paper
         },
         imgPath () {
-            return require('images/researchhighlights/researchhighlight-' + this.item.imgpath)
+            return require('images/researchhighlights/' + this.item.paper.id + '.png')
         }
     }
 }
 </script>
 
 <style lang="stylus">
+@import '~static/basecolors.styl'
+
 .research-attached a
-    color: blue
+    color: baseblue
 </style>
 
 <style lang="stylus" scoped>
+@import '~static/basecolors.styl'
 
 .title
     font-size: 15px
     font-weight: bold
-    color: blue
+    color: #0070c0
 
 img
-    margin: auto
-    max-width: 500px
+    max-width: 600px
+    margin: 0 auto
 
 .cite
-    color: blue
+    color: baseblue
     font-size: 13px
 .cite:hover
     text-decoration: underline
@@ -67,4 +69,3 @@ img
     text-decoration: underline
 
 </style>
-

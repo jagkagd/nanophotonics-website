@@ -1,12 +1,11 @@
 <template lang="pug">
-div
+#beyond-light
     h1 {{ title[la] }}
     router-link(:to="{name: 'beyond_light'}")
-        img(src="~images/index/beyondlight.jpg")
+        img.pure-img(src="~images/index/beyondlight.jpg")
 </template>
 
 <script>
-// @flow
 
 export default {
     name: 'BeyondLight',
@@ -22,7 +21,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+
+#beyond-light
+    height: 317px
+
 img
-    max-width: 100%
-    max-height: auto
+    width: 100%
+    height: 90%
 </style>

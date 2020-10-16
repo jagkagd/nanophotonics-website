@@ -19,15 +19,13 @@ div
 </template>
 
 <script>
-// @flow
 
-import book from 'flow/typedef.js'
-import R from 'ramda'
+import * as R from 'ramda'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
     name: 'BooksView',
-    data (): {items: Array<book>, etal: Object}{
+    data () {
         return {
             items: [],
             etal: {
@@ -45,12 +43,10 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.getData('books').then(res => {
-            this.items = res.data
-        })
+        this.items = this.getData('books');
     },
     computed: {
-        itemsGroup (): {[key: string]: Array<book>} {
+        itemsGroup () {
             return R.groupBy(R.prop('type'))(this.items)
         },
         booksLength () {

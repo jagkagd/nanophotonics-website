@@ -1,34 +1,31 @@
 <template lang="pug">
 .pure-g
-    .pure-u-lg-13-24.pure-u-md-1
-        slider
-    .pure-u-lg-11-24.pure-u-md-1
-        promo.comp
-    .pure-u-lg-2-3.pure-u-md-1
-        research-highlights.comp
-    #down-right.pure-u-lg-1-3.pure-u-md-1
+    .pure-u-lg-14-24.pure-u-1
         latest-news.comp
-        research-interests.comp
-        beyond-light.comp
+    .pure-u-lg-10-24.pure-u-1
+        promo.comp
+    .pure-u-lg-14-24.pure-u-1
+        research-highlights.comp
+    .pure-u-lg-10-24.pure-u-1
+        #bottom-right
+            research-interests.comp
+            beyond-light.comp
 </template>
 
 <script>
-// @flow
 
-import Promo from './components/Promo'
-import Slider from './components/Slider'
-import ResearchHighlights from './components/ResearchHighlights'
 import LatestNews from './components/LatestNews'
+import Promo from './components/Promo'
+import ResearchHighlights from './components/ResearchHighlights'
 import BeyondLight from './components/BeyondLight'
 import ResearchInterests from './components/ResearchInterests'
 
 export default {
     name: 'IndexView',
     components: {
-        Promo,
-        Slider,
-        ResearchHighlights,
         LatestNews,
+        Promo,
+        ResearchHighlights,
         BeyondLight,
         ResearchInterests
     }
@@ -59,4 +56,10 @@ export default {
         font-family: "Myriad Pro"
         font-weight: bold
         text-align: center
+
+#bottom-right
+    min-height: 720px
+    display: flex
+    flex-direction: column
+
 </style>

@@ -35,4 +35,3 @@ export default {
     'Sensors and Actuators B-chemical':                                            'Sensor Actuat. B-chem.',
     'Superconductor Science & Technology':                                         'Supercond. Sci. Tech.'
 }
-

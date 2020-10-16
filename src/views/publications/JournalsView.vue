@@ -8,30 +8,27 @@ div
             option(v-for='year in yearRange' v-bind:value='year') {{ year }}
     ol
         li(v-for='(item, index) in itemsSomeYear' v-bind:value="pubLength-index")
-            span.authors {{ item.authors | formatAuthors(-1) }} 
+            span.authors {{ item.authors | formatAuthors(-1) }}
             br
             a.title(:href='item.href') "{{ item.title }},"
-            span.type {{ item.type }}
+            span.type {{ item.type }} 
             br
             span.journal {{ item.journal | formatJournal }} 
-            span.volume {{ item.volume }}
-            | , 
+            span.volume {{ item.volume }} 
+            | ,
             span.pages {{ item.pages }} 
             span.year ({{ item.year }})
-            | . 
-            
+            | .
 </template>
 
 <script>
-// @flow
 
-import journal from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
-import R from 'ramda'
+import * as R from 'ramda'
 
 export default SubView.extend({
     name: 'JournalsView',
-    data (): {items: Array<journal>, pubYear: string} {
+    data () {
         return {
             items: [],
             pubYear: 'all',
@@ -50,24 +47,22 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.getData('journals').then(res => {
-            this.items = this.sortBy(['date_start'])(res.data)
-        })
+        this.items = R.reverse(R.sortBy(item => parseInt(R.prop('id'), item), this.getData('journals', {})));
     },
     computed: {
-        yearRange (): Array<string> {
+        yearRange () {
             return R.pipe(R.map(R.prop('year')), R.uniq, R.sortBy(R.identity))(this.items)
         },
-        itemsSomeYear (): Array<journal> {
+        itemsSomeYear () {
             /* eslint-disable no-multi-spaces */
             return R.cond([
                 [R.equals('all'),    R.always(R.identity)],
-                [R.equals('review'), R.always(R.filter(R.compose(R.contains('review'), R.toLower, R.prop('type'))))],
+                [R.equals('review'), R.always(R.filter(R.compose(R.contains('review'), R.toLower, R.propOr('', 'type'))))],
                 [R.T,                year => items => R.groupBy(R.prop('year'))(items)[year]]
             ])(this.pubYear)(this.items)
             /* eslint-enable */
         },
-        pubLength () :number {
+        pubLength () {
             return this.itemsSomeYear.length
         }
     }
@@ -79,7 +74,7 @@ li
     margin: 8px 0
 
 .title
-    color: blue
+    color: #0070c9
 
 .journal
     font-style: italic

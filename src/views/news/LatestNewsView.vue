@@ -4,29 +4,25 @@ div
 </template>
 
 <script>
-// @flow
 
 import NewsItem from './components/NewsItem'
-import news from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
+import * as R from 'ramda'
 
 require.context('assets/images/news/', true, /\.jpg/)
 
 export default SubView.extend({
     name: 'NewsView',
-    data (): {items: Array<news>} {
+    data () {
         return {
-            items: []
+            items: [],
         }
     },
     mounted () {
-        this.getData('news').then(res => {
-            this.items = this.sortBy(['date_start'])(res.data)
-        })
+        this.items = R.reverse(R.sortBy(R.prop('date_start'), this.getData('news', {})));
     },
     components: {
-        NewsItem
+        NewsItem,
     }
 })
 </script>
-

@@ -1,19 +1,17 @@
-// @flow
-
 import _ from 'lodash'
 import abbrs from './journalsAbbr.js'
 import moment from 'moment'
-import R from 'ramda'
+import * as R from 'ramda'
 
-export const formatJournal = (value: string): string => R.propOr(value, value, abbrs)
+const formatJournal = value => R.propOr(value, value, abbrs)
 
-export function formatAuthors (value: string, num: number): string {
+function formatAuthors (value, num) {
     let flag = false
     const authors = R.pipe(
         R.split(' and '),
         R.map(R.pipe(
             R.split(', '),
-            (o: Array<string>): string => {
+            o => {
                 const firstName = o[0]
                 flag = (o.length > 1)
                 const lastNames = flag ? R.pipe(R.split(' '), R.map(o => o[0] + '. '), R.join(''))(o[1]) : ''
@@ -28,13 +26,19 @@ export function formatAuthors (value: string, num: number): string {
     }
 }
 
-export const formatClass = _.kebabCase
+const formatClass = _.kebabCase
 
 export function formatDate (value, la) {
     moment.locale({en: 'en', zh: 'zh-cn'}[la])
     const singleFormat = {
-        en: 'MMM. D, YYYY',
-        zh: 'YYYY年M月D日'
+        toD: {
+            en: 'MMM. D, YYYY',
+            zh: 'YYYY年M月D日',
+        },
+        toM: {
+            en: 'MMM. YYYY',
+            zh: 'YYYY年M月',
+        }
     }
     const rangeFormat = {
         sY: {
@@ -55,9 +59,18 @@ export function formatDate (value, la) {
     if(!R.isNil(R.path(['date', 'la'])(value))){
         return value.date[la]
     }
-    const start = moment(value.date_start)
-    if(R.isNil(value.date_end)){
-        return start.format(singleFormat[la])
+    let start;
+    if(moment(value.date_start, ['YYYY-M-DD', 'YYYY-MM-DD', 'YYYY-M-D', 'YYYY-MM-D'], true).isValid()){
+        start = moment(value.date_start, ['YYYY-M-DD', 'YYYY-MM-DD', 'YYYY-M-D', 'YYYY-MM-D'], true);
+        if(!('date_end' in value) || R.isEmpty(value.date_end)){
+            return start.format(singleFormat.toD[la])
+        }
+    }
+    if(moment(value.date_start, ['YYYY-M', 'YYYY-MM'], true).isValid()){
+        start = moment(value.date_start, ['YYYY-M', 'YYYY-MM'], true);
+        if(!('date_end' in value) || R.isEmpty(value.date_end)){
+            return start.format(singleFormat.toM[la])
+        }
     }
     const end = moment(value.date_end)
     const compareMonth = (start.month() === end.month()) ? 'sM' : 'dM'
@@ -65,3 +78,9 @@ export function formatDate (value, la) {
     return start.format(format[la].start) + '-' + end.format(format[la].end)
 }
 
+export default {
+    formatAuthors,
+    formatDate,
+    formatClass,
+    formatJournal,
+}

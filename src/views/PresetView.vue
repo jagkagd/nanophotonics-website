@@ -4,8 +4,8 @@ div
         h1.viewTitle {{ title }}
         hr
         transition(
-            enter-active-class="animated fadeInRight"
-            leave-active-class="animated fadeOutLeft"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
             mode="out-in"
         )
             router-view#sub-view-content
@@ -14,11 +14,10 @@ div
 </template>
 
 <script>
-// @flow
 
 import SubNav from 'components/SubNav.vue'
-import {keyMetaData} from 'src/meta-data'
-import R from 'ramda'
+import {keyMetaData} from '@/meta-data'
+import * as R from 'ramda'
 
 export default {
     name: 'PresetView',

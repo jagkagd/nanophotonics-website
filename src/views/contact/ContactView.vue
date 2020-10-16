@@ -21,4 +21,3 @@ export default SubView.extend({
     }
 })
 </script>
-

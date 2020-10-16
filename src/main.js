@@ -1,23 +1,20 @@
-// @flow
-
 import Vue from 'vue'
-import Router from 'vue-router'
-import Vuex from 'vuex'
 import App from './App'
-import router from './routes/index.js'
-import store from './state/index.js'
-import Utilities from './plugin/Utilities.js'
+import router from './router/index.js'
+import store from './store/index.js'
+import utilities from './plugin/utilities.js'
 
-Vue.use(Router)
-Vue.use(Vuex)
-Vue.use(Utilities)
+Vue.config.devtools = process.env.NODE_ENV === 'development';
+
+Vue.use(utilities);
 
 /* eslint-disable no-new */
-new Vue({
-    el: '#app',
+const app = new Vue({
     template: '<App/>',
     components: { App },
     router,
     store,
     render: h => h(App)
-})
+}).$mount('#app')
+
+window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;

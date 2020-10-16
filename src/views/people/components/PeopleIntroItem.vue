@@ -9,9 +9,8 @@
 </template>
 
 <script>
-// @flow
 
-import R from 'ramda'
+import * as R from 'ramda'
 
 export default {
     name: 'PeopleIntroItem',
@@ -20,9 +19,9 @@ export default {
     },
     computed: {
         imgPath () {
-            try{
+            try {
                 return require('assets/images/people/' + this.item.id + '-intro.jpg')
-            }catch(err){
+            } catch(err) {
                 return require('assets/images/people/' + this.item.id + '-1.jpg')
             }
         }
@@ -53,6 +52,7 @@ export default {
 @import '~static/basecolors.styl'
 
 .peopleItem
+    height: 122px
     margin: 5px
     background-color: base1
     padding: 5px
@@ -70,9 +70,10 @@ export default {
     line-height: 2.5em
 
 .name
-    color: blue
+    color: baseblue
     font-size: 16px
 
 .email
     font-style: italic
+    line-height: 1.2em
 </style>

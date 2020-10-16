@@ -6,24 +6,20 @@ div
 </template>
 
 <script>
-// @flow
 
 import PeopleIntroItem from './components/PeopleIntroItem'
-import people from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
     name: 'PeopleCategoryView',
-    data (): {items: Array<people>} {
+    data () {
         return {
-            items: []
+            items: [],
         }
     },
     mounted () {
-        this.$store.commit('changeMenuName', this.category)
-        this.getData('people?category=' + this.category).then(res => {
-            this.items = res.data
-        })
+        this.$store.commit('changeMenuName', this.category);
+        this.items = this.getData('people', {category: this.category});
     },
     components: {
         PeopleIntroItem
@@ -35,12 +31,9 @@ export default SubView.extend({
     },
     watch: {
         '$route' (to, from) {
-            this.getData('people?category=' + this.category).then(res => {
-                this.items = res.data
-            })
-            this.$store.commit('changeMenuName', this.category)
+            this.items = this.getData('people', {category: this.category});
+            this.$store.commit('changeMenuName', this.category);
         }
     }
 })
 </script>
-

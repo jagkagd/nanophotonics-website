@@ -15,22 +15,18 @@ div
 </template>
 
 <script>
-// @flow
 
-import people from 'flow/typedef.js'
 import {SubView} from 'plugin/SubView'
 
 export default SubView.extend({
     name: 'FormerGroup',
-    data (): {items: Array<people>} {
+    data () {
         return {
             items: []
         }
     },
     mounted () {
-        this.getData('people?category=former_group_members').then(res => {
-            this.items = res.data
-        })
+        this.items = this.getData('people', {category: 'former_group_members'});
     }
 })
 </script>
@@ -49,4 +45,3 @@ export default SubView.extend({
 .alt
     background-color: #CDD9E5
 </style>
-    

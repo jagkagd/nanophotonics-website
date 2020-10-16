@@ -19,4 +19,8 @@ export default SubView.extend({
 img
     padding: 0 5%
     height: auto
+
+p
+    line-height: 1.5em
+    font-size: 14px
 </style>

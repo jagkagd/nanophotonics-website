@@ -6,7 +6,6 @@
 </template>
 
 <script>
-// @flow
 
 import WebHeader from 'components/WebHeader'
 import WebFooter from 'components/WebFooter'
@@ -35,7 +34,7 @@ ul
 #app
     background-image: url(./assets/images/bkg-page.jpg)
     > *
-        width: 70%
+        width: 65%
         margin: auto
 
 #content
