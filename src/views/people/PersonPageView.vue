@@ -35,7 +35,7 @@ export default SubView.extend({
             try{
                 return require('assets/images/people/' + this.item.id + '-1.jpg')
             }catch(err){
-                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+                return require('assets/images/people/' + this.item.id + '-0.jpg')
             }
         },
         menuName () {

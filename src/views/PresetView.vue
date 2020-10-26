@@ -1,8 +1,8 @@
 <template lang="pug">
 div
     #preset-content
-        h1.viewTitle {{ title }}
-        hr
+        h1.viewTitle(v-show="showTitle") {{ title }}
+        hr(v-show="showTitle")
         transition(
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut"
@@ -30,6 +30,9 @@ export default {
         },
         menuName () {
             return this.$store.state.menuName || this.routeInfo[1].name
+        },
+        showTitle () {
+            return this.$store.state.showTitle
         }
     },
     components: {

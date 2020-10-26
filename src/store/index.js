@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         lang: 'en',
-        menuName: ''
+        menuName: '',
+        showTitle: true,
     },
     mutations: {
         switchLang (state) {
@@ -14,6 +15,11 @@ export default new Vuex.Store({
         },
         changeMenuName (state, name) {
             state.menuName = name
-        }
+            if(name === 'after_graduation'){
+                state.showTitle = false;
+            }else{
+                state.showTitle = true;
+            }
+        },
     }
 })

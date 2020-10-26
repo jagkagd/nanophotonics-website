@@ -31,20 +31,24 @@ export function getResearchHighlights (params, research, journals) {
 }
 
 let correspondDict = {
-    "faculty"              : ['professor', 'associate professor'],
-    "admin_staff"          : ['admin staff'],
-    "post_docs"            : ['poster doctor'],
+    "faculty"              : ['professor', 'associate professor', 'admin staff'],
+    "post_docs"            : ['post doctor'],
     "grad_students"        : ['master', 'PhD'],
     "undergrad_students"   : ['undergraduate'],
-    "former_group_members" : ['former'],
 };
 
 export function getPeople (params) {
     let predicts = []
     if('category' in params){
-        predicts.push(
-            item => R.includes(R.prop('degree', item), correspondDict[params['category']])
-        );
+        if(params['category'] === 'former'){
+            predicts.push(
+                item => item.year_end !== ""
+            )
+        }else{
+            predicts.push(
+                item => R.includes(R.prop('degree', item), correspondDict[params['category']]) && item.year_end === ""
+            );
+        }
     }
     if('id' in params){
         predicts.push(

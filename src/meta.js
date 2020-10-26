@@ -82,11 +82,6 @@ export default [
                             zh: '教师'
                         }
                     }, {
-                        label: 'Admin Staff',
-                        li: {
-                            zh: '行政助理'
-                        }
-                    }, {
                         label: 'Post Docs',
                         li: {
                             zh: '博士后'
@@ -101,10 +96,14 @@ export default [
                         li: {
                             zh: '本科生'
                         }
-                    }
-                ]
+                    }                ]
             }),
             {
+                label: 'After Graduation',
+                li: {
+                    zh: '毕业去向'
+                }
+            }, {
                 label: 'Former Group Members',
                 li: {
                     zh: '以前成员'

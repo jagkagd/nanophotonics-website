@@ -8,10 +8,9 @@ div
                 th Position After Our Group
         tbody
             tr(v-for="(item, index) in items" v-bind:class="(index % 2) ? '' : 'alt'")
-                td.
-                    {{ item.name[la] }}
-                td {{ item.formerState[la] }}
-                td {{ item.presentState[la] }}
+                td {{ item.name[la] }}
+                td {{ item | formerState(la) }}
+                td {{ item | presentState(la) }}
 </template>
 
 <script>
@@ -26,7 +25,45 @@ export default SubView.extend({
         }
     },
     mounted () {
-        this.items = this.getData('people', {category: 'former_group_members'});
+        this.items = this.getData('people', {category: 'former'});
+    },
+    filters: {
+        formerState (item, la) {
+            if(item.formerState[la] !== "") return item.formerState[la];
+            let s = {
+                "former": {
+                    "zh": "",
+                    "en": "",
+                },
+                "post doctor": {
+                    "zh": "博士后",
+                    "en": "Postdoc",
+                },
+                "PhD": {
+                    "zh": "博士生",
+                    "en": "PhD student",
+                },
+                "master": {
+                    "zh": "硕士生",
+                    "en": "Master student",
+                },
+                "undergraduate": {
+                    "zh": "本科生",
+                    "en": "Undergrad student",
+                },
+                "visitor": {
+                    "zh": "访问学生",
+                    "en": "Visitor",
+                },
+            }[item.degree][la];
+            s += " (" + item.year_start + (item.year_start === item.year_end ? "" : ("-" + item.year_end)) + ")"
+            return s;
+        },
+        presentState (item, la) {
+            let s = item.presentState[la].split("+");
+            if(s.length === 1) return s[0];
+            return s[0] + {"zh": "，", "en": ", "}[la] + s[1];
+        }
     }
 })
 </script>

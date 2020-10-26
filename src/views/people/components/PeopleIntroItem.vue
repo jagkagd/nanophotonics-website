@@ -1,11 +1,9 @@
 <template lang="pug">
-.peopleItem.pure-g
-    router-link.pure-u-1-3(:to="{name: 'person_page', params: {id: item.id}}")
-        img(:src="imgPath")
-    router-link.pure-u-2-3(:to="{name: 'person_page', params: {id: item.id}}")
-        .info
-            p.name {{ item.name | formatProfileName(item.degree, la) }}
-            p.email Email: {{ item.email }} 
+router-link.peopleItem.pure-g(:to="{name: 'person_page', params: {id: item.id}}")
+    img.pure-u-1-3(:src="imgPath")
+    .info.pure-u-2-3
+        p.name {{ item.name | formatProfileName(item.degree, la) }}
+        p.email Email: {{ item.email }} 
 </template>
 
 <script>
@@ -20,9 +18,13 @@ export default {
     computed: {
         imgPath () {
             try {
-                return require('assets/images/people/' + this.item.id + '-intro.jpg')
+                return require('assets/images/people/' + this.item.id + '-0.jpg')
             } catch(err) {
-                return require('assets/images/people/' + this.item.id + '-1.jpg')
+                try {
+                    return require('assets/images/people/' + this.item.id + '-1.jpg')
+                } catch {
+                    return require('assets/images/people/male.jpg')
+                }
             }
         }
     },
@@ -52,12 +54,13 @@ export default {
 @import '~static/basecolors.styl'
 
 .peopleItem
-    height: 122px
+    min-height: 122px
     margin: 5px
     background-color: base1
     padding: 5px
     border-radius: 5px
     border: 1px solid base3
+    display: flex
     img
         width: 110px
         height: 110px
@@ -68,10 +71,12 @@ export default {
 .info
     margin-left: 15px
     line-height: 2.5em
+    padding-top: 16px
 
 .name
     color: baseblue
     font-size: 16px
+    margin: 2px auto
 
 .email
     font-style: italic
